@@ -1,0 +1,111 @@
+    
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Claim Your Seat | The Democracy Straight-Up Project</title>
+    <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="fRwZHyB3PHl0IfLFyfHuonUHXiBrYKi9mBsxBv//0gKY/+3GTjGcEooMoOcb4e2zRrmZLTZKxyzUtKMtg57qOQ==" />
+    
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+      </head>
+  <body>
+  <header class="navbar navbar-fixed-top navbar-inverse"> 
+
+  <div class="container"> 
+    <a id="logo" href="/">dsu</a>
+    <nav>
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed"
+                data-toggle="collapse"
+                data-target="#bs-example-navbar-collapse-1"
+                aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <ul class="nav navbar-nav navbar-right collapse navbar-collapse"
+          id="bs-example-navbar-collapse-1">
+        <li><a href="/">Home</a></li>
+        <li><a href="/help">Help</a></li>
+          <li><a href="/login">Log in</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+    <div class="container">
+      <h1 class="pad">Enter the Floor</h1>
+<div class="center">
+<p>If you've already claimed your seat,<br>you can enter the floor of your District Legislature (D-Leg).<br><br></p>
+<a class="btn-xl btn-primary" href="/login">Enter the Floor</a>
+<p class="pad">Otherwise...</p>
+<h1>Claim Your Seat</h1>
+<p>Fill out the form below. <br><br>Note: Enter your district as your two-letter state postal code <br> followed by a two-digit number. For instance, <br>the third district in Alabama would be AL03.</p>
+</div>
+
+<form class="form-horizontal form-label-left" method="POST" novalidate>
+    {% csrf_token %}
+  
+      <div class="row">
+      <div class="col-md-6 col-md-offset-3" id="big-font">
+      <label for="user_district">District</label> <a href="/know">Don&#39;t Know Your District?</a>
+      <input class="form-control" type="text" name="district" id="user_district" />
+      
+      <label for="user_voterid">Voterid</label>
+      <input class="form-control" type="text" name="voterid" id="voterid" />
+      
+      <label for="user_name">Name</label>
+      <input class="form-control" type="text" name="name" id="name" />
+
+      <label for="user_email">Email</label>
+      <input class="form-control" type="email" name="email" id="email" />
+
+      <label for="user_password">Password</label>
+      <input class="form-control" type="password" name="password" id="password" />
+
+      <label for="user_password_confirmation">Confirmation</label>
+      <input class="form-control" type="password" name="confirmation" id="confirmation" />
+      </div>
+      </div>
+<div class="center jumbotron">
+      <div class="" id="">
+      <input type="submit" name="commit" value="Create my account" class="btn-xl btn-primary btn-wrap-text" data-disable-with="Create my account" />
+</form>  </div>
+</div>
+
+      <footer class="footer">
+  <small>
+    The Democracy Straight-Up Project
+  </small>
+  <nav>
+    <ul>
+      <li><a href="/about">About</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="#">News</a></li>
+    </ul>
+  </nav>
+</footer>
+       
+    </div>
+<!-- Here starts the code copied directly from the MaxCDN section of this page: https://www.w3schools.com/bootstrap4/bootstrap_get_started.asp -->
+
+<!-- Optional theme (already greyed)-->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous"> -->
+
+<!-- Latest compiled and minified CSS -->
+<!-- (newly greyed here down) <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- end of 'MaxCDN' code -->
+  </body>
+</html>

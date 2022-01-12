@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Enter | The Democracy Straight-Up Project</title>
+    <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="ihK7wH46EGzGko4xMmhXYOAe2Xf+I+HJxOTsYakntMRv8U8ZEHywBzi/3BPgeFRx06AeeqMJjliIS35K1UaM/w==" />
+    
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+</head>
+  <body>
+  
+  <header class="navbar navbar-fixed-top navbar-inverse"> 
+
+  <div class="container"> 
+    <a id="logo" href="/">dsu</a>
+    <nav>
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed"
+                data-toggle="collapse"
+                data-target="#bs-example-navbar-collapse-1"
+                aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <ul class="nav navbar-nav navbar-right collapse navbar-collapse"
+          id="bs-example-navbar-collapse-1">
+        <li><a href="/">Home</a></li>
+        <li><a href="/help">Help</a></li>
+          <li><a href="/login">Log in</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+    <div class="container">
+      <h1>Enter the Floor</h1>
+<div class="center jumbotron">
+<p>If you haven't done so already, to Enter the Floor, you must first</p>  
+<p class="pad"></p>
+<a class="btn-xl btn-primary" href="/signup">Claim Your Seat</a>
+<p></p>
+<p class="pad"></p>
+<p class="pad">If you've already Claimed Your Seat, Enter the Floor:</p>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <form class="form-horizontal form-label-left" method="POST" novalidate>
+      {% csrf_token %}
+  
+      <label for="session_email">Email</label>
+      <input class="form-control" type="email" name="session[email]" id="session_email" />
+
+      <label for="session_password">Password</label>
+      <input class="form-control" type="password" name="session[password]" id="session_password" />
+      
+      <label class="checkbox inline" for="session_remember_me">
+        <input name="session[remember_me]" type="hidden" value="0" /><input type="checkbox" value="1" name="session[remember_me]" id="session_remember_me" />
+        <span>Remember me on this computer</span>
+</label>      
+      <input type="submit" name="commit" value="Enter the Floor" class="btn-xl btn-primary" data-disable-with="Enter the Floor" />
+</form>  </div>
+</div>
+      <footer class="footer">
+  <small>
+    The Democracy Straight-Up Project
+  </small>
+  <nav>
+    <ul>
+      <li><a href="/about">About</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="#">News</a></li>
+    </ul>
+  </nav>
+</footer>
+       
+    </div>
+<!-- Here starts the code copied directly from the MaxCDN section of this page: https://www.w3schools.com/bootstrap4/bootstrap_get_started.asp -->
+
+<!-- Optional theme (already greyed)-->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous"> -->
+
+<!-- Latest compiled and minified CSS -->
+<!-- (newly greyed here down) <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- end of 'MaxCDN' code -->
+  </body>
+</html>
