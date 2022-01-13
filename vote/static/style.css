@@ -1,0 +1,41 @@
+
+.part-2 {
+    text-align: center;
+}
+
+
+footer.footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+ul.nav-item {
+    display: inline-flex;
+}
+
+
+ul.nav-item li {
+    list-style: none;
+    margin-left: 15px;
+}
+
+.center.jumbotron.section_first {
+  position: relative;
+  top: 80px;
+  text-align: center;
+  padding-bottom: 10px;
+}
+a.btn-xl.btn-primary {
+  padding: 15px;
+  font-size: 20px;
+  border-radius: 10px;
+}
+.section_btn {
+  margin: 20px;
+  padding: 10px 0px;
+}
+
+small.small_section {
+  font-size: 100%;
+}
+

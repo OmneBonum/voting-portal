@@ -8,13 +8,13 @@ from django.contrib import messages
 
 def index(request):
     context = {}
-    template = loader.get_template('app/index.html')
+    template = loader.get_template('app/index2.html')
     return HttpResponse(template.render(context, request))
     
 def create(request):
     # user=User.objects.get(id=id)
     if request.method == 'POST':
-        signup=usersignup()
+        signup=user()
         signup.district = request.POST.get('district')
         signup.voterid = request.POST.get('voterid')
         signup.name = request.POST.get('name')

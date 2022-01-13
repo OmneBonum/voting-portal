@@ -10,12 +10,12 @@ from django.contrib import messages
 
 def index(request):
     context = {}
-    template = loader.get_template('app/index.html')
+    template = loader.get_template('app/index2.html')
     return HttpResponse(template.render(context, request))
 
 def login(request):
     if request.method == "POST":
-        uname= request.POST.get('username')
+        uname= request.POST.get('email')
         print(uname)
         upass= request.POST.get('password')
         print(upass)
@@ -23,10 +23,10 @@ def login(request):
         print(user)
         if user is not None:
             login(request,user)
-            return redirect('/home')
+            return redirect('/')
 
         else:
             messages.error(request,"Invalid Credential")
-            return redirect('/html')
+            
 
     return render(request,"login.html")

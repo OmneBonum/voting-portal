@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="44px" height="44px" viewBox="0 0 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>checkboxCheck</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Widget-Libraries" transform="translate(-73.000000, -752.000000)">
+            <g id="Group" transform="translate(70.000000, 705.000000)">
+                <rect id="Rectangle-Copy" stroke="#CBCBCB" stroke-width="2" fill="#CBCBCB" x="4" y="48" width="42" height="42" rx="8"></rect>
+                <path d="M35.555115,63.6529774 L22.7494052,77.5811088 C22.1562252,78.1396304 21.2664552,78.1396304 20.6732752,77.5811088 L14.444885,71.4373717 C13.851705,70.8788501 13.851705,70.0410678 14.444885,69.4825462 C15.038065,68.9240246 15.9278351,68.9240246 16.5210151,69.4825462 L21.8596352,74.5092402 L33.4789849,61.4188912 C34.0721649,60.8603696 34.961935,60.8603696 35.555115,61.4188912 C36.148295,61.9774127 36.148295,63.0944559 35.555115,63.6529774 Z" id="checkbox_arrow" stroke="#FFFFFF" stroke-width="1.32" fill="#FFFFFF"></path>
+                <g id="SLICES" transform="translate(3.000000, 47.000000)"></g>
+            </g>
+        </g>
+    </g>
+</svg>
