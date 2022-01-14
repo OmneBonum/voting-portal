@@ -6,13 +6,14 @@ from vote.models import *
 from django.contrib import messages
 
 
+
 def index(request):
     context = {}
     template = loader.get_template('app/index.html')
     return HttpResponse(template.render(context, request))
-    
+
+ 
 def create(request):
-    # user=User.objects.get(id=id)
     if request.method == 'POST':
         signup=user()
         signup.district = request.POST.get('district')
@@ -22,7 +23,24 @@ def create(request):
         signup.password = request.POST.get('password')
         signup.confirmation = request.POST.get('confirmation')
         signup.save()
-        messages.success(request,'Insurance Added Successfully.')
-        return redirect('/login')
+        return redirect("/signup")
     return render(request,"signup/create.html")
+
+def update(request,id):
+    users = user.objects.get(pk=id)
+    print(users)
+    if request.method=="POST":
+
+        users.district = request.POST.get('district')
+        users.voterid = request.POST.get('voterid')
+        users.name = request.POST.get('name')
+        users.email = request.POST.get('email')
+        users.password = request.POST.get('password')
+        users.confirmation = request.POST.get('confirmation')
+        users.upload=request.POST.files("upload")
+        users.save()
+        return redirect('/login')
+   
+    return render(request,"signup/update.html",{'users':user})
+
 

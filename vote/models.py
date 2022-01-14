@@ -8,3 +8,4 @@ class user(models.Model):
     email=models.EmailField()
     password=models.CharField(max_length=200)
     confirmation=models.CharField(max_length=200)
+    upload=models.ImageField(upload_to='images/',null=True,blank=True)
