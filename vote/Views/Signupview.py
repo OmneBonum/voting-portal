@@ -8,7 +8,7 @@ from django.contrib import messages
 
 def index(request):
     context = {}
-    template = loader.get_template('app/index2.html')
+    template = loader.get_template('app/index.html')
     return HttpResponse(template.render(context, request))
     
 def create(request):

@@ -1,17 +1,11 @@
+  
+
     
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Claim Your Seat | The Democracy Straight-Up Project</title>
-    <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-param" content="authenticity_token" />
-<meta name="csrf-token" content="fRwZHyB3PHl0IfLFyfHuonUHXiBrYKi9mBsxBv//0gKY/+3GTjGcEooMoOcb4e2zRrmZLTZKxyzUtKMtg57qOQ==" />
-    
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-      </head>
+{%include "app/header.html" %}
+
+
   <body>
-  <header class="navbar navbar-fixed-top navbar-inverse"> 
+  <!-- <header class="navbar navbar-fixed-top navbar-inverse"> 
 
   <div class="container"> 
     <a id="logo" href="/">dsu</a>
@@ -35,15 +29,17 @@
       </ul>
     </nav>
   </div>
-</header>
-    <div class="container">
-      <h1 class="pad">Enter the Floor</h1>
-<div class="center">
-<p>If you've already claimed your seat,<br>you can enter the floor of your District Legislature (D-Leg).<br><br></p>
+</header> -->
+    <div class="container Enter_the_Floor">
+
+<div class="center If_already">
+  <h1 class="pad">Enter the Floor</h1>
+
+<p class="claimed"> If you've already claimed your seat,<br>you can enter the floor of your District Legislature (D-Leg).<br><br></p>
 <a class="btn-xl btn-primary" href="/login">Enter the Floor</a>
 <p class="pad">Otherwise...</p>
-<h1>Claim Your Seat</h1>
-<p>Fill out the form below. <br><br>Note: Enter your district as your two-letter state postal code <br> followed by a two-digit number. For instance, <br>the third district in Alabama would be AL03.</p>
+<h1 class="pad">Claim Your Seat</h1>
+<p class="claimed">Fill out the form below. <br><br>Note: Enter your district as your two-letter state postal code <br> followed by a two-digit number. For instance, <br>the third district in Alabama would be AL03.</p>
 </div>
 
 <form class="form-horizontal form-label-left" method="POST" novalidate>
@@ -70,13 +66,13 @@
       <input class="form-control" type="password" name="confirmation" id="confirmation" />
       </div>
       </div>
-<div class="center jumbotron">
-      <div class="" id="">
+<div class="center jumbotron input_box"> 
+      <div class="input_btn" id="">
       <input type="submit" name="commit" value="Create my account" class="btn-xl btn-primary btn-wrap-text" data-disable-with="Create my account" />
 </form>  </div>
 </div>
 
-      <footer class="footer">
+      <!-- <footer class="footer">
   <small>
     The Democracy Straight-Up Project
   </small>
@@ -88,8 +84,8 @@
     </ul>
   </nav>
 </footer>
-       
-    </div>
+        -->
+   
 <!-- Here starts the code copied directly from the MaxCDN section of this page: https://www.w3schools.com/bootstrap4/bootstrap_get_started.asp -->
 
 <!-- Optional theme (already greyed)-->
@@ -107,5 +103,8 @@
 <!-- Latest compiled JavaScript -->
 <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <!-- end of 'MaxCDN' code -->
+{%include "app/footer.html" %}
+ 
+
   </body>
 </html>

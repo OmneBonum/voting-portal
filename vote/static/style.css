@@ -1,8 +1,35 @@
 
+/* .navbar-inverse .navbar-nav>li>a {
+  color: #ffffff;
+} */
+a#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}
+.center.jumbotron.section_first h1 {
+  font-size: 62px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
 .part-2 {
     text-align: center;
 }
-
+.part-2 h2 {
+  color: #777;
+  font-size: 2em;
+  letter-spacing: -1px;
+  text-align: center;
+  font-weight: normal;
+}
 
 footer.footer {
     display: flex;
@@ -13,7 +40,10 @@ ul.nav-item {
     display: inline-flex;
 }
 
-
+ul.nav-item li a {
+  color: #555555;
+  font-size: 16px;
+}
 ul.nav-item li {
     list-style: none;
     margin-left: 15px;
@@ -21,21 +51,109 @@ ul.nav-item li {
 
 .center.jumbotron.section_first {
   position: relative;
-  top: 80px;
+  top: 40px;
   text-align: center;
   padding-bottom: 10px;
 }
 a.btn-xl.btn-primary {
-  padding: 15px;
+  padding: 10px 15px;
   font-size: 20px;
   border-radius: 10px;
 }
 .section_btn {
-  margin: 20px;
+  margin: 10px;
   padding: 10px 0px;
 }
-
 small.small_section {
   font-size: 100%;
+  color: #555555;
 }
+.center.img_section {
+  margin: 20px 0px;
+}
+
+/*page-2 css start */
+
+.container.Enter_the_Floor {
+  position: relative;
+  top: 70px;
+}
+.center.If_already {
+  text-align: center;
+}
+p.claimed {
+  font-size: 1.5em;
+  line-height: 1.5em;
+}
+p.pad {
+  margin-top: 10px;
+  line-height: 1.5em;
+  font-size: 1.5em;
+}
+h1.pad {
+  font-size: 3em;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+input.btn-xl.btn-primary.btn-wrap-text {
+  padding: 12px;
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 10px;
+    border: none;
+    font-size: 20px;
+}
+.input_btn {
+  width: 50%;
+  margin: 0 auto;
+}
+.center.jumbotron.input_box {
+  margin-top: 40px;
+}
+h1.text-center.sec_Enter{
+  font-size: 3em;
+letter-spacing: 1px;
+margin-bottom: 30px;
+text-align: center;
+}
+p.pad.already {
+  margin: 20px 0px;
+}
+input.btn-xl.btn-primary {
+  padding: 10px 50px;
+  font-size: 20px;
+  border-radius: 10px;
+  border: none;
+  margin-top: 15px;
+}
+.center.jumbotron.If_already {
+  padding: 25px 60px;
+}
+label.checkbox.inline {
+  padding-top: 10px;
+}
+input#session_email {
+  margin-bottom: 15px;
+}
+input#session_password {
+  margin-bottom: 5px;
+}
+/*page-2 css end */
+
+
+
+/*page-3 css start */
+
+p.help_section {
+  font-size: 1.5em;
+  line-height: 1.5em;
+  margin-bottom: 50px;
+}
+
+
+/*page-3 css  end */
+
+
 
