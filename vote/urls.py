@@ -11,7 +11,7 @@ urlpatterns = [
 
 
 # signup urls  
-    path("signup/create",Signupview.index,name='signup'),
+    # path("signup/create",Signupview.index,name='signup'),
     path("signup/create",Signupview.create,name='signupcreate'),
     path("signup/update/<int:id>",Signupview.update,name='signupupdate'),
 

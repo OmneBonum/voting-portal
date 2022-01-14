@@ -7,10 +7,10 @@ from django.contrib import messages
 
 
 
-def index(request):
-    context = {}
-    template = loader.get_template('app/index.html')
-    return HttpResponse(template.render(context, request))
+# def index(request):
+#     context = {}
+#     template = loader.get_template('app/index.html')
+#     return HttpResponse(template.render(context, request))
 
  
 def create(request):
@@ -23,7 +23,7 @@ def create(request):
         signup.password = request.POST.get('password')
         signup.confirmation = request.POST.get('confirmation')
         signup.save()
-        return redirect("/signup")
+        return redirect("/login")
     return render(request,"signup/create.html")
 
 def update(request,id):
