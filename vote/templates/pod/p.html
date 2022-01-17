@@ -1,4 +1,4 @@
-{%include 'app/header.html'%}
+{%include "app/header.html" %}
 
 <! DOCTYPE html>  
 <html lang="en">  
@@ -59,71 +59,41 @@ table.dataTable td {
 <div class="container">  
   <div class="row">  
     <div class="col-xs-12">  
-      <table summary="This table shows how to create responsive tables using Datatables' extended functionality" class="table table-bordered table-hover dt-responsive">  
+      <table class="table table-bordered table-hover dt-responsive">  
         <thead>  
           <tr>  
-            <th> State </th>  
-            <th> Name </th>  
-            <th> Voter id </th>  
-            <th> Age </th>  
+            <th>S.No</th>
             <th> District</th>  
+            <th> Voterid </th>  
+            <th> Name </th>  
+            <th> Email </th>  
+             
           </tr>  
         </thead>  
-        <tbody>  
+        <tbody>   
+          {% for users_list in user_list%}
           <tr>  
-            <td> Andhra Pradesh </td>  
-            <td> Hritik </td>  
-            <td> 412</td>  
-            <td> 31 </td>  
-            <td> solan </td>  
+            <td>{{forloop.counter}}</td>
+            <td>{{users_list.district }}</td>  
+            <td>{{users_list.voterid}}</td>
+            <td> {{users_list.name}}</td>  
+            <td>{{users_list.email}}</td>  
+            
           </tr>  
-          <tr>  
-            <td> Himachal Pradesh </td>  
-            <td> Hritik </td>  
-            <td> 413</td>  
-            <td> 31 </td>  
-            <td> solan </td>
-          </tr>  
-          <tr>  
-            <td> Gwalier </td>  
-            <td> Hritik </td>  
-            <td> 414</td>  
-            <td> 31 </td>  
-            <td> solan </td>
-          </tr>  
-          <tr>  
-            <td> Ludhiana </td>  
-            <td> Hritik </td>  
-            <td> 415</td>  
-            <td> 31 </td>  
-            <td> solan </td>
-          </tr>  
-          <tr>  
-            <td> Goa </td>  
-            <td> Hritik </td>  
-            <td> 416</td>  
-            <td> 31 </td>  
-            <td> solan </td>  
-          </tr>  
-          <tr>  
-            <td> Mumbai </td>  
-            <td> Hritik </td>  
-            <td> 417</td>  
-            <td> 31 </td>  
-            <td> solan </td>
-          </tr>  
-        </tbody>  
-        <tfoot>  
-          
-     </tfoot>  
+          {% endfor %}
+        </tbody>   
       </table>  
     </div>  
   </div>  
 </div>  
+
+
+
+
 <script>  
 $('table').DataTable();  
 </script>  
 </body> 
-
+{% comment %} {%include 'app/footer.html'%} {% endcomment %}
 </html>   
  

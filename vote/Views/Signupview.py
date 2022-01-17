@@ -1,16 +1,23 @@
 from django.shortcuts import redirect
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect
 from django.template import loader
 from vote.models import *
 from django.contrib import messages
+from django.urls import reverse
 
 
+
+# def index(request):
+#     context = {}
+#     template = loader.get_template('pod/p.html')
+#     return HttpResponse(template.render(context, request))
 
 def index(request):
-    context = {}
-    template = loader.get_template('app/index.html')
-    return HttpResponse(template.render(context, request))
+    context = {'user_list':user.objects.all()}
+    return render(request,"pod/p.html",context) 
+
+
 
  
 def create(request):
@@ -23,11 +30,11 @@ def create(request):
         signup.password = request.POST.get('password')
         signup.confirmation = request.POST.get('confirmation')
         signup.save()
-        return redirect("/signup")
+        return HttpResponseRedirect(reverse("vote:signupupdate",args=[signup.id]))
     return render(request,"signup/create.html")
 
 def update(request,id):
-    users = user.objects.get(pk=id)
+    users = user.objects.get(id=id)
     print(users)
     if request.method=="POST":
 
@@ -37,10 +44,10 @@ def update(request,id):
         users.email = request.POST.get('email')
         users.password = request.POST.get('password')
         users.confirmation = request.POST.get('confirmation')
-        users.upload=request.POST.files("upload")
+        users.upload=request.FILES.get("upload")
         users.save()
         return redirect('/login')
    
-    return render(request,"signup/update.html",{'users':user})
+    return render(request,"signup/update.html",{'users_list':users})
 
 
