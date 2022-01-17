@@ -1,10 +1,14 @@
+<html>
+  <head>
   
 
     
 {%include "app/header.html" %}
-
+<link rel="stylesheet" type="text/css" href="static/style.css">
+  </head>
 
   <body>
+   
   <!-- <header class="navbar navbar-fixed-top navbar-inverse"> 
 
   <div class="container"> 
@@ -47,8 +51,8 @@
   
       <div class="row">
       <div class="col-md-6 col-md-offset-3" id="big-font">
-      <label for="user_district">District</label> <a href="/know">Don&#39;t Know Your District?</a>
-      <input class="form-control" type="text" name="district" id="user_district" />
+      <label for="district">District</label> <a href="/know">Don&#39;t Know Your District?</a>
+      <input class="form-control" type="text" name="district" id="district" />
       
       <label for="user_voterid">Voterid</label>
       <input class="form-control" type="text" name="voterid" id="voterid" />
@@ -66,11 +70,12 @@
       <input class="form-control" type="password" name="confirmation" id="confirmation" />
       </div>
       </div>
+      
 <div class="center jumbotron input_box"> 
       <div class="input_btn" id="">
       <input type="submit" name="commit" value="Create my account" class="btn-xl btn-primary btn-wrap-text" data-disable-with="Create my account" />
 </form>  </div>
-</div>
+
 
       <!-- <footer class="footer">
   <small>

@@ -19,7 +19,7 @@ def login(request):
         print(uname)
         upass= request.POST.get('password')
         print(upass)
-        user = authenticate(username=uname,password=upass)
+        user = authenticate(email=uname,password=upass)
         print(user)
         if user is not None:
             login(request,user)
@@ -30,3 +30,4 @@ def login(request):
             
 
     return render(request,"login.html")
+
