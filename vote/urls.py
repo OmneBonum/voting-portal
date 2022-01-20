@@ -2,28 +2,34 @@ from django.urls import path
 from vote.Views import Loginview
 from vote.Views import Signupview
 from vote.Views import Keyview
+from vote.Views import Podview
 from . import views
 app_name = "vote"
 
 
 urlpatterns = [
     path('', Loginview.index, name='html'),
-    path("login",Loginview.login,name='login'),
+    path("login",Loginview.user_login,name='login'),
+    path('logout',Loginview.userLogout,name='logout'),
     path("help",views.help,name='help'),
 
 
 # signup urls  
-    path("pod",Signupview.index,name='pod'),
-    path("signup/create",Signupview.create,name='signupcreate'),
-    path("signup/update/<int:id>",Signupview.update,name='signupupdate'),
+    path("",Signupview.index),
+    path("create",Signupview.create,name='signupcreate'),
+    path("update/<int:id>",Signupview.update,name='signupupdate'),
 
+# POD urls  
 
-# # POD urls  
-#     # path("signup/create",Signupview.index,name='signup'),
-#     path("pod/p",Signupview.create,name='podview'),
+    path("show",Podview.show,name='show'),
+    path('join',Podview.validate,name="join"),
     
 #key urls
-    path("key",Keyview.key_generator,name="key")
+    path("pod",Keyview.key_generator,name="key"),
+    path('pod/<int:id>', Keyview.show, name="key2"), 
+    #path("pod2/index",Keyview.index), 
+
+    
 
 ]
 

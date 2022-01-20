@@ -1,3 +1,4 @@
+{% if user.is_authenticated %} 
 <html>
   <head>
     <title>The Democracy Straight-Up Project</title>
@@ -11,9 +12,6 @@
     <link rel="stylesheet" type="text/css" href="static/style.css">
 
   {% comment %} <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script> {% endcomment %}
-
-
-
 
   </head>
   <body>
@@ -37,9 +35,11 @@
             </div>
             <ul class="nav navbar-nav navbar-right collapse navbar-collapse"
                 id="bs-example-navbar-collapse-1">
+               
               <li><a href="/">Home</a></li>
+              <li><a href="/show">Voter</a></li>
               <li><a href="/help">Help</a></li>
-              <li><a href="/login">Log in</a></li>
+              <li><a href="/logout">Logout</a></li>
             </ul>
          </nav>
        </div>
@@ -52,16 +52,7 @@
             <div class="part-2">
               <h2> Vote directly on federal legislation. </h2>
               <div class="row">
-                <div class="col-md-5">
-                  <div class="section_btn">
-                    <a class="btn-xl btn-primary" href="/signup/create">Claim Your Seat</a> <!-- btn btn-xl btn-primary -->
-                  </div>
-                  </div>
-                  <div class="col-md-5">
-                  <div id=big-font>
-                    <a class="btn btn-lg btn-primary" href="/bills">Bills</a>
-                  </div>
-                </div>
+
              </div>
             </div>
           </div>
@@ -84,6 +75,95 @@
 </footer>
        
 </div>
+
+
+</body>
+</html>
+{%else%}
+<html>
+<head>
+<title>The Democracy Straight-Up Project</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="kfkxhEhBq73RsAXvSmP1MVvsY5Ip9duA9BaBOyCKqSx0GsVdJgcL1i+dV82Yc/YgaFKkn3TftBG4uRMQXOuRFw==" />
+<!-- CSS only -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+<link rel="stylesheet" type="text/css" href="static/style.css">
+
+{% comment %} <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script> {% endcomment %}
+
+</head>
+<body>
+<header class="navbar navbar-fixed-top navbar-inverse">
+
+<div class="container">
+
+<nav>
+
+<div class="navbar-header">
+<a id="logo" href="/">DSU</a>
+<button type="button" class="navbar-toggle collapsed"
+data-toggle="collapse"
+data-target="#bs-example-navbar-collapse-1"
+aria-expanded="false">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+</div>
+<ul class="nav navbar-nav navbar-right collapse navbar-collapse"
+id="bs-example-navbar-collapse-1">
+
+<li><a href="/">Home</a></li>
+<li><a href="/help">Help</a></li>
+<li><a href="/login">login</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<div class="container">
+<div class="row">
+<div class="col-md-8">
+<div class="center jumbotron section_first">
+<h1>Welcome to the Democracy Straight-Up Project!</h1>
+<div class="part-2">
+<h2> Vote directly on federal legislation. </h2>
+<div class="row">
+<div class="col-md-5">
+<div class="section_btn">
+<a class="btn-xl btn-primary" href="/create">Claim Your Seat</a> <!-- btn btn-xl btn-primary -->
+</div>
+</div>
+<div class="col-md-5">
+<div class="section_btn">
+<a class="btn-xl btn-primary" href="/login">Enter the Floor</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="center img_section"><a href="https://rubyonrails.org/"><img alt="Head shot of chimpanzee stroking his chin as if mulling over a particularly tricky thought" width="100" src="/static/image/monkey_think-b4a0e875e626791e184e60641a40b7f7b297fa9592a5ec449bc50473d603af74.jpg" /></a></div>
+</div>
+</div>
+<footer class="footer">
+<small class="small_section">
+The Democracy Straight-Up Project
+</small>
+<nav>
+<ul class="nav-item">
+<li><a href="/about">About</a></li>
+<li><a href="/contact">Contact</a></li>
+<li><a href="#">News</a></li>
+</ul>
+</nav>
+</footer>
+
+</div>
 <!-- Here starts the code copied directly from the MaxCDN section of this page: https://www.w3schools.com/bootstrap4/bootstrap_get_started.asp -->
 
 <!-- Optional theme (already greyed)-->
@@ -103,3 +183,5 @@
 <!-- end of 'MaxCDN' code -->
   </body>
 </html>
+{%endif%}
+

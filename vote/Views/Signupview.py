@@ -5,7 +5,8 @@ from django.template import loader
 from vote.models import *
 from django.contrib import messages
 from django.urls import reverse
-
+from django.contrib.auth.hashers import make_password
+from vote.forms.user import *
 
 
 # def index(request):
@@ -19,19 +20,23 @@ def index(request):
 
 
 
- 
 def create(request):
     if request.method == 'POST':
-        signup=user()
-        signup.district = request.POST.get('district')
-        signup.voterid = request.POST.get('voterid')
-        signup.name = request.POST.get('name')
-        signup.email = request.POST.get('email')
-        signup.password = request.POST.get('password')
-        signup.confirmation = request.POST.get('confirmation')
-        signup.save()
-        return HttpResponseRedirect(reverse("vote:signupupdate",args=[signup.id]))
-    return render(request,"signup/create.html")
+        accountform = AddCreateForm(request.POST)
+        if accountform.is_valid():
+            new_user = accountform.save()
+            new_user.set_password(
+                accountform.cleaned_data.get('password')
+                
+            )
+            if accountform.save():
+                messages.success(request,'Account Added Successfully.')
+                return redirect('/login')
+        else:
+            return render(request,"signup/create.html",{'form':accountform})
+
+    form = AddCreateForm()
+    return render(request,"signup/create.html",{'form':form})
 
 def update(request,id):
     users = user.objects.get(id=id)
@@ -46,8 +51,8 @@ def update(request,id):
         users.confirmation = request.POST.get('confirmation')
         users.upload=request.FILES.get("upload")
         users.save()
-        return redirect('/login')
+        #return redirect('/login')
    
-    return render(request,"signup/update.html",{'users_list':users})
+        return render(request,"create.html",{'users_list':users})
 
 

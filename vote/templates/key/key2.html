@@ -1,4 +1,4 @@
-{%include "app/header.html" %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,47 +57,41 @@ button.btn.vote {
     <form class="form-horizontal form-label-left" method="POST" novalidate>
         {% csrf_token %}
 <div class="container section_container">
-	<h2 class="text-center Pod_number">Pod {{key1.id}} Housekeeping Page</h2>
+	<h2 class="text-center Pod_number">Pod [number] Housekeeping Page</h2>
 	<div class="Pod_section">
 		<p class="text-center">Pod Invitation Key is:{% for item in user %}
 			{{item.pod_key}}
 			{%endfor%}
 			
-			 <button type="button" class="close" aria-label="Close">
-			<span aria-hidden="true"></span>
+			<button type="button" class="close" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
 		</button></p>
 		
 	</div>
-
 	<div class="btn_section text-center mb-5">
-		{% comment %} {%for pod in user_list%} {% endcomment %}
-		{% comment %} <a href="{% url 'pod2' pod.id  %}" class="btn text-secondary px-0"> {% endcomment %}
-        <button id="send" type="submit" class="btn btn-success">Generate Key</a></button>
+        
 	</div>
-	<table class="table table-bordered table-sm">
-		<thead>
-		  <tr>
-			<th>Id</th>
-			<th>Pod id </th>
-			<th>Member id </th>
-		  </tr>
-		</thead>
-
-		<tbody> 
-			{% for users_list in context%}
+  <table class="table table-bordered table-sm">   
+	<thead>
+	  <tr>
+		<th>Id</th>
+		<th>Pod id </th>
+    <th>Member id </th>
+	  </tr>
+	</thead>
+	<tbody>
+    {% for users_list in context%}
     <tr>  
         <td>{{forloop.counter}}</td>
         <td>{{users_list.pod_id_id }}</td>  
         <td>{{users_list.member_id_id }}</td>  
-    
-			  
-		  {% comment %} <td>1.<button type="button" class="btn vote">vote now</button></td> {% endcomment %}
-		  </tr>
-		{%endfor%}
-		</tbody>
-	  </table>
-	</div>
-	
+          
+	  {% comment %} <td>1.<button type="button" class="btn vote">vote now</button></td> {% endcomment %}
+      </tr>
+    {%endfor%}
+	</tbody>
+  </table>
+</div>
 
 </body>
 </html>

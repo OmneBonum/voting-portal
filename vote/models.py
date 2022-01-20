@@ -31,3 +31,10 @@ class user(AbstractBaseUser,PermissionsMixin):
 class pod(models.Model):
   pod_key =  models.CharField(unique=True, editable=False,max_length=6)
   pod_owner_id=models.ForeignKey(user,on_delete=models.CASCADE,null=True)
+
+class pod_member(models.Model):
+  pod_id=models.ForeignKey(pod,on_delete=models.CASCADE,null=True)
+  member_id=models.ForeignKey(user,on_delete=models.CASCADE,null=True)
+
+  def __int__(self):
+    return self.member_id

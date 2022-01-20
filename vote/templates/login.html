@@ -33,8 +33,8 @@
 <div class="center jumbotron If_already">
 <p class="pad already">If you haven't done so already, to Enter the Floor, you must first</p>  
 <p class="pad"></p>
-<a class="btn-xl btn-primary" href="/signup">Claim Your Seat</a>
-<a class="btn-xl btn-primary" href="/key">view button</a>
+<a class="btn-xl btn-primary" href="create">Claim Your Seat</a>
+<a class="btn-xl btn-primary" href="/pod">view button</a>
 <p></p>
 <p class="pad"></p>
 <p class="pad already">If you've already Claimed Your Seat, Enter the Floor:</p>
@@ -45,18 +45,28 @@
       {% csrf_token %}
   
       <label for="session_email">Email</label>
-      <input class="form-control" type="email" name="session[email]" id="session_email" />
+      <input class="form-control" type="email" name="email" id="email" />
 
       <label for="session_password">Password</label>
-      <input class="form-control" type="password" name="session[password]" id="session_password" />
+      <input class="form-control" type="password" name="password" id="password" />
+      
+     
       
       <label class="checkbox inline" for="session_remember_me">
         <input name="session[remember_me]" type="hidden" value="0" /><input type="checkbox" value="1" name="session[remember_me]" id="session_remember_me" />
         <span>Remember me on this computer</span>
 </label>      
+
       <input type="submit" name="commit" value="Enter the Floor" class="btn-xl btn-primary" data-disable-with="Enter the Floor" />
 </form>  </div>
 </div>
+{% for message in messages%}
+      <div class="alert alert-error">
+        <a class="close" href="#" data-dismiss="alert">x</a>
+        {{message}}
+      </div>
+      {% endfor %}
+      <div> 
  
 <!-- Here starts the code copied directly from the MaxCDN section of this page: https://www.w3schools.com/bootstrap4/bootstrap_get_started.asp -->
 
