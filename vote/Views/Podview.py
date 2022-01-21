@@ -12,32 +12,23 @@ from django.shortcuts import get_object_or_404
 
 
 
-# def show(request):
-#      a=pod.objects.all()
-#      for i in a:
-#           print(i.id)
-#      if request.method == "POST":
-#           current_user =request.user.id
-#           print(current_user.id)
-#           if pod_member.objects.filter(member_id_id=current_user).exists():
-               
-#                pass
-
-
-
-
-#      return render(request,'pod/home.html')
-
 def show(request):
      a=pod.objects.all()
-     for i in a:
-          b=i.id
-     current_user =request.user.id
-     print(current_user)
-     a = pod_member.objects.filter(member_id_id=current_user).exists()
+     d=pod_member.objects.all()
 
+     for i in d:
+          if i.member_id_id==request.user.id:
+               c=i.pod_id_id
+               #print(c)  
+     current_user =request.user.id
+     a = pod_member.objects.filter(member_id_id=current_user).exists()                      
      return render(request,'pod/home.html',{'a':a})
- 
+
+
+def mypod(request,id):
+     f=pod.objects.get(id=id)
+     #return HttpResponseRedirect(reverse("vote:shows",args=[f]))  
+     return render(request,'pod/home.html',{'f':f})
     
 
 def validate(request):
@@ -57,7 +48,7 @@ def validate(request):
                join.pod_id_id=a     
           
                join.save()
-               return redirect('/pod')
+               return redirect('/show')
           else:
                messages.error(request,"Invalid Key")
                return redirect('/join')

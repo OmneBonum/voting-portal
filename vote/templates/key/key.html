@@ -1,4 +1,4 @@
-{%include "app/header.html" %}
+{%include "app/foot.html" %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,7 +52,9 @@ button.btn.vote {
   
 </head>
 <body>
-
+	{% for users_list in context%}
+<h1>{{user_list.member_id_id}}</h1>
+{%endfor%}
 
     <form class="form-horizontal form-label-left" method="POST" novalidate>
         {% csrf_token %}
@@ -78,17 +80,19 @@ button.btn.vote {
 		<thead>
 		  <tr>
 			<th>Id</th>
-			<th>Pod id </th>
-			<th>Member id </th>
+			<th>Name </th>
+			<th>Email</th>
+      <th>District </th>
 		  </tr>
 		</thead>
-
+   
 		<tbody> 
 			{% for users_list in context%}
     <tr>  
         <td>{{forloop.counter}}</td>
-        <td>{{users_list.pod_id_id }}</td>  
-        <td>{{users_list.member_id_id }}</td>  
+        <td>{{users_list.name }}</td>  
+        <td>{{users_list.email }}</td>  
+        <td>{{users_list.district }}</td>  
     
 			  
 		  {% comment %} <td>1.<button type="button" class="btn vote">vote now</button></td> {% endcomment %}

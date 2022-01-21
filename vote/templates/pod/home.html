@@ -46,7 +46,12 @@ margin-bottom: 7px;
 
 </head>
 <body>
+	
+
+
 <h1><center>Voter Page for {{request.user.name}}</center></h1>
+
+
 
 <div class="container mt-5">
 	
@@ -54,10 +59,14 @@ margin-bottom: 7px;
 <div class="row mb-3">
 <div class="col-md-4"></div>
 {% if a == True %}
+ 
 
 <div class="btn_section text-center m-2">
-<a class="btn btn-primary text-center Creat_pod" href="join">My pod</a>
+<a class="btn btn-primary text-center Creat_pod" href="pod">My pod</a>
+
 </div>
+
+
 
 {% else %}
 <div class="col-md-4 d-flex">
@@ -65,9 +74,6 @@ margin-bottom: 7px;
 <a class="btn btn-primary text-center Creat_pod" href="join">join a pod</a>
 
 </div>
-
-
-
 
 <div class="btn_section text-center m-2">
 <a class="btn btn-primary text-center Creat_pod" href="/pod">Creat a pod</a>

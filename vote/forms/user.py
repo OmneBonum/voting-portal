@@ -31,7 +31,7 @@ class AddCreateForm(ModelForm):
     )) 
 
 
-    confirmation = forms.IntegerField(required = True,widget=forms.TextInput(
+    confirmation = forms.CharField(required = True,widget=forms.TextInput(
         attrs={
         'class':'form-control',
         

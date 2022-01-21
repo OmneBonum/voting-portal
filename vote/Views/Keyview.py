@@ -13,6 +13,9 @@ from django.urls import reverse
 from django.http import HttpResponse,HttpResponseRedirect
 
 
+def index(request):
+	context = {'pod':pod.objects.all()}
+	return render(request,"key/key.html",context )
          
 def key_generator(request):
     
@@ -40,14 +43,23 @@ def key_generator(request):
 
 def show(request,id):
     key1=pod.objects.get(id=id)
-    user = pod.objects.filter(id=key1.id)
-    print(user.query)
-    
-    context= pod_member.objects.filter(pod_id=key1)
+    users = pod.objects.filter(id=key1.id)  
+    context= user.objects.filter(id=key1.id)
+
     if request.method=="POST":
         key=pod()
         key.pod_key=''.join(random.choices(string.digits, k=6))
 
-    print(context.query)
+    return render(request,"key/key.html",{'context':context,'user':users,'key1':key1}) 
 
-    return render(request,"key/key.html",{'context':context,'user':user,'key1':key1}) 
+def show2(request,id):
+    key2=pod.objects.get(id=id)
+    print(key2.id)
+    users = pod.objects.filter(id=key2.id)
+    context=  user.objects.filter(id=id)
+    if request.method=="POST":
+        key=pod()
+        key.pod_key=''.join(random.choices(string.digits, k=6))
+        #return HttpResponseRedirect(reverse("vote:view",args=[key2.id]))  
+    return render(request,"key/key.html",{'user':users,'context':context,'key2':key2}) 
+
