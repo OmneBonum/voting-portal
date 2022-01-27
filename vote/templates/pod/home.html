@@ -46,9 +46,10 @@ margin-bottom: 7px;
 
 </head>
 <body>
-	
-
-
+{% comment %} 	
+{%for context in i %} 
+<h1>{{i}}</h1>
+{%endfor%} {% endcomment %}
 <h1><center>Voter Page for {{request.user.name}}</center></h1>
 
 
@@ -59,10 +60,10 @@ margin-bottom: 7px;
 <div class="row mb-3">
 <div class="col-md-4"></div>
 {% if a == True %}
- 
 
 <div class="btn_section text-center m-2">
-<a class="btn btn-primary text-center Creat_pod" href="pod">My pod</a>
+<a class="btn btn-primary text-center Creat_pod" href="pod/{{key1}}">My pod</a>
+
 
 </div>
 
@@ -79,7 +80,7 @@ margin-bottom: 7px;
 <a class="btn btn-primary text-center Creat_pod" href="/pod">Creat a pod</a>
 
 </div>
-{% endif %}
+{% endif %} 
 </div>
 <div class="col-md-4"></div>
 </div>

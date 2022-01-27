@@ -7,7 +7,7 @@ from django.contrib import messages
 from django.urls import reverse
 from django.contrib.auth.hashers import make_password
 from vote.forms.user import *
-
+from django.db.models import F
 
 # def index(request):
 #     context = {}
