@@ -46,20 +46,13 @@ def show(request,id):
     podLen=podlen/2
     length=podLen
     countvalue = pod_member.objects.filter(pod_id=key1).values('count')
-    print(countvalue)
-    count1 = len(countvalue)
-    dict = {count['count']:count['count']* 100/count1 for count in countvalue.annotate(Count('count'))}
-    print(dict)
     if request.method=="POST":
         member=pod_member()
         q = request.POST.get('submit')
         z=q
         print("z",z)
-      
+    
         voteCount=F('count')+1   
-
-       
-
         member.count=pod_member.objects.filter(id=q).update(count=voteCount)                 
 
     return render(request,"key/key.html",{'context':context,'user':users,'key1':key1,'podlen':length}) 
