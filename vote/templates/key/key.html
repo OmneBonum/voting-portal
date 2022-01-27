@@ -75,6 +75,7 @@ button.btn.vote {
 		{% comment %} {%for pod in user_list%} {% endcomment %}
 		{% comment %} <a href="{% url 'pod2' pod.id  %}" class="btn text-secondary px-0"> {% endcomment %}
         <button id="send" type="submit" class="btn btn-success">Generate Key</a></button>
+        
 	</div>
 	<table class="table table-bordered table-sm">
 		<thead>
@@ -83,23 +84,38 @@ button.btn.vote {
 			<th>Name </th>
 			<th>Email</th>
       <th>District </th>
+      <th>Votes</th>
+        
+
+      
 		  </tr>
 		</thead>
    
 		<tbody> 
+            
 			{% for users_list in context%}
-    <tr>  
-        <td>{{forloop.counter}}</td>
-        <td>{{users_list.name }}</td>  
-        <td>{{users_list.email }}</td>  
-        <td>{{users_list.district }}</td>  
+      
     
+    <tr> 
+        <td>{{forloop.counter}}</td>
+        <td>{{users_list.member_id.name }}</td>  
+        <td>{{users_list.member_id.email }}</td>  
+        <td>{{users_list.member_id.district }}</td>  
+        <td>{{forloop.counter}}<button type="submit" class="btn vote" name="submit" value={{users_list.id}}>vote now</button></td>
+        
 			  
 		  {% comment %} <td>1.<button type="button" class="btn vote">vote now</button></td> {% endcomment %}
-		  </tr>
+		  </tr> 
+      
+
 		{%endfor%}
+    
+    
+    
+    
 		</tbody>
 	  </table>
+  </form>
 	</div>
 	
 

@@ -13,6 +13,12 @@ from django.contrib import auth
 def index(request):
     context = {}
     template = loader.get_template('app/index.html')
+    #print("asdfsgf",pod.pod_owner_id.get_object)
+    # a=pod_member.objects.all()
+    # for i in a:
+    #   print(i.id,i.member_id.name,i.member_id.district)
+
+    # print(1234,a)
     return HttpResponse(template.render(context, request))
 
 def user_login(request):

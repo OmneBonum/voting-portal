@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,9 +58,8 @@ button.btn.vote {
 <div class="container section_container">
 	<h2 class="text-center Pod_number">Pod [number] Housekeeping Page</h2>
 	<div class="Pod_section">
-		<p class="text-center">Pod Invitation Key is:{% for item in user %}
-			{{item.pod_key}}
-			{%endfor%}
+		<p class="text-center">Pod Invitation Key is:
+			
 			
 			<button type="button" class="close" aria-label="Close">
 			<span aria-hidden="true">&times;</span>
@@ -80,15 +78,10 @@ button.btn.vote {
 	  </tr>
 	</thead>
 	<tbody>
-    {% for users_list in context%}
-    <tr>  
-        <td>{{forloop.counter}}</td>
-        <td>{{users_list.pod_id_id }}</td>  
-        <td>{{users_list.member_id_id }}</td>  
           
 	  {% comment %} <td>1.<button type="button" class="btn vote">vote now</button></td> {% endcomment %}
       </tr>
-    {%endfor%}
+
 	</tbody>
   </table>
 </div>
