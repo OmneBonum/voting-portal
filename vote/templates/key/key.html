@@ -89,11 +89,10 @@ button.btn.vote {
 		</thead>
    
 		<tbody>     
-			{% for users_list in context%}
+			{% for users_list in len%}
       
       
     <tr>
-        {% if users_list.count > podlen or users_list.approval_states == 1  %}
         <td>{{forloop.counter}}</td>
         <td>{{users_list.member_id.name }}</td>  
         <td>{{users_list.member_id.email }}</td>  
@@ -102,7 +101,7 @@ button.btn.vote {
        
           {% comment %} <td>1.<button type="button" class="btn vote">vote now</button></td> {% endcomment %}
 		</tr>  
-    {%endif%}
+    
     {%endfor%}
     
 

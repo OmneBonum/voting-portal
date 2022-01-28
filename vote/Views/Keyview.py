@@ -45,10 +45,20 @@ def show(request,id):
     users = pod.objects.filter(id=key1.id)  
     context= pod_member.objects.filter(pod_id=key1)
     podlen=len(pod_member.objects.filter(pod_id=key1))
-    approval_obj = pod_member.objects.filter(approval_states = 1,pod_id=key1).values_list("member_id",flat=True)
-    approval_obj_0 = pod_member.objects.filter(approval_states = 0,pod_id=key1).values_list("member_id",flat=True)
+    approval_obj = pod_member.objects.filter(pod_id=key1)
+    array=[]
+    z=approval_obj
+    for i in z:
+        print("i",i.approval_states)
+        if i.approval_states == 1:
+            array.append(i) 
+        if i.approval_states == 0:
+            array.append(i)
+            break
+    leng=array
+    #approval_obj_0 = pod_member.objects.filter(approval_states = 0,pod_id=key1).values_list("member_id",flat=True)
     user_obj = user.objects.filter(id__in=approval_obj)
-    user_obj_0 = user.objects.filter(id__in = approval_obj_0)
+    #user_obj_0 = user.objects.filter(id__in = approval_obj_0)
     podLen=podlen/2
     length=podLen
     print('length',length)
@@ -64,6 +74,6 @@ def show(request,id):
         voteCount=F('count')+1   
         member.count=pod_member.objects.filter(id=q).update(count=voteCount)    
                      
-    return render(request,"key/key.html",{'context':context,'user':users,'key1':key1,'podlen':length ,'app':app,'app_obj':app_obj,'approval':user_obj,'approval_0':user_obj_0}) 
+    return render(request,"key/key.html",{'context':context,'user':users,'key1':key1,'podlen':length ,'app':app,'len':leng}) 
 
 
