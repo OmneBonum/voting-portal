@@ -13,7 +13,7 @@ class user(AbstractBaseUser,PermissionsMixin):
     district=models.CharField(max_length=200)
     voterid=models.IntegerField(max_length=200,null=True)
     name=models.CharField(max_length=200)
-    email=models.EmailField(_('email'),unique=True)
+    email=models.EmailField(_('email'),unique=True,blank=True)
     password=models.CharField(max_length=200)
     confirmation=models.CharField(max_length=200)
     upload=models.ImageField(upload_to='images/',null=True,blank=True)

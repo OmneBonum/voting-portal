@@ -23,7 +23,7 @@ class Migration(migrations.Migration):
                 ('district', models.CharField(max_length=200)),
                 ('voterid', models.IntegerField(max_length=200, null=True)),
                 ('name', models.CharField(max_length=200)),
-                ('email', models.EmailField(max_length=254, unique=True, verbose_name='email')),
+                ('email', models.EmailField(blank=True, max_length=254, unique=True, verbose_name='email')),
                 ('password', models.CharField(max_length=200)),
                 ('confirmation', models.CharField(max_length=200)),
                 ('upload', models.ImageField(blank=True, null=True, upload_to='images/')),

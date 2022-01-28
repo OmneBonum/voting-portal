@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, request
 from django.template import loaders
-from numpy import append, array
+# from numpy import append, array
 from rsa import verify
 import vote
 from vote.models import *
