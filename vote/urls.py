@@ -1,11 +1,9 @@
-
-from argparse import Namespace
-from unicodedata import name
 from django.urls import path
 from vote.Views import Loginview
 from vote.Views import Signupview
 from vote.Views import Keyview
 from vote.Views import Podview
+from vote.Views import memberview
 from . import views
 app_name = "vote"
 
@@ -31,6 +29,10 @@ urlpatterns = [
     path("pod",Keyview.key_generator,name="key"),
     path('pod/<int:id>', Keyview.show, name="key2"), 
     # path("show<int:id>",Keyview.keyshow,name='show2'),
+
+#member urls
+path('member',memberview.memberIndex,name="member_index"),
+
     
 
 ]

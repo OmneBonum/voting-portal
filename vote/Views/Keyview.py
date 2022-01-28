@@ -29,6 +29,8 @@ def key_generator(request):
         key.pod_owner_id=current_user
         print(key.pod_owner_id.id)
         key.save()      
+        member.approval_states = 1
+        approval=member.approval_states
         member.pod_id_id=key.id
         member.member_id_id=current_user.id
         member.save()   
@@ -43,9 +45,16 @@ def show(request,id):
     users = pod.objects.filter(id=key1.id)  
     context= pod_member.objects.filter(pod_id=key1)
     podlen=len(pod_member.objects.filter(pod_id=key1))
+    approval_obj = pod_member.objects.filter(approval_states = 1,pod_id=key1).values_list("member_id",flat=True)
+    approval_obj_0 = pod_member.objects.filter(approval_states = 0,pod_id=key1).values_list("member_id",flat=True)
+    user_obj = user.objects.filter(id__in=approval_obj)
+    user_obj_0 = user.objects.filter(id__in = approval_obj_0)
     podLen=podlen/2
     length=podLen
-    countvalue = pod_member.objects.filter(pod_id=key1).values('count')
+    print('length',length)
+    app=pod_member.objects.filter(pod_id=key1,count__gte=length)
+    app_obj=pod_member.objects.filter(pod_id=key1,count__gte=length)
+    print(app)
     if request.method=="POST":
         member=pod_member()
         q = request.POST.get('submit')
@@ -53,8 +62,8 @@ def show(request,id):
         print("z",z)
     
         voteCount=F('count')+1   
-        member.count=pod_member.objects.filter(id=q).update(count=voteCount)                 
-
-    return render(request,"key/key.html",{'context':context,'user':users,'key1':key1,'podlen':length}) 
+        member.count=pod_member.objects.filter(id=q).update(count=voteCount)    
+                     
+    return render(request,"key/key.html",{'context':context,'user':users,'key1':key1,'podlen':length ,'app':app,'app_obj':app_obj,'approval':user_obj,'approval_0':user_obj_0}) 
 
 

@@ -45,5 +45,5 @@ class pod_member(models.Model):
   verify_id=models.CharField(validators=[validate_comma_separated_integer_list],null=True,blank=True,max_length=200,default="")
   created_at = models.DateTimeField(auto_now_add=True,null=True)  
   updated_at =  models.DateTimeField(auto_now=True)
-
-
+  approval_states = models.IntegerField(null=True)  
+  text_states = models.TextField(max_length=500,null=True)

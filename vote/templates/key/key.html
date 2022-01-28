@@ -70,48 +70,57 @@ button.btn.vote {
 		</button></p>
 		
 	</div>
-
 	<div class="btn_section text-center mb-5">
 		{% comment %} {%for pod in user_list%} {% endcomment %}
 		{% comment %} <a href="{% url 'pod2' pod.id  %}" class="btn text-secondary px-0"> {% endcomment %}
         <button id="send" type="submit" class="btn btn-success">Generate Key</a></button>
         
 	</div>
-	<table class="table table-bordered table-sm">
+	
+  <table class="table table-bordered table-sm">
 		<thead>
 		  <tr>
 			<th>Id</th>
 			<th>Name </th>
 			<th>Email</th>
       <th>District </th>
-      <th>Votes</th>
-        
-
-      
+      <th>Votes</th>                        
 		  </tr>
 		</thead>
    
-		<tbody> 
-            
+		<tbody>     
 			{% for users_list in context%}
       
-    
-    <tr> 
+      
+    <tr>
+        {% if users_list.count > podlen or users_list.approval_states == 1  %}
         <td>{{forloop.counter}}</td>
         <td>{{users_list.member_id.name }}</td>  
         <td>{{users_list.member_id.email }}</td>  
         <td>{{users_list.member_id.district }}</td>  
-        <td>{{forloop.counter}}<button type="submit" class="btn vote" name="submit" value={{users_list.id}}>vote now</button></td>
-        
-			  
-		  {% comment %} <td>1.<button type="button" class="btn vote">vote now</button></td> {% endcomment %}
-		  </tr> 
-      
+        <td><button type="submit" class="btn vote" name="submit" value={{users_list.id}}>vote now</button></td>
+       
+          {% comment %} <td>1.<button type="button" class="btn vote">vote now</button></td> {% endcomment %}
+		</tr>  
+    {%endif%}
+    {%endfor%}
+    
 
-		{%endfor%}
+    {% comment %} <tr>
+        <TD class="c1">{{ forloop.counter }}</TD>
+        <TD class="c3">{{approval_0.name}}</TD>
+        <td>{{approval_0.email }}</td>  
+        <td>{{approval_0.district }}</td>  
+        <td><button type="submit" class="btn vote" name="submit">vote now</button></td>
+    </tr>
+        {% endcomment %}
     
     
+
     
+  
+		
+  
     
 		</tbody>
 	  </table>

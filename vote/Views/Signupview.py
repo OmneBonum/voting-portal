@@ -52,7 +52,6 @@ def update(request,id):
         users.upload=request.FILES.get("upload")
         users.save()
         #return redirect('/login')
-   
         return render(request,"create.html",{'users_list':users})
 
 

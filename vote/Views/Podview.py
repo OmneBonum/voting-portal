@@ -33,27 +33,32 @@ def podshow(request):
 
 
 def validate(request):
-     context =pod.objects.all()
-     for i in context:
-          d=i.id
-          print(d)
      if request.method =="POST":
           join=pod_member()
-
+     
           uname= request.POST.get('pod_key')
 
           if pod.objects.filter(pod_key=uname).exists():
+               key1=pod.objects.filter(pod_key=uname)
+
+          
+               for i in key1:
+                    z=i.id
+                    print('z',z)
+               #id=pod.objects.filter(pod_owner_id_id=18)
                print(uname)
                current_user=request.user.id
                join.member_id_id=current_user
-               join.pod_id_id=d
+               join.pod_id_id=z     
+               join.approval_states=0
             
                join.save()
+               
                return redirect('/show')
           else:
                messages.error(request,"Invalid Key")
                return redirect('/join')
-     return render(request,"pod/join.html",{'context':context})
+     return render(request,"pod/join.html")
 
 
 
