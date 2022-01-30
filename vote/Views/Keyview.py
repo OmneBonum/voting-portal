@@ -29,8 +29,8 @@ def key_generator(request):
         key.pod_owner_id=current_user
         print(key.pod_owner_id.id)
         key.save()      
-        member.approval_states = 1
-        approval=member.approval_states
+        member.approval_status = 1
+        #approval=member.approval_states
         member.pod_id_id=key.id
         member.member_id_id=current_user.id
         member.save()   
@@ -43,37 +43,34 @@ def show(request,id):
     key1=pod.objects.get(id=id)
     print("key1",key1)
     users = pod.objects.filter(id=key1.id)  
-    context= pod_member.objects.filter(pod_id=key1)
-    podlen=len(pod_member.objects.filter(pod_id=key1))
     approval_obj = pod_member.objects.filter(pod_id=key1)
     array=[]
     z=approval_obj
     for i in z:
-        print("i",i.approval_states)
-        if i.approval_states == 1:
+        print("i",i.approval_status)
+        if i.approval_status == 1:
             array.append(i) 
-        if i.approval_states == 0:
+        if i.approval_status == 0:
             array.append(i)
             break
-    leng=array
-    #approval_obj_0 = pod_member.objects.filter(approval_states = 0,pod_id=key1).values_list("member_id",flat=True)
-    user_obj = user.objects.filter(id__in=approval_obj)
-    #user_obj_0 = user.objects.filter(id__in = approval_obj_0)
-    podLen=podlen/2
-    length=podLen
-    print('length',length)
-    app=pod_member.objects.filter(pod_id=key1,count__gte=length)
-    app_obj=pod_member.objects.filter(pod_id=key1,count__gte=length)
-    print(app)
+    status=array
     if request.method=="POST":
-        member=pod_member()
+        member=pod_member() 
         q = request.POST.get('submit')
         z=q
         print("z",z)
     
         voteCount=F('count')+1   
-        member.count=pod_member.objects.filter(id=q).update(count=voteCount)    
-                     
-    return render(request,"key/key.html",{'context':context,'user':users,'key1':key1,'podlen':length ,'app':app,'len':leng}) 
+        member.count=pod_member.objects.filter(id=q).update(count=voteCount)  
+        podlen=len(pod_member.objects.filter(pod_id=key1))
+        podLen=podlen/2
+        length=podLen
+        print(length)
+        show=pod_member.objects.filter(id=q)
+        for i in show:
+            print(i.count)
+        if i.count > length:
+            member.approval_status=pod_member.objects.filter(id=q).update(approval_status=1)   
+    return render(request,"key/key.html",{'user':users,'key1':key1,'stat':status}) 
 
 

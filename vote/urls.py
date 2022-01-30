@@ -4,7 +4,7 @@ from vote.Views import Signupview
 from vote.Views import Keyview
 from vote.Views import Podview
 from vote.Views import memberview
-from . import views
+from . import viewssss
 app_name = "vote"
 
 
@@ -12,16 +12,14 @@ urlpatterns = [
     path('', Loginview.index, name='html'),
     path("login",Loginview.user_login,name='login'),
     path('logout',Loginview.userLogout,name='logout'),
-    path("help",views.help,name='help'),
+    path("help",Loginview.help,name='help'),
 
 
 # signup urls  
-    path("",Signupview.index),
     path("create",Signupview.create,name='signupcreate'),
     path("update/<int:id>",Signupview.update,name='signupupdate'),
 
 # POD urls  
-
     path("show",Podview.podshow,name='show'), 
     path('join',Podview.validate,name="join"),
 

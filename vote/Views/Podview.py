@@ -50,7 +50,7 @@ def validate(request):
                current_user=request.user.id
                join.member_id_id=current_user
                join.pod_id_id=z     
-               join.approval_states=0
+               join.approval_status=0
             
                join.save()
                
