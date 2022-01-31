@@ -84,7 +84,9 @@ button.btn.vote {
 			<th>Name </th>
 			<th>Email</th>
       <th>District </th>
-      <th>Votes</th>                        
+      <th>Votes</th> 
+      {% comment %} <th>delete</th> {% endcomment %}
+      <th>Election</th>                        
 		  </tr>
 		</thead>
    
@@ -93,16 +95,37 @@ button.btn.vote {
       
       
     <tr>
+        {% if users_list.approval_status == 1 %}
+        <td>{{forloop.counter}}</td>
+        <td>{{users_list.member_id.name }}</td>  
+        <td>{{users_list.member_id.email }}</td>  
+        <td>{{users_list.member_id.district }}</td>  
+        <td><button type="submit" class="btn vote" name="submit"  value={{users_list.id}}>vote now</button></td>
+        {% comment %} <td><a href="/show">Election</a></button></td> {% endcomment %}
+        {% comment %} <td><button><a href="/pod" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a></button></td>  {% endcomment %}
+        <td><a href="" class= "btn btn-primary text-center Creat_pod">Election</a></td>
+       
+        
+       
+		</tr>  
+    {% comment %} {%elif request.user.id == pod_obj and users_list.approval_status == 1 %}  
+
         <td>{{forloop.counter}}</td>
         <td>{{users_list.member_id.name }}</td>  
         <td>{{users_list.member_id.email }}</td>  
         <td>{{users_list.member_id.district }}</td>  
         <td><button type="submit" class="btn vote" name="submit" value={{users_list.id}}>vote now</button></td>
-       
-          {% comment %} <td>1.<button type="button" class="btn vote">vote now</button></td> {% endcomment %}
-		</tr>  
+        <td><button><a href="/pod" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a></button></td> {% endcomment %}
+      {%else%}
+    <td>{{forloop.counter}}</td>
+        <td>{{users_list.member_id.name }}</td>  
+        <td>{{users_list.member_id.email }}</td>  
+        <td>{{users_list.member_id.district }}</td>  
+        <td><button type="submit" class="btn vote" name="submit" value={{users_list.id}}>vote now</button></td>
+
+        {%endif%}
+        {%endfor%}
     
-    {%endfor%}
     
 
     {% comment %} <tr>

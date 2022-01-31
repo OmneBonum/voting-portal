@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponse, request
 from django.template import loader
 from vote.models import *
 from django.shortcuts import redirect
@@ -12,8 +11,7 @@ import string
 
 
 
-def podshow(request):
-     
+def podshow(request):  
      key1=pod_member.objects.filter(member_id_id=request.user.id)
      print(key1)
      if key1:
@@ -35,29 +33,28 @@ def podshow(request):
 def validate(request):
      if request.method =="POST":
           join=pod_member()
-     
+         
           uname= request.POST.get('pod_key')
-
-          if pod.objects.filter(pod_key=uname).exists():
+          if pod.objects.filter(pod_key=uname).exists()  :
                key1=pod.objects.filter(pod_key=uname)
-
-          
                for i in key1:
                     z=i.id
                     print('z',z)
-               #id=pod.objects.filter(pod_owner_id_id=18)
+                    
                print(uname)
                current_user=request.user.id
                join.member_id_id=current_user
-               join.pod_id_id=z     
+               join.pod_id_id=z    
                join.approval_status=0
-            
-               join.save()
-               
-               return redirect('/show')
-          else:
-               messages.error(request,"Invalid Key")
-               return redirect('/join')
+               a=len(pod_member.objects.filter(pod_id=z))
+               print("a",a)
+               if a <= 11:
+                    join.save()
+                    return redirect('/show')
+               else:
+                    
+                    messages.error(request,"pod entries close")
+                    return redirect('/join') 
      return render(request,"pod/join.html")
 
 

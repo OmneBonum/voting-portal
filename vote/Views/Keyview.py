@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponse, request
 from django.template import loaders
 # from numpy import append, array
 from rsa import verify
@@ -35,42 +34,121 @@ def key_generator(request):
         member.member_id_id=current_user.id
         member.save()   
         return HttpResponseRedirect(reverse("vote:key2",args=[key.id])) 
-
     return render(request,"key/key.html",{'user':user})
 
 
-def show(request,id):        
-    key1=pod.objects.get(id=id)
-    print("key1",key1)
-    users = pod.objects.filter(id=key1.id)  
-    approval_obj = pod_member.objects.filter(pod_id=key1)
-    array=[]
-    z=approval_obj
-    for i in z:
-        print("i",i.approval_status)
-        if i.approval_status == 1:
-            array.append(i) 
-        if i.approval_status == 0:
-            array.append(i)
-            break
-    status=array
-    if request.method=="POST":
-        member=pod_member() 
-        q = request.POST.get('submit')
-        z=q
-        print("z",z)
+# def show(request,id):        
+#     key1=pod.objects.get(id=id)
+#     print("key1",key1)
+#     users = pod.objects.filter(id=key1.id)  
+#     approval_obj = pod_member.objects.filter(pod_id=key1)
+#     podlength=len(pod_member.objects.filter(pod_id=key1))
+#     print(podlength)
+#     array=[]
+#     z=approval_obj
+#     print("z",len(z))
+#     for i in z:
+#         print("i",i.approval_status)
+#         if i.approval_status == 1:
+#             array.append(i) 
+#         if i.approval_status == 0:
+#             array.append(i)
+#             break
     
-        voteCount=F('count')+1   
-        member.count=pod_member.objects.filter(id=q).update(count=voteCount)  
-        podlen=len(pod_member.objects.filter(pod_id=key1))
-        podLen=podlen/2
-        length=podLen
-        print(length)
-        show=pod_member.objects.filter(id=q)
-        for i in show:
-            print(i.count)
-        if i.count > length:
-            member.approval_status=pod_member.objects.filter(id=q).update(approval_status=1)   
-    return render(request,"key/key.html",{'user':users,'key1':key1,'stat':status}) 
+#     status=array[:12]
+#     if request.method=="POST":
+#         member=pod_member() 
+#         q = request.POST.get('submit')
+#         z=q
+#         print("z",z)
+    
+#         voteCount=F('count')+1   
+#         member.count=pod_member.objects.filter(id=q).update(count=voteCount)  
+#         podlen=len(pod_member.objects.filter(pod_id=key1,approval_status = 1))
+#         podLen=podlen/2
+#         length=podLen
+#         print(length)
+#         show=pod_member.objects.filter(id=q)
+#         for i in show:
+#             print(i.count)
+#         if i.count > length:
+#             member.approval_status=pod_member.objects.filter(id=q).update(approval_status=1) 
+#     return render(request,"key/key.html",{'user':users,'key1':key1,'stat':status,'podlen':podlength}) 
+
+def show(request,id):
+
+    user = pod.objects.filter(pod_owner_id_id=request.user)
+   
+#     print(podlength)
+    print(user)
+    if user:
+        for i in user:
+            pod_obj=i.pod_owner_id_id
+# print(pod_obj)
+        key1=pod.objects.get(id=id)
+        print("key1",key1)
+        users = pod.objects.filter(id=key1.id)
+        podlength=len(pod_member.objects.filter(pod_id=key1))
+        approval_obj = pod_member.objects.filter(pod_id=key1)
+        array=[]
+        z=approval_obj
+        for i in z:
+            print("i",i.approval_status)
+            if i.approval_status == 1:
+                array.append(i)
+            if i.approval_status == 0 and podlength >=5 :
+                array.append(i)
+                break
+        status=array
+        if request.method=="POST":
+            member=pod_member()
+            q = request.POST.get('submit')
+            z=q
+            print("z",z)
+
+            voteCount=F('count')+1
+            member.count=pod_member.objects.filter(id=q).update(count=voteCount)
+            podlen=len(pod_member.objects.filter(pod_id=key1))
+            podLen=podlen/2
+            length=podLen
+            print(length)
+            show=pod_member.objects.filter(id=q)
+            for i in show:
+                print(i.count)
+            if i.count > length:
+                member.approval_status=pod_member.objects.filter(id=q).update(approval_status=1)
+        return render(request,"key/key.html",{'user':users,'key1':key1,'stat':status,'pod_obj':pod_obj,"podlen":podlength})
+    else:
+        key1=pod.objects.get(id=id)
+        users = pod.objects.filter(id=key1.id)
+        approval_obj = pod_member.objects.filter(pod_id=key1)
+        array=[]
+        z=approval_obj
+        for i in z:
+            print("i",i.approval_status)
+            if i.approval_status == 1:
+                array.append(i)
+            if i.approval_status == 0:
+                array.append(i)
+                break
+        status=array
+        if request.method=="POST":
+            member=pod_member()
+            q = request.POST.get('submit')
+            z=q
+            print("z",z)
+
+            voteCount=F('count')+1
+            member.count=pod_member.objects.filter(id=q).update(count=voteCount)
+            podlen=len(pod_member.objects.filter(pod_id=key1))
+            podLen=podlen/2
+            length=podLen
+            print(length)
+            show=pod_member.objects.filter(id=q)
+            for i in show:
+                print(i.count)
+            if i.count > length:
+                member.approval_status=pod_member.objects.filter(id=q).update(approval_status=1)
+        return render(request,"key/key.html",{'user':users,'key1':key1,'stat':status})
 
 
