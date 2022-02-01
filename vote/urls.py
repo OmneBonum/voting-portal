@@ -31,6 +31,8 @@ urlpatterns = [
 #member urls
 path('member',memberview.memberIndex,name="member_index"),
 
+#
+
     
 
 ]

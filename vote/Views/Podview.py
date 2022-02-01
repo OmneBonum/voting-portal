@@ -12,21 +12,21 @@ import string
 
 
 def podshow(request):  
-     key1=pod_member.objects.filter(member_id_id=request.user.id)
+     key1=pod_member.objects.filter(member_id=request.user.id)
      print(key1)
      if key1:
           print(key1)
           for i in key1:
-               z=i.pod_id_id
+               z=i.pod_id
           
           print("asdf")
           current_user =request.user.id
-          a = pod_member.objects.filter(member_id_id=current_user).exists()
+          a = pod_member.objects.filter(member_id=current_user).exists()
           return render(request,'pod/home.html',{'key1':z,'a':a})
      
      else:      
           current_user =request.user.id
-          a = pod_member.objects.filter(member_id_id=current_user).exists()
+          a = pod_member.objects.filter(member_id=current_user).exists()
      return render(request,'pod/home.html',{'a':a})
 
 
@@ -43,9 +43,9 @@ def validate(request):
                     
                print(uname)
                current_user=request.user.id
-               join.member_id_id=current_user
-               join.pod_id_id=z    
-               join.approval_status=0
+               join.member_id=current_user
+               join.pod_id=z    
+               join.member_status=0
                a=len(pod_member.objects.filter(pod_id=z))
                print("a",a)
                if a <= 11:
