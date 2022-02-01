@@ -114,18 +114,13 @@ DATABASES = {
 #        'NAME': 'vote',
 # =======
 #        'NAME': 'voter',
-# >>>>>>> Stashed changes
 #        'HOST': 'localhost',
 #        'PORT': '3306',
 #        'USER': 'root',
 #        'PASSWORD': '',
 #        'OPTIONS': {
-#             'init_command': 'SET sql_mode="STRICT_TRANS_TABLES"',
-# <<<<<<< Updated upstream
+#             'init_command': 'SET sql_mode="STRICT_TRANS_TABLES"
             
-             
-# =======
-# >>>>>>> Stashed changes
 #         }
 #     }
 # }
