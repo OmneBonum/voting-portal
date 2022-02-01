@@ -47,14 +47,14 @@ button.btn.vote {
 
 
 
-
  </style> 
   
 </head>
 <body>
-	{% for users_list in context%}
-<h1>{{user_list.member_id_id}}</h1>
-{%endfor%}
+	
+  
+
+
 
     <form class="form-horizontal form-label-left" method="POST" novalidate>
         {% csrf_token %}
@@ -68,13 +68,13 @@ button.btn.vote {
 			 <button type="button" class="close" aria-label="Close">
 			<span aria-hidden="true"></span>
 		</button></p>
+    
 		
 	</div>
 	<div class="btn_section text-center mb-5">
 		{% comment %} {%for pod in user_list%} {% endcomment %}
 		{% comment %} <a href="{% url 'pod2' pod.id  %}" class="btn text-secondary px-0"> {% endcomment %}
-        <button id="send" type="submit" class="btn btn-success">Generate Key</a></button>
-        
+        <button id="send" type="submit" class="btn btn-success">Generate Key</a></button>     
 	</div>
 	
   <table class="table table-bordered table-sm">
@@ -84,25 +84,51 @@ button.btn.vote {
 			<th>Name </th>
 			<th>Email</th>
       <th>District </th>
-      <th>Votes</th>                        
+      <th>Votes</th> 
+      <th>Election</th>   
+      <th>delete</th>                     
 		  </tr>
 		</thead>
    
 		<tbody>     
-			{% for users_list in len%}
-      
+			{% for users_list in stat%}    
       
     <tr>
+        {% if  podlen >= 5 and users_list.member_status == 1  %}
         <td>{{forloop.counter}}</td>
-        <td>{{users_list.member_id.name }}</td>  
-        <td>{{users_list.member_id.email }}</td>  
-        <td>{{users_list.member_id.district }}</td>  
-        <td><button type="submit" class="btn vote" name="submit" value={{users_list.id}}>vote now</button></td>
+        <td>{{users_list.member.name }}</td>  
+        <td>{{users_list.member.email }}</td>  
+        <td>{{users_list.member.district }}</td>  
+        <td><button type="submit" class="btn vote" name="submit"  value={{users_list.id}}>vote now</button></td>
+        <td><button type="submit" name="elect" value={{users_list.id}}>Election</a></button></td>
+        <td><button type="submit" class="" name="Delete" value={{users_list.id}} hidden>Delete</button></td>
        
-          {% comment %} <td>1.<button type="button" class="btn vote">vote now</button></td> {% endcomment %}
+        
+       
 		</tr>  
+      {%elif users_list.member_status == 0 and owner_id == request.user.id %}
+
+        <td>{{forloop.counter}}</td>
+        <td>{{users_list.member.name }}</td>  
+        <td>{{users_list.member.email }}</td>  
+        <td>{{users_list.member.district }}</td>  
+        <td><button type="submit" class="btn vote" name="submit"  value={{users_list.id}}>vote now</button></td>
+        <td><button type="submit" name="elect" value={{users_list.id}} hidden >Election</a></button></td>
+
+        <td><button type="submit" class="" name="Delete" value={{users_list.id}}>Delete</button></td>
+      {%else%}
+
+      <td>{{forloop.counter}}</td>
+        <td>{{users_list.member.name }}</td>  
+        <td>{{users_list.member.email }}</td>  
+        <td>{{users_list.member.district }}</td>  
+        <td><button type="submit" class="btn vote" name="submit" value={{users_list.id}}>vote now</button></td>
+        <td><button type="submit" name="elect" value={{users_list.id}} hidden >Election</a></button></td>
+        <td><button type="submit" class="" name="Delete" value={{users_list.id}} hidden >Delete</button></td>
+
+      {%endif%}
+      {%endfor%}
     
-    {%endfor%}
     
 
     {% comment %} <tr>
@@ -113,14 +139,6 @@ button.btn.vote {
         <td><button type="submit" class="btn vote" name="submit">vote now</button></td>
     </tr>
         {% endcomment %}
-    
-    
-
-    
-  
-		
-  
-    
 		</tbody>
 	  </table>
   </form>

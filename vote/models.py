@@ -3,7 +3,6 @@ from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 from django.utils.translation import gettext_lazy as _
 from .manager import CustomUserManager
-import uuid
 from django.core.validators import validate_comma_separated_integer_list
 
 
@@ -33,17 +32,25 @@ class user(AbstractBaseUser,PermissionsMixin):
 
 class pod(models.Model):
   pod_key =  models.CharField(unique=True, editable=False,max_length=6)
-  pod_owner_id=models.ForeignKey(user,on_delete=models.CASCADE,null=True)
+  pod_owner=models.ForeignKey(user,on_delete=models.CASCADE,null=True)
   created_at = models.DateTimeField(auto_now_add=True,null=True)
   updated_at =  models.DateTimeField(auto_now=True)
 
 
 class pod_member(models.Model):
-  pod_id=models.ForeignKey(pod,on_delete=models.CASCADE,null=True)
-  member_id=models.ForeignKey(user,on_delete=models.CASCADE,null=True)
-  count=models.IntegerField(default=0)
-  verify_id=models.CharField(validators=[validate_comma_separated_integer_list],null=True,blank=True,max_length=200,default="")
+  pod=models.ForeignKey(pod,on_delete=models.CASCADE,null=True)
+  member=models.ForeignKey(user,on_delete=models.CASCADE,null=True)
+  pod_vote_count=models.IntegerField(default=0)
+  elect_count=models.IntegerField(default=0)
+  member_status = models.IntegerField(null=True) 
+  member_comment = models.TextField(max_length=500,null=True)
+  pod_vote_given=models.IntegerField(default=0)
+  elect_vote_given=models.IntegerField(default=0)
   created_at = models.DateTimeField(auto_now_add=True,null=True)  
   updated_at =  models.DateTimeField(auto_now=True)
-  approval_states = models.IntegerField(null=True)  
-  text_states = models.TextField(max_length=500,null=True)
+
+
+# class elect_count(models.Model):
+#   Elect_count=models.IntegerField(default=1)
+#   Elect_user=models.ForeignKey(user,on_delete=models.CASCADE,null=True)
+#   Elect_member=models.ForeignKey(pod_member,on_delete=models.CASCADE,null=True)
