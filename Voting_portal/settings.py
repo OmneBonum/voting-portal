@@ -102,7 +102,7 @@ DATABASES = {
        'USER': 'voting',
        'PASSWORD': 'l3w@61kV',
        'OPTIONS': {
-            'init_command': 'SET sql_mode="STRICT_TRANS_TABLES'
+            'init_command': 'SET sql_mode="STRICT_TRANS_TABLES"'
             
         }
     }
