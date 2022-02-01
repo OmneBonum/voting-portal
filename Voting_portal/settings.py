@@ -96,7 +96,7 @@ WSGI_APPLICATION = 'Voting_portal.wsgi.application'
 DATABASES = {
     'default': {
        'ENGINE': 'django.db.backends.mysql', 
-       'NAME': 'vote',
+       'NAME': 'voting_portal',
        'HOST': 'localhost',
        'PORT': '3306',
        'USER': 'voting',
