@@ -38,7 +38,23 @@ class AddCreateForm(ModelForm):
         }
     ))
 
+    address=forms.CharField(required=True,widget=forms.TextInput(
+        attrs={
+        'class':'form-control',
+        
+        }
+    ))
+
+    executed_on=forms.DateField(required = True,widget=forms.DateInput(
+        attrs={
+        'class':'form-control',
+        'type': 'date',
+        'placeholder':'Select date'
+        }
+    ))
+
+    
 
     class Meta:
         model = user
-        fields = ["name","district","email","password","confirmation"]
+        fields = ["name","district","email","password","confirmation","address","executed_on"]

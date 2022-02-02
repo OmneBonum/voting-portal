@@ -9,15 +9,10 @@ from django.contrib.auth.hashers import make_password
 from vote.forms.user import *
 from django.db.models import F
 
-# def index(request):
-#     context = {}
-#     template = loader.get_template('pod/p.html')
-#     return HttpResponse(template.render(context, request))
 
 def index(request):
     context = {'user_list':user.objects.all()}
     return render(request,"pod/p.html",context) 
-
 
 
 def create(request):
@@ -26,8 +21,7 @@ def create(request):
         if accountform.is_valid():
             new_user = accountform.save()
             new_user.set_password(
-                accountform.cleaned_data.get('password')
-                
+                accountform.cleaned_data.get('password')         
             )
             if accountform.save():
                 messages.success(request,'Account Added Successfully.')

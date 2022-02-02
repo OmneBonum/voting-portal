@@ -16,12 +16,17 @@ class user(AbstractBaseUser,PermissionsMixin):
     password=models.CharField(max_length=200)
     confirmation=models.CharField(max_length=200)
     upload=models.ImageField(upload_to='images/',null=True,blank=True)
+    address=models.CharField(max_length=100,null=True)
+    executed_on=models.DateField(null=True)
+    registered=models.IntegerField(default=0)
+    eligible=models.IntegerField(default=0)
     is_staff 	= models.BooleanField(default=False, help_text='Designates whether the user can log into this admin site.')
     is_active 	= models.BooleanField(default=True,
 		help_text='Designates whether this user should be treated as active.\
 		Unselect this instead of deleting accounts.')
     created_at = models.DateTimeField(auto_now_add=True,null=True)
     updated_at =  models.DateTimeField(auto_now=True)
+
 
 
     USERNAME_FIELD 	='email'

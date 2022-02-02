@@ -42,7 +42,7 @@
 <p class="claimed">Fill out the form below. <br><br>Note: Enter your district as your two-letter state postal code <br> followed by a two-digit number. For instance, <br>the third district in Alabama would be AL03.</p>
 </div>
 
-<form class="form-horizontal form-label-left" method="POST" novalidate>
+<form class="form-horizontal form-label-left" method="POST">
     {% csrf_token %}
   
       <div class="row">
@@ -50,11 +50,22 @@
       <label for="user_district">District</label> <a href="/know">Don&#39;t Know Your District?</a>
       <input class="form-control" type="text" name="district" id="user_district" />
       
-      {% comment %} <label for="user_voterid">Voterid</label>
-      <input class="form-control" type="text" name="voterid" id="voterid" /> {% endcomment %}
       
-      <label for="user_name">Name</label>
+      <label for="date">I am a registered voter in this district :</label>
+      <input type="checkbox" name="" id= > <br><br>
+
+      
+      <label for="date">I believe i am eligible to vote in this district uder the name and address i will provide below and i intend to register as a voter within 30 days </label>
+      <input type="checkbox" name="shipper_Exports" id= ><br><br>
+      
+      <label for="user_name">Legal Name</label>
       <input class="form-control" type="text" name="name" id="name" />
+  
+      <label for="date">Executed on</label>
+      <input type="date" id="executed_on" name="executed_on"  class="form-control">
+      
+      <label for="address">Address</label>
+      <input class="form-control" type="address" name="address" id="confirmation" />
 
       <label for="user_email">Email</label>
       <input class="form-control" type="email" name="email" id="email" />
@@ -64,6 +75,14 @@
 
       <label for="user_password_confirmation">Confirm Password</label>
       <input class="form-control" type="password" name="confirmation" id="confirmation" />
+ 
+
+
+      
+
+
+ 
+
       </div>
       </div>
 <div class="center jumbotron input_box"> 

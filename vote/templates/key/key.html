@@ -105,8 +105,7 @@ button.btn.vote {
       <td>{{users_list.member.name }}</td>  
       <td>{{users_list.member.email }}</td>  
       <td>{{users_list.member.district }}</td>  
-       
-        
+         
         <td>
           {% if  votegive == 0 %}
             <button type="submit" class="btn vote" name="submit"  value={{users_list.id}}>vote now</button>
@@ -121,9 +120,8 @@ button.btn.vote {
           {% if  users_list.member_status == 0 and owner_id == request.user.id %}
             <button type="submit" class="" name="Delete" value={{users_list.id}}>Delete</button>
           {% endif  %}
-        </td>
-       
-        
+        </td>      
+
       {%endfor%}
 
     
