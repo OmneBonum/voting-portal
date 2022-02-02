@@ -43,6 +43,10 @@ def show(request,id):
     hello = currnt.values_list("vote_given",flat=True)
     hell=hello[0]     
     print("hell",hell)
+    hello = currnt.values_list("elect_vote_given",flat=True)
+    evote=hello[0]
+    print(evote)
+
     key1=pod_groups.objects.get(id=id)
     print("key1",key1)
     all=pod_groups.objects.filter(id=key1.id)
@@ -98,22 +102,20 @@ def show(request,id):
         member=pod_groups_members()
         mem=pod_groups()
         q = request.POST.get('elect')
-        z=q
-        print("elect",z)
         voteCount=F('elect_count')+1
-        member.elect_count=pod_groups_members.objects.filter(id=z).update(elect_count=voteCount) 
+        member.elect_count=pod_groups_members.objects.filter(id=q).update(elect_count=voteCount) 
         member.elect_vote_given=pod_groups_members.objects.filter(member_id=request.user.id).update(elect_vote_given=1)        
         podlen=len(pod_groups_members.objects.filter(group_id=key1,member_status = 1))
         podLen=podlen/2
         length=podLen
         print("pod_length",length)
-        show=pod_groups_members.objects.filter(id=z)
+        show=pod_groups_members.objects.filter(id=q)
         for i in show:
              print("Elect",i.elect_count,i.group.group_owner_id)
         if i.elect_count > length:
             print(i.member.id)
             mem.group_owner_id=pod_groups.objects.filter(group_owner=i.group.group_owner_id).update(group_owner=i.member.id)     
-    return render(request,"key/key.html",{'user':users,'key1':key1,'stat':status,'podlen':podlength,"owner_id":owner_id,'all':all,'votegive':hell}) 
+    return render(request,"key/key.html",{'user':users,'key1':key1,'stat':status,'podlen':podlength,"owner_id":owner_id,'all':all,'votegive':hell,"evote":evote}) 
  
     
 
