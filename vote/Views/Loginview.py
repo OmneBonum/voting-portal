@@ -21,7 +21,7 @@ def user_login(request):
         print(uname)
         upass= request.POST.get('password')
         print(upass)
-        a=pod.objects.all()
+        a=pod_groups.objects.all()
         for i in a: 
           b=i.id
         if request.method == "POST":

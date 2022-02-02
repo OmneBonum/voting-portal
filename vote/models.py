@@ -30,21 +30,21 @@ class user(AbstractBaseUser,PermissionsMixin):
     def __str__(self):
         return self.email
 
-class pod(models.Model):
-  pod_key =  models.CharField(unique=True, editable=False,max_length=6)
-  pod_owner=models.ForeignKey(user,on_delete=models.CASCADE,null=True)
+class pod_groups(models.Model):
+  group_key =  models.CharField(unique=True, editable=False,max_length=6)
+  group_owner=models.ForeignKey(user,on_delete=models.CASCADE,null=True)
   created_at = models.DateTimeField(auto_now_add=True,null=True)
   updated_at =  models.DateTimeField(auto_now=True)
 
 
-class pod_member(models.Model):
-  pod=models.ForeignKey(pod,on_delete=models.CASCADE,null=True)
+class pod_groups_members(models.Model):
+  group=models.ForeignKey(pod_groups,on_delete=models.CASCADE,null=True)
   member=models.ForeignKey(user,on_delete=models.CASCADE,null=True)
-  pod_vote_count=models.IntegerField(default=0)
+  vote_count=models.IntegerField(default=0)
   elect_count=models.IntegerField(default=0)
   member_status = models.IntegerField(null=True) 
   member_comment = models.TextField(max_length=500,null=True)
-  pod_vote_given=models.IntegerField(default=0)
+  vote_given=models.IntegerField(default=0)
   elect_vote_given=models.IntegerField(default=0)
   created_at = models.DateTimeField(auto_now_add=True,null=True)  
   updated_at =  models.DateTimeField(auto_now=True)
