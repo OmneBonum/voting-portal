@@ -52,9 +52,11 @@
       <label for="date">I am a registered voter in this district :</label>
       <input type="checkbox" name="registered" id="registered" {% if user.registered %} checked{% endif %}> <br><br>
 
-      
-      <label for="date">I believe i am eligible to vote in this district uder the name and address i will provide below and i intend to register as a voter within 30 days </label>
-      <input type="checkbox" name="eligible" id="eligible" {% if user.eligible %} checked{% endif %}><br><br>
+      <div class="row label_input_sec">
+        <label for="date" class="believe_label">I believe i am eligible to vote in this district uder the name and address i will provide below and i intend to register as a voter within 30 days </label>
+        <input type="checkbox" name="eligible" id="eligible" {% if user.eligible %} checked{% endif %}>
+      </div>
+      <br><br>
       
       <label for="user_name">Legal Name</label>
       <input class="form-control" type="text" name="name" id="name" />
