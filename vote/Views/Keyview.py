@@ -89,13 +89,14 @@ def show(request,id):
         if i.vote_count > length:
             print(i.member.id)
             member.pod_owner_id_id=pod_groups_members.objects.filter(id=q).update(member_status=1) 
-           
+        return redirect(request.path_info)   
 
     
     if request.method=="POST" and "Delete" in request.POST:
         member=pod_groups_members()
         q = request.POST.get('Delete')
         member.count=pod_groups_members.objects.filter(id=q).delete()
+        return redirect(request.path_info)   
     
 
     if request.method=="POST" and "elect" in request.POST:
@@ -115,6 +116,7 @@ def show(request,id):
         if i.elect_count > length:
             print(i.member.id)
             mem.group_owner_id=pod_groups.objects.filter(group_owner=i.group.group_owner_id).update(group_owner=i.member.id)     
+        return redirect(request.path_info)   
     return render(request,"key/key.html",{'user':users,'key1':key1,'stat':status,'podlen':podlength,"owner_id":owner_id,'all':all,'votegive':hell,"evote":evote}) 
  
     
