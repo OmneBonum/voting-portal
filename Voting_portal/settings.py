@@ -32,10 +32,10 @@ SECRET_KEY = 'django-insecure-mr#a0mb)lpvsv62vw(4yz3s2wyho-1di31+-$x4v@fkr+n8s!8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-#ALLOWED_HOSTS = ['184.168.122.169']
+ALLOWED_HOSTS = ['184.168.122.169']
 
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -93,36 +93,36 @@ WSGI_APPLICATION = 'Voting_portal.wsgi.application'
 # }
 
 
-# DATABASES = {
-#     'default': {
-#        'ENGINE': 'django.db.backends.mysql', 
-#        'NAME': 'voting_portal',
-#        'HOST': 'localhost',
-#        'PORT': '3306',
-#        'USER': 'voting',
-#        'PASSWORD': 'l3w@61kV',
-#        'OPTIONS': {
-#             'init_command': 'SET sql_mode="STRICT_TRANS_TABLES"',
-                     
-#         }
-#     }
-# }
-
 DATABASES = {
     'default': {
        'ENGINE': 'django.db.backends.mysql', 
-       'NAME': 'vote',
+       'NAME': 'voting_portal',
        'HOST': 'localhost',
        'PORT': '3306',
-       'USER': 'root',
-       'PASSWORD': '',
+       'USER': 'voting',
+       'PASSWORD': 'l3w@61kV',
        'OPTIONS': {
             'init_command': 'SET sql_mode="STRICT_TRANS_TABLES"',
-            
-             
+                     
         }
     }
 }
+
+# DATABASES = {
+#     'default': {
+#        'ENGINE': 'django.db.backends.mysql', 
+#        'NAME': 'vote',
+#        'HOST': 'localhost',
+#        'PORT': '3306',
+#        'USER': 'root',
+#        'PASSWORD': '',
+#        'OPTIONS': {
+#             'init_command': 'SET sql_mode="STRICT_TRANS_TABLES"',
+            
+             
+#         }
+#     }
+# }
 
 
 # Password validation
