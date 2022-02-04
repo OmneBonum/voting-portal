@@ -45,7 +45,7 @@ class AddCreateForm(ModelForm):
 
     confirmation = forms.CharField(required = True,widget=forms.PasswordInput(
         attrs={
-        'class':'form-control',
+        'class':'form-control',  
         'placeholder':'Confirm your Password',
         
         }
