@@ -66,14 +66,12 @@ def show(request,id):
     for i in z:
         if i.member_status == 1:
             array.append(i) 
+            break
         if i.member_status == 0 and i.member_id == request.user.id:
             break
         if i.member_status == 0:
             array.append(i)
             break
-    if pod_groups_members.objects.filter(member_status=0,group_id=key1):
-        pod_groups_members.objects.update(vote_given=0)
-
     status=array[:12]
     if request.method=="POST" and "submit" in request.POST:
         member=pod_groups_members() 

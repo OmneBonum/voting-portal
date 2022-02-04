@@ -21,6 +21,8 @@ def podshow(request):
           print("asdf")
           current_user =request.user.id
           a = pod_groups_members.objects.filter(member_id=current_user).exists()
+          if pod_groups_members.objects.filter(member_status=0,group_id=z):
+             pod_groups_members.objects.update(vote_given=0)
           return render(request,'pod/home.html',{'key1':z,'a':a})
      
      else:      
