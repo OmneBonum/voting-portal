@@ -71,7 +71,9 @@ def show(request,id):
         if i.member_status == 0:
             array.append(i)
             break
-    
+    if pod_groups_members.objects.filter(member_status=0,group_id=key1):
+        pod_groups_members.objects.update(vote_given=0)
+
     status=array[:12]
     if request.method=="POST" and "submit" in request.POST:
         member=pod_groups_members() 
@@ -88,12 +90,7 @@ def show(request,id):
             print("Elect",i.vote_count)
         if i.vote_count > length:
             print(i.member.id)
-            member.pod_owner_id_id=pod_groups_members.objects.filter(id=q).update(member_status=1) 
-            
-        member.vote_given=pod_groups_members.objects.filter(member_status=0).update(vote_given=0)
-    
-        
-
+            member.pod_owner_id_id=pod_groups_members.objects.filter(id=q).update(member_status=1)   
         return redirect(request.path_info)   
 
     

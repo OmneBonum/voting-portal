@@ -40,45 +40,48 @@
 <p class="claimed">Fill out the form below. <br><br>Note: Enter your district as your two-letter state postal code <br> followed by a two-digit number. For instance, <br>the third district in Alabama would be AL03.</p>
 </div>
 
-<form class="form-horizontal form-label-left" method="POST">
+<form class="form-horizontal form-label-left" method="POST" novalidate>
     {% csrf_token %}
   
       <div class="row">
       <div class="col-md-6 col-md-offset-3" id="big-font">
-      <label for="user_district">District</label> <a href="/know">Don&#39;t Know Your District?</a>
-      <input class="form-control" type="text" name="district" id="user_district" />
+        {{form.as_p}}
+      
+          
+      {% comment %} <label for="user_district">District</label> <a href="/know">Don&#39;t Know Your District?</a>
+      {{form.district}}
       
       
-      <label for="date">I am a registered voter in this district :</label>
-      <input type="checkbox" name="registered" id="registered" {% if user.registered %} checked{% endif %}> <br><br>
+      <label for="date">I am a registered voter in this district :*</label>
+      {{form.registered}}
 
       <div class="row label_input_sec">
         <label for="date" class="believe_label">I believe i am eligible to vote in this district uder the name and address i will provide below and i intend to register as a voter within 30 days </label>
-        <input type="checkbox" name="eligible" id="eligible" {% if user.eligible %} checked{% endif %}>
+        {{form.eligible}}
       </div>
-      <br><br>
+      <br>
       
       <label for="user_name">Legal Name</label>
-      <input class="form-control" type="text" name="name" id="name" />
+      {{form.name}}
+      
   
       <label for="date">Executed on</label>
-      <input type="date" id="executed_on" name="executed_on"  class="form-control">
+      {{form.executed_on}}
       
       <label for="address">Address</label>
       <input class="form-control" type="address" name="address" id="confirmation" />
 
       <label for="user_email">Email</label>
-      <input class="form-control" type="email" name="email" id="email" />
-
+      {{form.email}}
       <label for="user_password">Password</label>
-      <input class="form-control" type="password" name="password" id="password" />
+      {{form.password}}
 
       <label for="user_password_confirmation">Confirm Password</label>
-      <input class="form-control" type="password" name="confirmation" id="confirmation" />
- 
+      {{form.password}} {% endcomment %}
+
 
       </div>
-      </div>
+      </div> 
     <div class="center jumbotron input_box"> 
       <div class="input_btn" id="">
       <input type="submit" name="commit" value="Create my account" class="btn-xl btn-primary btn-wrap-text" data-disable-with="Create my account" />
