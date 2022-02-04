@@ -89,6 +89,11 @@ def show(request,id):
         if i.vote_count > length:
             print(i.member.id)
             member.pod_owner_id_id=pod_groups_members.objects.filter(id=q).update(member_status=1) 
+            
+        member.vote_given=pod_groups_members.objects.filter(member_status=0).update(vote_given=0)
+    
+        
+
         return redirect(request.path_info)   
 
     
