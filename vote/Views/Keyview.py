@@ -65,15 +65,21 @@ def show(request,id):
     print("z",len(z))
     for i in z:
         if i.member_status == 1:
-            array.append(i) 
+            array.append(i)
+
+        elif i.member_status == 0 and i.member_id == request.user.id and i.group_id == key1.id:
             break
-        if i.member_status == 0 and i.member_id == request.user.id:
+
+        elif pod_groups_members.objects.filter(member_status=0,member_id=request.user.id,group_id = key1.id):
             break
-        if i.member_status == 0:
+
+        elif i.member_status == 0:
             array.append(i)
             break
     status=array[:12]
     if request.method=="POST" and "submit" in request.POST:
+        if pod_groups_members.objects.filter(member_status=0,group_id=key1):
+             pod_groups_members.objects.update(vote_given=0)
         member=pod_groups_members() 
         q = request.POST.get('submit')
         voteCount=F('vote_count')+1   

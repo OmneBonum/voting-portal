@@ -113,11 +113,13 @@ button.btn.vote {
             <button type="submit" name="elect" value={{users_list.id}}>Election</a></button>
           {% endif  %}
         </td>
+        
         <td>
           {% if  users_list.member_status == 0 and owner_id == request.user.id %}
-            <button type="submit" class="" name="Delete" value={{users_list.id}}>Delete</button>
+            <button type="submit" class="" name="Delete" value={{users_list.id}}>Delete</button>  
           {% endif  %}
-        </td>      
+        </td>    
+          
 
       {%endfor%}
 
