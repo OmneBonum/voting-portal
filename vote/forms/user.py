@@ -27,7 +27,7 @@ class AddCreateForm(ModelForm):
         }
     ))
 
-    registered = forms.BooleanField(label="I_am_a_registered_voter_in_this_district")
+    registered = forms.BooleanField(label="I am a registered voter in this district")
       
     
     

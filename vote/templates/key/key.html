@@ -65,6 +65,7 @@ button.btn.vote {
 
 	<h2 class="text-center Pod_number">Pod {{key1.id}} Housekeeping Page</h2>
 	<div class="Pod_section">
+    
 		<p class="text-center">Pod Invitation Key is:{% for item in user %}
 			{{item.group_key}}
 			{%endfor%}
@@ -97,36 +98,35 @@ button.btn.vote {
 			{% for users_list in stat%}    
       
     <tr>  
-        
       <td>{{forloop.counter}}</td>
       <td>{{users_list.member.name }}</td>  
       <td>{{users_list.member.email }}</td>  
       <td>{{users_list.member.district }}</td>  
          
         <td>
-          {% if  votegive == 0 %}
+          {% if  votegive == 0 and users_list.member_status == 0 %}
             <button type="submit" class="btn vote" name="submit"  value={{users_list.id}}>vote now</button>
           {% endif  %}
         </td>
         <td>
           {% if  podlen >= 5 and users_list.member_status == 1 and evote == 0 %}
             <button type="submit" name="elect" value={{users_list.id}}>Election</a></button>
+          
           {% endif  %}
         </td>
         <td>
           {% if  users_list.member_status == 0 and owner_id == request.user.id %}
-            <button type="submit" class="" name="Delete" value={{users_list.id}}>Delete</button>
+
+          <button type="submit" class="" name="Delete" value={{users_list.id}}>Delete</button>
+            
           {% endif  %}
-        </td>      
-
-      {%endfor%}
-
-    
+        </td> 
+      
+      {%endfor%}    
 		</tbody>
 	  </table>
   </form>
 	</div>
 	
-
 </body>
 </html>

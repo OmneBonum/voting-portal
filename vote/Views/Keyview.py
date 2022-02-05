@@ -1,3 +1,4 @@
+import re
 from django.shortcuts import render
 from django.template import loaders
 # from numpy import append, array
@@ -20,7 +21,7 @@ def index(request):
 def key_generator(request):
     user = pod_groups.objects.filter(group_owner_id=request.user).order_by('group_owner_id')  
     
-    if request.method=="POST":
+    if request.method=="POST": 
         key=pod_groups()
         member=pod_groups_members()
         key.group_key=''.join(random.choices(string.digits, k=6))
@@ -45,7 +46,6 @@ def show(request,id):
     print("hell",hell)
     hello = currnt.values_list("elect_vote_given",flat=True)
     evote=hello[0]
-    print(evote)
 
     key1=pod_groups.objects.get(id=id)
     print("key1",key1)
@@ -59,23 +59,32 @@ def show(request,id):
         owner_id=0       
     approval_obj = pod_groups_members.objects.filter(group_id=key1)
     podlength=len(pod_groups_members.objects.filter(group_id=key1,member_status = 1))
-    print(podlength)
     array=[]
     z=approval_obj
-    print("z",len(z))
-    for i in z:
-        if i.member_status == 1:
-            array.append(i) 
-        if i.member_status == 0 and i.member_id == request.user.id:
-            break
-        if i.member_status == 0:
-            array.append(i)
-            break
-    if pod_groups_members.objects.filter(member_status=0,group_id=key1):
-        pod_groups_members.objects.update(vote_given=0)
 
-    status=array[:12]
+    for i in z:
+        
+        if i.member_status == 1 :
+            array.append(i) 
+        
+        elif i.member_status == 0 and i.member_id == request.user.id and i.group_id == key1.id:
+            break  
+        
+        elif pod_groups_members.objects.filter(member_status=0,member_id=request.user.id,group_id = key1.id):
+            break
+
+        elif i.member_status == 0:
+            array.append(i) 
+            break                       
+
+    status=array[:12] 
+    
     if request.method=="POST" and "submit" in request.POST:
+        
+        if pod_groups_members.objects.filter(member_status =1,group_id=key1):
+            print("true")
+            pod_groups_members.objects.update(vote_given=0)
+        
         member=pod_groups_members() 
         q = request.POST.get('submit')
         voteCount=F('vote_count')+1   
@@ -86,10 +95,15 @@ def show(request,id):
         podlen=len(pod_groups_members.objects.filter(group_id=key1,member_status = 1))
         podLen=podlen/2
         length=podLen
+        print("length",length)
         for i in show:
             print("Elect",i.vote_count)
         if i.vote_count > length:
             print(i.member.id)
+            pod_groups_members.objects.filter(member_status =1,group_id=key1)
+            print("true")
+            pod_groups_members.objects.update(vote_given=0)
+
             member.pod_owner_id_id=pod_groups_members.objects.filter(id=q).update(member_status=1)   
         return redirect(request.path_info)   
 
