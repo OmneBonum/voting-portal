@@ -65,10 +65,11 @@ button.btn.vote {
 
 	<h2 class="text-center Pod_number">Pod {{key1.id}} Housekeeping Page</h2>
 	<div class="Pod_section">
-    
+     {%if owner_id == request.user.id%}
 		<p class="text-center">Pod Invitation Key is:{% for item in user %}
 			{{item.group_key}}
 			{%endfor%}
+      {%endif%}
 			
 			 <button type="button" class="close" aria-label="Close">
 			<span aria-hidden="true"></span>
@@ -76,9 +77,13 @@ button.btn.vote {
 	
 	</div>
 	<div class="btn_section text-center mb-5">
-		{% comment %} {%for pod in user_list%} {% endcomment %}
-		{% comment %} <a href="{% url 'pod2' pod.id  %}" class="btn text-secondary px-0"> {% endcomment %}
-        <button id="send" type="submit" class="btn btn-success">Generate Key</a></button>     
+    {% if podlen == 0 %}
+    <button id="send" type="submit" name="hello" class="btn btn-success">Generate Key</a></button>
+    {% elif  owner_id == request.user.id%}
+      <button id="send" type="submit" name="hello" class="btn btn-success">Generate Key</a></button>
+    {%elif is_key_generate == 1%}
+      <button id="send" type="submit" name="hello" class="btn btn-success">Generate Key</a></button> 
+    {% endif  %}  
 	</div>
 	
   <table class="table table-bordered table-sm">
@@ -98,6 +103,7 @@ button.btn.vote {
 			{% for users_list in stat%}    
       
     <tr>  
+        
       <td>{{forloop.counter}}</td>
       <td>{{users_list.member.name }}</td>  
       <td>{{users_list.member.email }}</td>  
@@ -111,23 +117,24 @@ button.btn.vote {
         <td>
           {% if  podlen >= 5 and users_list.member_status == 1 and evote == 0 %}
             <button type="submit" name="elect" value={{users_list.id}}>Election</a></button>
-          
           {% endif  %}
         </td>
         
         <td>
           {% if  users_list.member_status == 0 and owner_id == request.user.id %}
-
-          <button type="submit" class="" name="Delete" value={{users_list.id}}>Delete</button>
-            
+            <button type="submit" class="" name="Delete" value={{users_list.id}}>Delete</button>  
           {% endif  %}
-        </td> 
-      
-      {%endfor%}    
+        </td>    
+          
+
+      {%endfor%}
+
+    
 		</tbody>
 	  </table>
   </form>
 	</div>
 	
+
 </body>
 </html>

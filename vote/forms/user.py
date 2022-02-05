@@ -1,7 +1,12 @@
 from ast import Break
 from django.forms import IntegerField, ModelForm
 from django import forms
+from sqlalchemy import false
 from vote.models import *
+FRUIT_CHOICES= [
+    ('I_am_a_registered_voter_in_this_district', 'I_am_a_registered_voter_in_this_district'),
+    ('I believe i am eligible to vote in this district uder the name and address i will provide below and i intend to register as a voter within 30 days','I believe i am eligible to vote in this district uder the name and address i will provide below and i intend to register as a voter within 30 days')
+    ]
 
 
 class AddCreateForm(ModelForm):
@@ -27,12 +32,12 @@ class AddCreateForm(ModelForm):
         }
     ))
 
-    registered = forms.BooleanField(label="I am a registered voter in this district")
+    
+    registered= forms.BooleanField(required = false, widget=forms.RadioSelect(choices=FRUIT_CHOICES))
       
     
     
-    eligible=forms.BooleanField(label="I believe i am eligible to vote in this district uder the name and address i will provide below and i intend to register as a voter within 30 days")
-
+    # eligible= forms.BooleanField(label="", widget=forms.RadioSelect(choices=FRUIT_CHOICES))
     
     password = forms.CharField(required = True,widget=forms.PasswordInput(
         attrs={
@@ -72,4 +77,4 @@ class AddCreateForm(ModelForm):
 
     class Meta:
         model = user
-        fields = ["district","name","registered","eligible","email","address","executed_on","password","Confirm_Password"]
+        fields = ["district","name","registered","email","address","executed_on","password","Confirm_Password"]

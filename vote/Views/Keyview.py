@@ -1,6 +1,8 @@
-import re
+from pickle import TRUE
+from tokenize import group
 from django.shortcuts import render
 from django.template import loaders
+from sqlalchemy import false, true
 # from numpy import append, array
 import vote
 from vote.models import *
@@ -19,15 +21,20 @@ def index(request):
 	return render(request,"key/key.html",context )
          
 def key_generator(request):
+    podlength=len(pod_groups_members.objects.filter(member_status = 1))
+    print(">>>>>>>>>>>",podlength)
     user = pod_groups.objects.filter(group_owner_id=request.user).order_by('group_owner_id')  
     
-    if request.method=="POST": 
+    if request.method=="POST":
         key=pod_groups()
         member=pod_groups_members()
         key.group_key=''.join(random.choices(string.digits, k=6))
         current_user=request.user          
         key.group_owner=current_user
-        print(key.group_owner.id)
+        
+
+        # print(key.group_owner.id)
+
         key.save()      
         member.member_status = 1
         #approval=member.approval_states
@@ -35,7 +42,7 @@ def key_generator(request):
         member.member_id=current_user.id
         member.save()   
         return HttpResponseRedirect(reverse("vote:key2",args=[key.id])) 
-    return render(request,"key/key.html",{'user':user})
+    return render(request,"key/key.html",{'user':user,'is_key_generate':1})
 
 
 def show(request,id):   
@@ -46,6 +53,7 @@ def show(request,id):
     print("hell",hell)
     hello = currnt.values_list("elect_vote_given",flat=True)
     evote=hello[0]
+    print(evote)
 
     key1=pod_groups.objects.get(id=id)
     print("key1",key1)
@@ -59,32 +67,27 @@ def show(request,id):
         owner_id=0       
     approval_obj = pod_groups_members.objects.filter(group_id=key1)
     podlength=len(pod_groups_members.objects.filter(group_id=key1,member_status = 1))
+    print(">>>>>>>>>>>>>>>>>>>>>",podlength)
     array=[]
     z=approval_obj
-
+    print("z",len(z))
     for i in z:
-        
-        if i.member_status == 1 :
-            array.append(i) 
-        
+        if i.member_status == 1:
+            array.append(i)
+
         elif i.member_status == 0 and i.member_id == request.user.id and i.group_id == key1.id:
-            break  
-        
+            break
+
         elif pod_groups_members.objects.filter(member_status=0,member_id=request.user.id,group_id = key1.id):
             break
 
         elif i.member_status == 0:
-            array.append(i) 
-            break                       
-
-    status=array[:12] 
-    
+            array.append(i)
+            break
+    status=array[:12]
     if request.method=="POST" and "submit" in request.POST:
-        
-        if pod_groups_members.objects.filter(member_status =1,group_id=key1):
-            print("true")
-            pod_groups_members.objects.update(vote_given=0)
-        
+        if pod_groups_members.objects.filter(member_status=0,group_id=key1):
+             pod_groups_members.objects.update(vote_given=0)
         member=pod_groups_members() 
         q = request.POST.get('submit')
         voteCount=F('vote_count')+1   
@@ -95,15 +98,13 @@ def show(request,id):
         podlen=len(pod_groups_members.objects.filter(group_id=key1,member_status = 1))
         podLen=podlen/2
         length=podLen
-        print("length",length)
         for i in show:
             print("Elect",i.vote_count)
         if i.vote_count > length:
             print(i.member.id)
             pod_groups_members.objects.filter(member_status =1,group_id=key1)
-            print("true")
+            # print("true")
             pod_groups_members.objects.update(vote_given=0)
-
             member.pod_owner_id_id=pod_groups_members.objects.filter(id=q).update(member_status=1)   
         return redirect(request.path_info)   
 
@@ -112,7 +113,13 @@ def show(request,id):
         member=pod_groups_members()
         q = request.POST.get('Delete')
         member.count=pod_groups_members.objects.filter(id=q).delete()
-        return redirect(request.path_info)   
+        return redirect(request.path_info) 
+
+    if request.method == "POST" and "hello" in request.POST:
+        z =''.join(random.choices(string.digits, k=6))
+        pod_groups.objects.update(group_key=z)
+        return redirect(request.path_info) 
+              
     
 
     if request.method=="POST" and "elect" in request.POST:
@@ -120,7 +127,7 @@ def show(request,id):
         mem=pod_groups()
         q = request.POST.get('elect')
         voteCount=F('elect_count')+1
-        member.elect_count=pod_groups_members.objects.filter(id=q).update(elect_count=voteCount) 
+        member.elect_count=pod_groups_members.objects.filter(id=q).update(elect_count=voteCount)  
         member.elect_vote_given=pod_groups_members.objects.filter(member_id=request.user.id).update(elect_vote_given=1)        
         podlen=len(pod_groups_members.objects.filter(group_id=key1,member_status = 1))
         podLen=podlen/2
@@ -133,7 +140,7 @@ def show(request,id):
             print(i.member.id)
             mem.group_owner_id=pod_groups.objects.filter(group_owner=i.group.group_owner_id).update(group_owner=i.member.id)     
         return redirect(request.path_info)   
-    return render(request,"key/key.html",{'user':users,'key1':key1,'stat':status,'podlen':podlength,"owner_id":owner_id,'all':all,'votegive':hell,"evote":evote}) 
+    return render(request,"key/key.html",{'user':users,'key1':key1,'stat':status,'is_key_generate':0,'podlen':podlength,"owner_id":owner_id,'all':all,'votegive':hell,"evote":evote}) 
  
     
 
