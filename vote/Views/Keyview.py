@@ -1,8 +1,8 @@
-from pickle import TRUE
+
 from tokenize import group
 from django.shortcuts import render
 from django.template import loaders
-from sqlalchemy import false, true
+
 # from numpy import append, array
 import vote
 from vote.models import *
