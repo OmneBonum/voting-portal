@@ -1,7 +1,7 @@
 from ast import Break
 from django.forms import IntegerField, ModelForm
 from django import forms
-from sqlalchemy import false
+
 from vote.models import *
 FRUIT_CHOICES= [
     ('I_am_a_registered_voter_in_this_district', 'I_am_a_registered_voter_in_this_district'),
@@ -33,7 +33,7 @@ class AddCreateForm(ModelForm):
     ))
 
     
-    registered= forms.BooleanField(required = false, widget=forms.RadioSelect(choices=FRUIT_CHOICES))
+    registered= forms.BooleanField( widget=forms.RadioSelect(choices=FRUIT_CHOICES))
       
     
     
