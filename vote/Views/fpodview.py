@@ -11,44 +11,40 @@ import random
 import string
 
 
-def podshow(request):  
-     key1=pod_groups_members.objects.filter(member_id=request.user.id)
-     print(key1)
-     fpods=pod_groups.objects.filter(group_owner_id=request.user.id)
-     k=fpods.values_list('group_owner_id',flat=True)
-     print("k",k)
-     if pod_groups.objects.filter(group_owner_id=request.user).exists():
-        owner_id=k[0]
-     else:
-        owner_id=0
+def fpodshow(request):  
+     key2=firstdel_groups_members.objects.filter(member_id=request.user.id)
+     print(key2)
+     fpods=pod_groups.objects.filter(group_owner_id=request.user.id).exists()
+     print("fpods",fpods)
 
-    
-     if key1:
-          print(key1)
-          for i in key1:
+     if key2:
+          print(key2)
+          for i in key2:
                z=i.group_id
+               print("z id",z)
           
           print("asdf")
           # if pod_groups_members.objects.filter(member_status = 0,group_id=z):
           #      pod_groups_members.objects.update(vote_given=0)
           current_user =request.user.id
-          a = pod_groups_members.objects.filter(member_id=current_user).exists()
+          a = firstdel_groups_members.objects.filter(member_id=current_user).exists()
           
-          return render(request,'pod/home.html',{'key1':z,'a':a,'fpod':owner_id,"fkey":0})
+          return render(request,'pod/home.html',{'keys':z,'a':a,'fpod':fpods})
      
      else:      
           current_user =request.user.id
-          a = pod_groups_members.objects.filter(member_id=current_user).exists()
-     return render(request,'pod/home.html',{'a':a,'fpod':fpods})
+          a = firstdel_groups_members.objects.filter(member_id=current_user).exists()
+     return render(request,'pod/home.html',{'a':a})
 
 
-def validate(request):
+def fvalidate(request):
      if request.method =="POST":
-          join=pod_groups_members()
+          join=firstdel_groups_members()
          
-          uname= request.POST.get('pod_key')
-          if pod_groups.objects.filter(group_key=uname).exists()  :
-               key1=pod_groups.objects.filter(group_key=uname)
+          uname= request.POST.get('pod_keys')
+          print("uname",uname)
+          if firstdel_groups.objects.filter(group_key=uname).exists()  :
+               key1=firstdel_groups.objects.filter(group_key=uname)
                for i in key1:
                     z=i.id
                     print('z',z)
@@ -58,15 +54,15 @@ def validate(request):
                join.member_id=current_user
                join.group_id=z    
                join.member_status=0
-               a=len(pod_groups_members.objects.filter(group_id=z))
+               a=len(firstdel_groups_members.objects.filter(group_id=z))
                print("a",a)
                #if a <= 11:
                join.save()
-               return redirect('/show')
+               return redirect('/fshow')
           else:
                messages.error(request,"pod entries close or invalid key")
-               return redirect('/join') 
-     return render(request,"pod/join.html")
+               return redirect('/fjoin') 
+     return render(request,"pod/fjoin.html")
 
 # def trying (request):
 #      t=validate(request)

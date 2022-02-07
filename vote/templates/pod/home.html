@@ -51,6 +51,7 @@ margin-bottom: 7px;
 <h1>{{i}}</h1>
 {%endfor%} {% endcomment %}
 <h1><center>Voter Page for {{request.user.name}}</center></h1>
+    
 
 
 
@@ -59,14 +60,28 @@ margin-bottom: 7px;
 
 <div class="row mb-3">
 <div class="col-md-4"></div>
-{% if a == True %}
+
+
+{% if fpod == request.user.id  %}
+<div class="col-md-4 d-flex">
+    <div class="btn_section text-center m-2">
+    <a class="btn btn-primary text-center Creat_pod" href="fjoin">join First dell pod</a>
+    </div> 
+    <div class="btn_section text-center m-2">
+    <a class="btn btn-primary text-center Creat_pod" href="fpod">Creat First dell pod</a>
+    
+<div class="btn_section text-center m-2">
+    <a class="btn btn-primary text-center Creat_pod" href="fpod/{{keys}}">My pod</a>
+    </div>
+        
+    </div>
+
+{% elif a == true  %}
 
 <div class="btn_section text-center m-2">
 <a class="btn btn-primary text-center Creat_pod" href="pod/{{key1}}">My pod</a>
-
-
 </div>
-
+ 
 
 
 {% else %}
