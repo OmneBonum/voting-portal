@@ -10,7 +10,7 @@ from vote.forms.user import *
 from django.db.models import F
 
 
-def index(request):
+def index(request):   
     context = {'user_list':user.objects.all()}
     return render(request,"pod/p.html",context) 
 

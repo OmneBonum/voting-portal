@@ -221,3 +221,19 @@ label.believe_label {
 }
 
 /*3-feb-2022 css start */
+
+
+ul#bs-example-navbar-collapse-1 {
+  color: white;
+  font-size: 22px;
+}
+.container.header_container {
+  display: block !important;
+}
+
+
+
+a.btn.btn-primary.text-center.Creat_pod.My_pod {
+  width: 50%;
+  margin: 0 auto;
+}
