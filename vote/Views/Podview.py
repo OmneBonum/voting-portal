@@ -20,8 +20,6 @@ def podshow(request):
                z=i.group_id
           
           print("asdf")
-          # if pod_groups_members.objects.filter(member_status = 0,group_id=z):
-          #      pod_groups_members.objects.update(vote_given=0)
           current_user =request.user.id
           a = pod_groups_members.objects.filter(member_id=current_user).exists()
           

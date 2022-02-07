@@ -4,7 +4,8 @@ from vote.Views import Signupview
 from vote.Views import Keyview
 from vote.Views import Podview
 from vote.Views import memberview
-from . import viewssss
+from vote.Views import helloUser
+
 app_name = "vote"
 
 
@@ -31,7 +32,10 @@ urlpatterns = [
 #member urls
 path('member',memberview.memberIndex,name="member_index"),
 
-#
+#vote_second_group
+
+# path('Hellouser',helloUser.index,name="hello_user"),
+
 
     
 

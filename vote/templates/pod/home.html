@@ -42,11 +42,6 @@ border-color: #0062cc;
 .text-left.section_lable_input {
 margin-bottom: 7px;
 }
-
-
-
-
-
 </style>
 
 </head>
@@ -67,7 +62,9 @@ margin-bottom: 7px;
 {% if a == True %}
 
 <div class="col-md-4  btn_section text-center m-2">
-    <a class="btn btn-primary text-center Creat_pod My_pod" href="pod/{{key1}}">My pod</a>
+<a class="btn btn-primary text-center Creat_pod My_pod" href="pod/{{key1}}">My pod</a>
+
+
 </div>
 
 
@@ -81,8 +78,14 @@ margin-bottom: 7px;
 
 <div class="btn_section text-center m-2">
 <a class="btn btn-primary text-center Creat_pod" href="/pod">Creat a pod</a>
-
 </div>
+
+{% comment %} <div class="btn_section text-center m-2">
+    <a class="btn btn-primary text-center Creat_pod" href="/Hellouser">Creat a pod</a>
+</div> {% endcomment %}
+
+
+
 {% endif %} 
 </div>
 <div class="col-md-4"></div>
