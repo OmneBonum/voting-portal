@@ -58,14 +58,14 @@ class pod_groups_members(models.Model):
 #   Elect_user=models.ForeignKey(user,on_delete=models.CASCADE,null=True)
 #   Elect_member=models.ForeignKey(pod_member,on_delete=models.CASCADE,null=True)
 
-class Firstdel_groups(models.Model):
+class firstdel_groups(models.Model):
   group_key =  models.CharField(unique=True, editable=False,max_length=6)
   group_owner=models.ForeignKey(user,on_delete=models.CASCADE,null=True)
   created_at = models.DateTimeField(auto_now_add=True,null=True)
   updated_at =  models.DateTimeField(auto_now=True)
 
 class firstdel_groups_members(models.Model):
-  group=models.ForeignKey(pod_groups,on_delete=models.CASCADE,null=True)
+  group=models.ForeignKey(firstdel_groups,on_delete=models.CASCADE,null=True)
   member=models.ForeignKey(user,on_delete=models.CASCADE,null=True)
   vote_count=models.IntegerField(default=0)
   elect_count=models.IntegerField(default=0)

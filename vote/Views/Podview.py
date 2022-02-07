@@ -14,6 +14,15 @@ import string
 def podshow(request):  
      key1=pod_groups_members.objects.filter(member_id=request.user.id)
      print(key1)
+     fpods=pod_groups.objects.filter(group_owner_id=request.user.id)
+     k=fpods.values_list('group_owner_id',flat=True)
+     print("k",k)
+     if pod_groups.objects.filter(group_owner_id=request.user).exists():
+        owner_id=k[0]
+     else:
+        owner_id=0
+
+    
      if key1:
           print(key1)
           for i in key1:
@@ -23,12 +32,12 @@ def podshow(request):
           current_user =request.user.id
           a = pod_groups_members.objects.filter(member_id=current_user).exists()
           
-          return render(request,'pod/home.html',{'key1':z,'a':a})
+          return render(request,'pod/home.html',{'key1':z,'a':a,'fpod':owner_id,"fkey":0})
      
      else:      
           current_user =request.user.id
           a = pod_groups_members.objects.filter(member_id=current_user).exists()
-     return render(request,'pod/home.html',{'a':a})
+     return render(request,'pod/home.html',{'a':a,'fpod':fpods})
 
 
 def validate(request):
@@ -49,13 +58,12 @@ def validate(request):
                join.member_status=0
                a=len(pod_groups_members.objects.filter(group_id=z))
                print("a",a)
-               if a <= 11:
-                    join.save()
-                    return redirect('/show')
-               else:
-                    
-                    messages.error(request,"pod entries close")
-                    return redirect('/join') 
+               #if a <= 11:
+               join.save()
+               return redirect('/show')
+          else:
+               messages.error(request,"pod entries close or invalid key")
+               return redirect('/join') 
      return render(request,"pod/join.html")
 
 # def trying (request):
