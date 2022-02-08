@@ -103,10 +103,10 @@ h2.text-center.Pod_number {
 	
 	</div>
 	<div class="btn_section text-center mb-5">
-    {% comment %}  {% if podlen == 0 %}
-    <button id="send" type="submit" name="hello" class="btn btn-success">Generate Key</a></button> {% endcomment %}
+   {%comment%} {% if podlen == 0 %}
+    <button id="send" type="submit" name="hello" value={{request.user.id}} class="btn btn-success">Generate Key</a></button> {% endcomment %}
     {% if  owner_id == request.user.id%}
-      <button id="send" type="submit" name="hello" class="btn btn-success">Generate Key</a></button>
+      <button id="send" type="submit" name="hello"  class="btn btn-success">Generate Key</a></button>
     {%elif is_key_generate == 1%}
       <button id="send" type="submit" name="hello" class="btn btn-success">Generate Key</a></button> 
     {% endif  %}  

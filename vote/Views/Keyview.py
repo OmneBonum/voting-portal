@@ -116,8 +116,9 @@ def show(request,id):
         return redirect(request.path_info) 
 
     if request.method == "POST" and "hello" in request.POST:
+    
         z =''.join(random.choices(string.digits, k=6))
-        pod_groups.objects.update(group_key=z)
+        pod_groups.objects.filter(group_owner_id=request.user.id).update(group_key=z)
         return redirect(request.path_info) 
               
     

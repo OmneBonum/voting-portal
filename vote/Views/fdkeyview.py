@@ -116,7 +116,7 @@ def fshow(request,id):
 
     if request.method == "POST" and "hello" in request.POST:
         z =''.join(random.choices(string.digits, k=6))
-        firstdel_groups.objects.update(group_key=z)
+        firstdel_groups.objects.filter(group_owner_id=request.user.id).update(group_key=z)
         return redirect(request.path_info) 
               
     

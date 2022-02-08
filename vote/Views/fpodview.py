@@ -29,7 +29,7 @@ def fpodshow(request):
           current_user =request.user.id
           a = firstdel_groups_members.objects.filter(member_id=current_user).exists()
           
-          return render(request,'pod/home.html',{'keys':z,'a':a,'fpod':fpods})
+          return render(request,'pod/fhome.html',{'keys':z,'a':a,'fpod':fpods,'fkey':0})
      
      else:      
           current_user =request.user.id
@@ -60,7 +60,7 @@ def fvalidate(request):
                join.save()
                return redirect('/fshow')
           else:
-               messages.error(request,"pod entries close or invalid key")
+               messages.error(request,"Invalid key")
                return redirect('/fjoin') 
      return render(request,"pod/fjoin.html")
 

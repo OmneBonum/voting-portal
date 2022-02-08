@@ -62,7 +62,7 @@ def validate(request):
                join.save()
                return redirect('/show')
           else:
-               messages.error(request,"pod entries close or invalid key")
+               messages.error(request,"Invalid key")
                return redirect('/join') 
      return render(request,"pod/join.html")
 
