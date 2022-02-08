@@ -34,8 +34,12 @@ def user_login(request):
         user = authenticate(username=uname,password=upass)
         print(user) 
         if user is not None:
-          login(request,user)
-          return redirect('/show')
+            login(request,user)
+            return redirect('/show')
+        # if firstdel_groups.objects.filter(group_owner_id=request.user.id) and user is not None:
+        #   return redirect('/fshow')
+       
+        
 
         else:
           messages.error(request,"Invalid Credential")
