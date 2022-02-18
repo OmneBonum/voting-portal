@@ -19,7 +19,6 @@ pymysql.install_as_MySQLdb()
 
 
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -46,9 +45,11 @@ MESSAGE_TAGS = {
  }
 
 # ALLOWED_HOSTS = ['15.206.128.44']
+# ALLOWED_HOSTS = ['184.168.122.169']
 
 
-# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = []
+
 
 
 # Application definition
