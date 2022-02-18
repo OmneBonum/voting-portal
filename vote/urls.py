@@ -10,6 +10,8 @@ from vote.Views import sdkeyview
 from vote.Views import tdkeyview
 from vote.Views import spodview
 from vote.Views import tpodview
+from vote.Views import fourthkeyview
+from vote.Views import fourthpodview
 
 app_name = "vote"
 
@@ -40,6 +42,12 @@ urlpatterns = [
 #tpod urls
     path('tjoin',tpodview.tvalidate,name="tjoin"),
     path("tshow",tpodview.tpodshow,name='tshow'), 
+
+#fourth pod  urls
+    path('fojoin',fourthpodview.fourthvalidate,name="fojoin"),
+    path("foshow",fourthpodview.fourthpodshow,name='foshow'), 
+     
+
 #key urls
     path("pod",Keyview.key_generator,name="key"),
     path('pod/<int:id>', Keyview.show, name="key2"), 
@@ -56,8 +64,28 @@ urlpatterns = [
 #tdelkey urls
     path("tpod",tdkeyview.tkey_generator,name="tkey"),
     path('tpod/<int:id>', tdkeyview.tshow, name="tkey2"), 
+
+#fourthdelkey urls
+    path("fopod",fourthkeyview.fourthkey_generator,name="fokey"),
+    path('fopod/<int:id>', fourthkeyview.fourthshow, name="fokey2"), 
+
+
+
+
+
+
+
 #member urls
 path('member',memberview.memberIndex,name="member_index"),
+
+
+
+
+
+
+
+
+
 
 #vote_second_group
 
