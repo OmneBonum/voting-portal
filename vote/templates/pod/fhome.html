@@ -53,37 +53,46 @@ margin-bottom: 7px;
 <h1><center>Voter Page for {{request.user.name}}</center></h1>
     
 
-
-
 <div class="container mt-5">
 	
 
 <div class="row mb-3">
 <div class="col-md-4"></div>
 
-
-
-
-    {%if fkey == 0%}
-
-    
+{% if fpod == request.user.id%}
+<div class="col-md-4 d-flex">
     <div class="btn_section text-center m-2">
-    <a class="btn btn-primary text-center Creat_pod" href="fpod/{{keys}}">My pod</a>
+        <a class="btn btn-primary text-center Creat_pod" href="fpod/{{keys}}">First del pod</a>
+        </div>
+
+    <div class="btn_section text-center m-2">
+    <a class="btn btn-primary text-center Creat_pod" href="sjoin">join Second del</a>
+    </div> 
+    <div class="btn_section text-center m-2">
+    <a class="btn btn-primary text-center Creat_pod" href="spod">Create Second del</a>
     </div>
+     
+</div>
+
+
+    {%elif fkey == 0%}
+
+    <div class="btn_section text-center m-2">
+        <a class="btn btn-primary text-center Creat_pod" href="fpod/{{keys}}">First del pod</a>
+        </div>
     
    
-
 
 {% else %}
 <div class="col-md-4 d-flex">
 <div class="btn_section text-center m-2">
-<a class="btn btn-primary text-center Creat_pod" href="fjoin">join first dell</a>
-
-</div>
+<a class="btn btn-primary text-center Creat_pod" href="sjoin">join Second dell</a>
+    
+</div>  
 
 <div class="btn_section text-center m-2">
-<a class="btn btn-primary text-center Creat_pod" href="/fpod">Creat a first dell</a>
-</div>
+<a class="btn btn-primary text-center Creat_pod" href="/spod">Creat a Second dell</a>
+</div>  
 {% endif %} 
 
 {% comment %} <div class="btn_section text-center m-2">

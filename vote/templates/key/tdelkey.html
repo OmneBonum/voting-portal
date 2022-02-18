@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Bootstraps Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
@@ -13,67 +13,71 @@
   
  <style>
  
-
-
-
-/*7-feb-2022 css start */
-
-
-a#logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 9px;
-  font-weight: bold;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-ul#bs-example-navbar-collapse-1 a {
-  font-size: 20px;
-  font-weight: 600;
-  font-family: sans-serif;
-}
-ul.nav-item {
-    display: inline-flex;
-}
-
-ul.nav-item li a {
-  color: #555555;
-  font-size: 16px;
-}
-ul.nav-item li {
-    list-style: none;
-    margin-left: 15px;
-}
  
 
-ul#bs-example-navbar-collapse-1 {
-  color: white;
-  font-size: 22px;
-}
-.container.header_container {
-  display: block !important;
-}
 
 
-ul#bs-example-navbar-collapse-1 {
-  color: white;
-  font-size: 22px;
-}
-
-.container.section_container {
-  max-width: 1200px;
-}
-
-h2.text-center.Pod_number {
-  font-size: 32px;
-}
-
-/*7-feb-2022 css end */
+ /*7-feb-2022 css start */
+ 
+ 
+ a#logo {
+   float: left;
+   margin-right: 10px;
+   font-size: 1.7em;
+   color: #fff;
+   text-transform: uppercase;
+   letter-spacing: -1px;
+   padding-top: 9px;
+   font-weight: bold;
+   text-decoration: none;
+   cursor: pointer;
+ }
+ 
+ ul#bs-example-navbar-collapse-1 a {
+   font-size: 20px;
+   font-weight: 600;
+   font-family: sans-serif;
+ }
+ ul.nav-item {
+     display: inline-flex;
+ }
+ 
+ ul.nav-item li a {
+   color: #555555;
+   font-size: 16px;
+ }
+ ul.nav-item li {
+     list-style: none;
+     margin-left: 15px;
+ }
+  
+ 
+ ul#bs-example-navbar-collapse-1 {
+   color: white;
+   font-size: 22px;
+ }
+ .container.header_container {
+   display: block !important;
+ }
+ 
+ 
+ ul#bs-example-navbar-collapse-1 {
+   color: white;
+   font-size: 22px;
+ }
+ 
+ .container.section_container {
+   max-width: 1200px;
+ }
+ 
+ h2.text-center.Pod_number {
+   font-size: 32px;
+ }
+ 
+ /*7-feb-2022 css end */
+ 
+ 
+  </style> 
 
 
  </style> 
@@ -81,15 +85,17 @@ h2.text-center.Pod_number {
 </head>
 <body>
 	
+  
 
 
-    <form class="form-horizontal form-label-left" method="POST" novalidate>
+
+<form class="form-horizontal form-label-left" method="POST" novalidate>
         {% csrf_token %}
 <div class="container section_container">
   <h2 class="text-center Pod_number">Current First Delegations :{% for item in all%}
     {{item.group_owner.name}}
     {%endfor%}
-	<h2 class="text-center Pod_number">Pod {{key1.id}} Housekeeping Page</h2>
+	<h2 class="text-center Pod_number">Pod {{keys.id}} Housekeeping Page</h2>
 	<div class="Pod_section">
      {%if owner_id == request.user.id%}
 		<p class="text-center">Pod Invitation Key is:{% for item in user %}
@@ -103,28 +109,27 @@ h2.text-center.Pod_number {
 	
 	</div>
 	<div class="btn_section text-center mb-5">
-   {%comment%} {% if podlen == 0 %}
-    <button id="send" type="submit" name="hello" value={{request.user.id}} class="btn btn-success">Generate Key</a></button> {% endcomment %}
+    {% comment %}  {% if podlen == 0 %}
+    <button id="send" type="submit" name="hello" class="btn btn-success">Generate Key</a></button> {% endcomment %}
     {% if  owner_id == request.user.id%}
-      <button id="send" type="submit" name="hello"  class="btn btn-success">Generate Key</a></button>
+      <button id="send" type="submit" name="hello" class="btn btn-success">generate Key</a></button>
     {%elif is_key_generate == 1%}
-      <button id="send" type="submit" name="hello" class="btn btn-success">Generate Key</a></button> 
+      <button id="send" type="submit" name="hello" class="btn btn-success">generate Key</a></button> 
     {% endif  %}  
 	</div>
 	
   <table class="table table-bordered table-sm">
 		<thead>
 		  <tr>
-			<th>Id</th>
-			<th>Name </th>
-			<th>Email</th>
-      <th>District </th>
-      <th>Votes</th> 
-      <th>Devote</th>
-      <th>Election</th>   
-      <th>delete</th>                     
-		  </tr>
-		</thead>  
+	<th>Id</th>
+	<th>Name </th>
+	<th>Email</th>
+    <th>District </th>
+    <th>Votes</th> 
+    <th>Election</th>   
+    <th>delete</th>                     
+	</tr>
+		</thead>
    
 		<tbody>     
 			{% for users_list in stat%}    
@@ -140,16 +145,8 @@ h2.text-center.Pod_number {
         <td>
           {% if  votegive == 0 and users_list.member_status == 0 %}
             <button type="submit" class="btn vote" name="submit"  value={{users_list.id}}>vote now</button>
-            
-
           {% endif  %}
         </td>
-        <td>
-          {% comment %} {%if users_list.member_status == 0 %}  {% endcomment %}
-          <button type="submit" class="btn vote" name="devote"  value={{context}}>Devote</button>
-           {% comment %} {%endif%}    {% endcomment %}
-        </td>
-
         <td>
           {% if  podlen >= 5 and users_list.member_status == 1 and evote == 0 %}
             <button type="submit" name="elect" value={{users_list.id}}>Election</a></button>

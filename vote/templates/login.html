@@ -28,6 +28,11 @@
     </nav>
   </div>
 </header> -->
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--Bootstrap CSS-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+ 
     <div class="container Enter_the_Floor">
       <h1 class="text-center sec_Enter">Enter the Floor</h1>
 <div class="center jumbotron If_already">
@@ -60,14 +65,17 @@
       <input type="submit" name="commit" value="Enter the Floor" class="btn-xl btn-primary" data-disable-with="Enter the Floor" />
 </form>  </div>
 </div>
-{% for message in messages%}
-      <div class="alert alert-error">
-        <a class="close" href="#" data-dismiss="alert">x</a>
-        {{message}}
-      </div>
-      {% endfor %}
-      <div> 
- 
+{% if messages%}
+<ul class="messages">
+    {% for message in messages %}
+    <div class="container-fluid p-0">
+      <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+    <center>{{ message }}</center> 
+    {% endfor %}
+</ul>
+{% endif %}
+
+
 <!-- Here starts the code copied directly from the MaxCDN section of this page: https://www.w3schools.com/bootstrap4/bootstrap_get_started.asp -->
 
 <!-- Optional theme (already greyed)-->

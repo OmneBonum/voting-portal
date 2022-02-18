@@ -85,6 +85,7 @@ def show(request,id):
             array.append(i)
             break
     status=array[:12]
+    
     if request.method=="POST" and "submit" in request.POST:
         if pod_groups_members.objects.filter(member_status=0,group_id=key1):
              pod_groups_members.objects.update(vote_given=0)
@@ -106,8 +107,29 @@ def show(request,id):
             # print("true")
             pod_groups_members.objects.update(vote_given=0)
             member.pod_owner_id_id=pod_groups_members.objects.filter(id=q).update(member_status=1)   
+        return redirect(request.path_info)
+
+    if request.method=="POST" and "devote" in request.POST:
+        if pod_groups_members.objects.filter(member_status=0,group_id=key1):
+             pod_groups_members.objects.update(vote_given=0)
+        member=pod_groups_members() 
+        q = request.POST.get('devote')
+        voteCount=F('vote_count')-1   
+        member.vote_count=pod_groups_members.objects.filter(id=q).update(vote_count=voteCount)  
+        member.vote_given=pod_groups_members.objects.filter(member_id=request.user.id).update(vote_given=1)  
+        show=pod_groups_members.objects.filter(id=q)
+        podlen=len(pod_groups_members.objects.filter(group_id=key1,member_status = 1))
+        podLen=podlen/2
+        length=podLen
+        for i in show:
+            print("Elect",i.vote_count)
+        if i.vote_count < length:
+            print(i.member.id)
+            #pod_groups_members.objects.filter(member_status =1,group_id=key1)
+            # print("true")
+            #pod_groups_members.objects.update(vote_given=0)
+            member.pod_owner_id_id=pod_groups_members.objects.filter(id=q).update(member_status=0)   
         return redirect(request.path_info)   
-    
     
     if request.method=="POST" and "Delete" in request.POST:
         member=pod_groups_members()
@@ -147,7 +169,4 @@ def show(request,id):
 
 
 
-
-
-    
 

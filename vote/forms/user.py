@@ -48,7 +48,7 @@ class AddCreateForm(ModelForm):
 
     
 
-    Confirm_Password = forms.CharField(required = True,widget=forms.PasswordInput(
+    confirmation = forms.CharField(label="Confirm_Password",required = True,widget=forms.PasswordInput(
         attrs={
         'class':'form-control',  
         'placeholder':'Confirm your Password',
@@ -77,4 +77,4 @@ class AddCreateForm(ModelForm):
 
     class Meta:
         model = user
-        fields = ["district","name","registered","email","address","executed_on","password","Confirm_Password"]
+        fields = ["district","name","registered","email","address","executed_on","password","confirmation"]

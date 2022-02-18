@@ -53,8 +53,6 @@ margin-bottom: 7px;
 <h1><center>Voter Page for {{request.user.name}}</center></h1>
     
 
-
-<h1>{{user_id}}</h1>
 <div class="container mt-5">
 	
 
@@ -62,53 +60,43 @@ margin-bottom: 7px;
 <div class="col-md-4"></div>
 
 
-{% if fpod == request.user.id  %}
+{% if tpod == request.user.id%}
 <div class="col-md-4 d-flex">
     <div class="btn_section text-center m-2">
-        <a class="btn btn-primary text-center Creat_pod" href="pod/{{key1}}">My pod</a>
+        <a class="btn btn-primary text-center Creat_pod" href="tpod/{{keys}}">Second del pod</a>
         </div>
 
     <div class="btn_section text-center m-2">
-    <a class="btn btn-primary text-center Creat_pod" href="fjoin">join First del</a>
+    <a class="btn btn-primary text-center Creat_pod" href="tjoin">join Third del</a>
     </div> 
     <div class="btn_section text-center m-2">
-    <a class="btn btn-primary text-center Creat_pod" href="fpod">Create First del</a>
+    <a class="btn btn-primary text-center Creat_pod" href="tpod">Create Third del</a>
     </div>
-    
+     
 </div>
-        
+
+
+    {%elif tkey == 0%}
+
+    <div class="btn_section text-center m-2">
+        <a class="btn btn-primary text-center Creat_pod" href="tpod/{{keys}}">Second del pod</a>
+        </div>
     
-
-    {%elif fkey == 0 %}
-
-    <div class="btn_section text-center m-2">
-    <a class="btn btn-primary text-center Creat_pod" href="pod/{{key1}}">My pod</a>
-    </div>
-
-    {% comment %} {%elif fkey == 0 %}
-
-    <div class="btn_section text-center m-2">
-    <a class="btn btn-primary text-center Creat_pod" href="pod/{{key1}}">My pod</a>
-    </div>
-     {% endcomment %}
-    {% comment %} {%elif a == true %}
-
-    <div class="btn_section text-center m-2">
-    <a class="btn btn-primary text-center Creat_pod" href="pod/{{key1}}">My pod</a>
-    </div>
-  {% endcomment %}
-
+   
 
 {% else %}
 <div class="col-md-4 d-flex">
 <div class="btn_section text-center m-2">
-<a class="btn btn-primary text-center Creat_pod" href="join">join a pod</a>
-
-</div>
+<a class="btn btn-primary text-center Creat_pod" href="tjoin">join Second dell</a>
+    
+</div>  
 
 <div class="btn_section text-center m-2">
-<a class="btn btn-primary text-center Creat_pod" href="/pod">Creat a pod</a>
-</div>
+<a class="btn btn-primary text-center Creat_pod" href="/tpod">Creat a Second dell</a>
+</div>  
+{% endif %} 
+
+
 
 {% comment %} <div class="btn_section text-center m-2">
     <a class="btn btn-primary text-center Creat_pod" href="/Hellouser">Creat a pod</a>
@@ -116,7 +104,7 @@ margin-bottom: 7px;
 
 
 
-{% endif %} 
+
 </div>
 <div class="col-md-4"></div>
 </div>

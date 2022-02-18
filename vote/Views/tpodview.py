@@ -11,18 +11,16 @@ import random
 import string
 
 
-def fpodshow(request):  
-     key2=firstdel_groups_members.objects.filter(member_id=request.user.id)
+def tpodshow(request):  
+     key2=thirddel_groups_members.objects.filter(member_id=request.user.id)
      print(key2)
-     fpods=firstdel_groups.objects.filter(group_owner_id=request.user.id)
+     fpods=thirddel_groups.objects.filter(group_owner_id=request.user.id)
      k=fpods.values_list('group_owner_id',flat=True)
      print("k",k)
-     if firstdel_groups.objects.filter(group_owner_id=request.user).exists():
+     if thirddel_groups.objects.filter(group_owner_id=request.user).exists():
         owner_id=k[0]
      else:
         owner_id=0
-
-     print("fpods",fpods)
 
      if key2:
           print(key2)
@@ -34,24 +32,24 @@ def fpodshow(request):
           # if pod_groups_members.objects.filter(member_status = 0,group_id=z):
           #      pod_groups_members.objects.update(vote_given=0)
           current_user =request.user.id
-          a = firstdel_groups_members.objects.filter(member_id=current_user).exists()
+          a = thirddel_groups_members.objects.filter(member_id=current_user).exists()
           
-          return render(request,'pod/fhome.html',{'keys':z,'a':a,'fpod':owner_id,'fkey':0})
+          return render(request,'pod/shome.html',{'keys':z,'a':a,'tpod':owner_id,'tkey':0})
      
      else:      
           current_user =request.user.id
-          a = firstdel_groups_members.objects.filter(member_id=current_user).exists()
-     return render(request,'pod/home.html',{'a':a})
+          a = thirddel_groups_members.objects.filter(member_id=current_user).exists()
+     return render(request,'pod/shome.html',{'a':a})
 
 
-def fvalidate(request):
+def tvalidate(request):
      if request.method =="POST":
-          join=firstdel_groups_members()
+          join=thirddel_groups_members()
          
-          uname= request.POST.get('pod_keys')
+          uname= request.POST.get('pod_key')
           print("uname",uname)
-          if firstdel_groups.objects.filter(group_key=uname).exists()  :
-               key1=firstdel_groups.objects.filter(group_key=uname)
+          if thirddel_groups.objects.filter(group_key=uname).exists()  :
+               key1=thirddel_groups.objects.filter(group_key=uname)
                for i in key1:
                     z=i.id
                     print('z',z)
@@ -61,15 +59,15 @@ def fvalidate(request):
                join.member_id=current_user
                join.group_id=z    
                join.member_status=0
-               a=len(firstdel_groups_members.objects.filter(group_id=z))
+               a=len(thirddel_groups_members.objects.filter(group_id=z))
                print("a",a)
                #if a <= 11:
                join.save()
-               return redirect('/fshow')
+               return redirect('/tshow')
           else:
                messages.error(request,"Invalid key")
-               return redirect('/fjoin') 
-     return render(request,"pod/fjoin.html")
+               return redirect('/tjoin') 
+     return render(request,"pod/tjoin.html")
 
 # def trying (request):
 #      t=validate(request)

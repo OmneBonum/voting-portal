@@ -83,7 +83,7 @@ class seconddel_groups(models.Model):
   updated_at =  models.DateTimeField(auto_now=True)
 
 class seconddel_groups_members(models.Model):
-  group=models.ForeignKey(pod_groups,on_delete=models.CASCADE,null=True)
+  group=models.ForeignKey(seconddel_groups,on_delete=models.CASCADE,null=True)
   member=models.ForeignKey(user,on_delete=models.CASCADE,null=True)
   vote_count=models.IntegerField(default=0)
   elect_count=models.IntegerField(default=0)
@@ -101,7 +101,7 @@ class thirddel_groups(models.Model):
   updated_at =  models.DateTimeField(auto_now=True)
 
 class thirddel_groups_members(models.Model):
-  group=models.ForeignKey(pod_groups,on_delete=models.CASCADE,null=True)
+  group=models.ForeignKey(thirddel_groups,on_delete=models.CASCADE,null=True)
   member=models.ForeignKey(user,on_delete=models.CASCADE,null=True)
   vote_count=models.IntegerField(default=0)
   elect_count=models.IntegerField(default=0)

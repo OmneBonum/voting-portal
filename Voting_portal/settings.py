@@ -19,6 +19,7 @@ pymysql.install_as_MySQLdb()
 
 
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -31,6 +32,18 @@ SECRET_KEY = 'django-insecure-mr#a0mb)lpvsv62vw(4yz3s2wyho-1di31+-$x4v@fkr+n8s!8
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
+import os
+from django.contrib.messages import constants as messages
+
+
+MESSAGE_TAGS = {
+        messages.DEBUG: 'alert-secondary',
+        messages.INFO: 'alert-info',
+        messages.SUCCESS: 'alert-success',
+        messages.WARNING: 'alert-warning',
+        messages.ERROR: 'alert-danger',
+ }
 
 # ALLOWED_HOSTS = ['184.168.122.169']
 
