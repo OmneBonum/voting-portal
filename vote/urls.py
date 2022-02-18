@@ -13,6 +13,9 @@ from vote.Views import tpodview
 from vote.Views import fifthdelpodview
 from vote.Views import fourthkeyview
 from vote.Views import fourthpodview
+from vote.Views import fifthdelkeyview
+from vote.Views import sixthdelkeyview
+from vote.Views import sixthdelpodview
 
 app_name = "vote"
 
@@ -44,13 +47,20 @@ urlpatterns = [
     path('tjoin',tpodview.tvalidate,name="tjoin"),
     path("tshow",tpodview.tpodshow,name='tshow'), 
 
-#fifthpod urls
-    path('fijoin',fifthdelpodview.fifthvalidate,name="fijoin"),
-    path("fishow",fifthdelpodview.fifthpodshow,name='fishow'), 
 #fourth pod  urls
     path('fojoin',fourthpodview.fourthvalidate,name="fojoin"),
     path("foshow",fourthpodview.fourthpodshow,name='foshow'), 
      
+
+#fifthpod urls
+    path('fijoin',fifthdelpodview.fifthvalidate,name="fijoin"),
+    path("fishow",fifthdelpodview.fifthpodshow,name='fishow'), 
+
+
+#sixthpod urls
+    path("fishow",sixthdelpodview.sixthpodshow,name='fishow'), 
+    path('fijoin',sixthdelpodview.sixthvalidate,name="fijoin"),
+    
 
 #key urls
     path("pod",Keyview.key_generator,name="key"),
@@ -69,12 +79,19 @@ urlpatterns = [
     path("tpod",tdkeyview.tkey_generator,name="tkey"),
     path('tpod/<int:id>', tdkeyview.tshow, name="tkey2"), 
 
-#fifthdelkey urls
-    path("fipod",fifthdelpodview.fifthkey_generator,name="fikey"),
-    path('fipod/<int:id>', fifthdelpodview.fifthshow, name="fikey2"), 
+  
 #fourthdelkey urls
     path("fopod",fourthkeyview.fourthkey_generator,name="fokey"),
     path('fopod/<int:id>', fourthkeyview.fourthshow, name="fokey2"), 
+
+#fifthdelkey urls
+    path("fipod",fifthdelkeyview.fifthkey_generator,name="fikey"),
+    path('fipod/<int:id>', fifthdelkeyview.fifthshow, name="fikey2"),
+
+
+#sixthdelkey urls
+    path("sipod",sixthdelkeyview.sixthkey_generator,name="sikey"),
+    path('sipod/<int:id>', sixthdelkeyview.sixthshow, name="sikey2"),     
 
 
 
