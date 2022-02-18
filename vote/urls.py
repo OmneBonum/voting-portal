@@ -10,6 +10,7 @@ from vote.Views import sdkeyview
 from vote.Views import tdkeyview
 from vote.Views import spodview
 from vote.Views import tpodview
+from vote.Views import fifthdelpodview
 
 app_name = "vote"
 
@@ -40,6 +41,11 @@ urlpatterns = [
 #tpod urls
     path('tjoin',tpodview.tvalidate,name="tjoin"),
     path("tshow",tpodview.tpodshow,name='tshow'), 
+
+#fifthpod urls
+    path('fijoin',fifthdelpodview.fifthvalidate,name="fijoin"),
+    path("fishow",fifthdelpodview.fifthpodshow,name='fishow'), 
+
 #key urls
     path("pod",Keyview.key_generator,name="key"),
     path('pod/<int:id>', Keyview.show, name="key2"), 
@@ -56,6 +62,11 @@ urlpatterns = [
 #tdelkey urls
     path("tpod",tdkeyview.tkey_generator,name="tkey"),
     path('tpod/<int:id>', tdkeyview.tshow, name="tkey2"), 
+
+#fifthdelkey urls
+    path("fipod",fifthdelpodview.fifthkey_generator,name="fikey"),
+    path('fipod/<int:id>', fifthdelpodview.fifthshow, name="fikey2"), 
+
 #member urls
 path('member',memberview.memberIndex,name="member_index"),
 

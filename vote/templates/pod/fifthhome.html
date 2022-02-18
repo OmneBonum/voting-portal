@@ -60,26 +60,26 @@ margin-bottom: 7px;
 <div class="col-md-4"></div>
 
 
-{% if tpod == request.user.id%}
+{% if fipod == request.user.id%}
 <div class="col-md-4 d-flex">
     <div class="btn_section text-center m-2">
-        <a class="btn btn-primary text-center Creat_pod" href="tpod/{{keys}}">Third del pod</a>
+        <a class="btn btn-primary text-center Creat_pod" href="fipod/{{keys}}">Fifth del pod</a>
         </div>
 
     <div class="btn_section text-center m-2">
-    <a class="btn btn-primary text-center Creat_pod" href="tjoin">join fourth del</a>
+    <a class="btn btn-primary text-center Creat_pod" href="join">join Sixth del</a>
     </div> 
     <div class="btn_section text-center m-2">
-    <a class="btn btn-primary text-center Creat_pod" href="tpod">Create fourth del</a>
+    <a class="btn btn-primary text-center Creat_pod" href="tpod">Create Sixth del</a>
     </div>
      
 </div>
 
 
-    {%elif tkey == 0%}
+    {%elif fikey == 0%}
 
     <div class="btn_section text-center m-2">
-        <a class="btn btn-primary text-center Creat_pod" href="tpod/{{keys}}">Second del pod</a>
+        <a class="btn btn-primary text-center Creat_pod" href="fipod/{{keys}}">Fifth del pod</a>
         </div>
     
    
@@ -90,12 +90,12 @@ margin-bottom: 7px;
 
 <div class="col-md-4 d-flex">
 <div class="btn_section text-center m-2">
-<a class="btn btn-primary text-center Creat_pod" href="tjoin">join fourth dell</a>
+<a class="btn btn-primary text-center Creat_pod" href="tjoin">join Sixth dell</a>
     
 </div>  
 
 <div class="btn_section text-center m-2">
-<a class="btn btn-primary text-center Creat_pod" href="/tpod">Creat a fourth dell</a>
+<a class="btn btn-primary text-center Creat_pod" href="/tpod">Creat a Sixth dell</a>
 </div>  
 {% endif %} 
 

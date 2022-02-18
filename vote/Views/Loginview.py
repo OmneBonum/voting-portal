@@ -58,7 +58,7 @@ def user_login(request):
             #print(group_keys[0])
             
             if firstdel_groups.objects.filter(group_owner_id=request.user.id) and firstdel_groups_members.objects.filter(member_id=request.user.id):
-                return redirect('/fshow') 
+                return redirect('/tshow') 
             
             if seconddel_groups.objects.filter(group_key=skey) and seconddel_groups_members.objects.filter(member_id=request.user.id):
                 return redirect('/sshow') 

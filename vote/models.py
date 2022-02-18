@@ -119,7 +119,7 @@ class fourthdel_groups(models.Model):
   updated_at =  models.DateTimeField(auto_now=True)
 
 class fourthdel_groups_members(models.Model):
-  group=models.ForeignKey(pod_groups,on_delete=models.CASCADE,null=True)
+  group=models.ForeignKey(fourthdel_groups,on_delete=models.CASCADE,null=True)
   member=models.ForeignKey(user,on_delete=models.CASCADE,null=True)
   vote_count=models.IntegerField(default=0)
   elect_count=models.IntegerField(default=0)
@@ -137,7 +137,7 @@ class fifthdel_groups(models.Model):
   updated_at =  models.DateTimeField(auto_now=True)
 
 class fifthdel_groups_members(models.Model):
-  group=models.ForeignKey(pod_groups,on_delete=models.CASCADE,null=True)
+  group=models.ForeignKey(fifthdel_groups,on_delete=models.CASCADE,null=True)
   member=models.ForeignKey(user,on_delete=models.CASCADE,null=True)
   vote_count=models.IntegerField(default=0)
   elect_count=models.IntegerField(default=0)
