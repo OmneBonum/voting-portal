@@ -23,7 +23,7 @@ def spodshow(request):
      else:
         owner_id=0
 
-     if key2:
+     if key2:#fdkjfkhg
           print(key2)
           for i in key2:
                z=i.group_id
