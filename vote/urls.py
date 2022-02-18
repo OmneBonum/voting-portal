@@ -4,12 +4,12 @@ from vote.Views import Signupview
 from vote.Views import Keyview
 from vote.Views import Podview
 from vote.Views import memberview
-from vote.Views import fdkeyview
-from vote.Views import fpodview
-from vote.Views import sdkeyview
-from vote.Views import tdkeyview
-from vote.Views import spodview
-from vote.Views import tpodview
+from vote.Views import firstdkeyview
+from vote.Views import firstpodview
+from vote.Views import seconddkeyview
+from vote.Views import thirddkeyview
+from vote.Views import secondpodview
+from vote.Views import thirdpodview
 from vote.Views import fifthdelpodview
 from vote.Views import fourthkeyview
 from vote.Views import fourthpodview
@@ -36,16 +36,16 @@ urlpatterns = [
     path('join',Podview.validate,name="join"),
     
 #fpod urls
-    path('fjoin',fpodview.fvalidate,name="fjoin"),
-    path("fshow",fpodview.fpodshow,name='fshow'), 
+    path('fjoin',firstpodview.fvalidate,name="fjoin"),
+    path("fshow",firstpodview.fpodshow,name='fshow'), 
 
 #spod urls
-    path('sjoin',spodview.svalidate,name="sjoin"),
-    path("sshow",spodview.spodshow,name='sshow'), 
+    path('sjoin',secondpodview.svalidate,name="sjoin"),
+    path("sshow",secondpodview.spodshow,name='sshow'), 
 
 #tpod urls
-    path('tjoin',tpodview.tvalidate,name="tjoin"),
-    path("tshow",tpodview.tpodshow,name='tshow'), 
+    path('tjoin',thirdpodview.tvalidate,name="tjoin"),
+    path("tshow",thirdpodview.tpodshow,name='tshow'), 
 
 #fourth pod  urls
     path('fojoin',fourthpodview.fourthvalidate,name="fojoin"),
@@ -58,8 +58,8 @@ urlpatterns = [
 
 
 #sixthpod urls
-    path("fishow",sixthdelpodview.sixthpodshow,name='fishow'), 
-    path('fijoin',sixthdelpodview.sixthvalidate,name="fijoin"),
+    path("sishow",sixthdelpodview.sixthpodshow,name='sishow'), 
+    path('sijoin',sixthdelpodview.sixthvalidate,name="sijoin"),
     
 
 #key urls
@@ -68,16 +68,16 @@ urlpatterns = [
     # path("show<int:id>",Keyview.keyshow,name='show2'),
 
 #fdelkey urls 
-    path("fpod",fdkeyview.fkey_generator,name="fkey"),
-    path('fpod/<int:id>', fdkeyview.fshow, name="fkey2"), 
+    path("fpod",firstdkeyview.fkey_generator,name="fkey"),
+    path('fpod/<int:id>', firstdkeyview.fshow, name="fkey2"), 
 
 #sdelkey urls 
-    path("spod",sdkeyview.skey_generator,name="skey"),
-    path('spod/<int:id>', sdkeyview.sshow, name="skey2"), 
+    path("spod",seconddkeyview.skey_generator,name="skey"),
+    path('spod/<int:id>', seconddkeyview.sshow, name="skey2"), 
 
 #tdelkey urls
-    path("tpod",tdkeyview.tkey_generator,name="tkey"),
-    path('tpod/<int:id>', tdkeyview.tshow, name="tkey2"), 
+    path("tpod",thirddkeyview.tkey_generator,name="tkey"),
+    path('tpod/<int:id>', thirddkeyview.tshow, name="tkey2"), 
 
   
 #fourthdelkey urls

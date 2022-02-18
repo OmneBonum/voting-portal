@@ -40,7 +40,7 @@ def skey_generator(request):
         member.member_id=current_user.id
         member.save()   
         return HttpResponseRedirect(reverse("vote:skey2",args=[key.id])) 
-    return render(request,"key/sdelkey.html",{'user':user,'is_key_generate':1})
+    return render(request,"key/seconddelkey.html",{'user':user,'is_key_generate':1})
 
 
 
@@ -139,7 +139,7 @@ def sshow(request,id):
             print(i.member.id)
             mem.group_owner_id=seconddel_groups.objects.filter(group_owner=i.group.group_owner_id).update(group_owner=i.member.id)     
         return redirect(request.path_info)   
-    return render(request,"key/sdelkey.html",{'user':users,'key1':key1,'stat':status,'is_key_generate':0,'podlen':podlength,"owner_id":owner_id,'all':all,'votegive':hell,"evote":evote}) 
+    return render(request,"key/seconddelkey.html",{'user':users,'key1':key1,'stat':status,'is_key_generate':0,'podlen':podlength,"owner_id":owner_id,'all':all,'votegive':hell,"evote":evote}) 
  
     
 

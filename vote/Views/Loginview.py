@@ -45,24 +45,37 @@ def user_login(request):
         if users is not None:
             login(request,users)
 
-            pod_key=pod_groups.objects.filter(id=request.user.id)
-            f_key=firstdel_groups.objects.filter(group_owner_id=request.user.id)
-            s_key=seconddel_groups.objects.filter(group_owner_id=request.user.id)
+            pod_key=fifthdel_groups.objects.filter(group_owner_id=request.user.id)
             pkey=pod_key.values_list("group_key",flat=True).first()
             print("pod",pkey)
-            bkey=f_key.values_list("group_key",flat=True).first()
-            print("bkey",bkey)
-            skey=s_key.values_list("group_key",flat=True).first()
-            print(skey)
+            
             #group_keys=pkey[0]
             #print(group_keys[0])
             
             if firstdel_groups.objects.filter(group_owner_id=request.user.id) and firstdel_groups_members.objects.filter(member_id=request.user.id):
-                return redirect('/tshow') 
-            
-            if seconddel_groups.objects.filter(group_key=skey) and seconddel_groups_members.objects.filter(member_id=request.user.id):
-                return redirect('/sshow') 
+                
 
+                if seconddel_groups.objects.filter(group_owner_id= request.user.id) and seconddel_groups_members.objects.filter(member_id=request.user.id):
+                    if thirddel_groups.objects.filter(group_owner_id= request.user.id) and thirddel_groups_members.objects.filter(member_id=request.user.id):
+                      if fourthdel_groups.objects.filter(group_owner_id= request.user.id) and fourthdel_groups_members.objects.filter(member_id=request.user.id):  
+                        
+                        if fifthdel_groups.objects.filter(group_key= pkey) and fifthdel_groups_members.objects.filter(member_id=request.user.id):
+                          return redirect('/fishow') 
+                        else:
+                          return redirect('/foshow') 
+
+                      else:  
+                        return redirect('/tshow') 
+                        # else:
+                        #     return redirect('/foshow')
+                    else: 
+                      return redirect('/sshow') 
+                    # else:
+                    #     return redirect('/tshow')
+
+                        # return redirect('/tshow')
+                else:
+                  return redirect('/fshow')  
             # if seconddel_groups.objects.filter(group_key=bkey) and seconddel_groups_members.objects.filter(member_id=request.user.id):
             #    return redirect('/sshow') 
             

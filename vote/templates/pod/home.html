@@ -51,7 +51,9 @@ margin-bottom: 7px;
 <h1>{{i}}</h1>
 {%endfor%} {% endcomment %}
 <h1><center>Voter Page for {{request.user.name}}</center></h1>
-    
+{% comment %} <h1>{{pod}}</h1> {% endcomment %}
+
+
 
 
 <h1>{{user_id}}</h1>
@@ -61,8 +63,8 @@ margin-bottom: 7px;
 <div class="row mb-3">
 <div class="col-md-4"></div>
 
-
 {% if fpod == request.user.id  %}
+
 <div class="col-md-4 d-flex">
     <div class="btn_section text-center m-2">
         <a class="btn btn-primary text-center Creat_pod" href="pod/{{key1}}">My pod</a>
@@ -97,9 +99,11 @@ margin-bottom: 7px;
     <a class="btn btn-primary text-center Creat_pod" href="pod/{{key1}}">My pod</a>
     </div>
   {% endcomment %}
+ 
 
 
 {% else %}
+
 <div class="col-md-4 d-flex">
 <div class="btn_section text-center m-2">
 <a class="btn btn-primary text-center Creat_pod" href="join">join a pod</a>
@@ -115,8 +119,54 @@ margin-bottom: 7px;
 </div> {% endcomment %}
 
 
-
 {% endif %} 
+
+{% comment %} 
+{%for i in al%}
+{%if i.group_owner_id == request.user.id and i.group_key == bkey%}
+
+{% if fpod == request.user.id %}
+
+<div class="col-md-4 d-flex">
+    <div class="btn_section text-center m-2">
+        <a class="btn btn-primary text-center Creat_pod" href="fpod/{{bpod}}">First del pod</a>
+        </div>
+
+    <div class="btn_section text-center m-2">
+    <a class="btn btn-primary text-center Creat_pod" href="sjoin">join Second del</a>
+    </div> 
+    <div class="btn_section text-center m-2">
+    <a class="btn btn-primary text-center Creat_pod" href="spod">Create Second del</a>
+    </div>
+     
+</div>
+
+
+    {%elif fkey == 0%}
+
+    <div class="btn_section text-center m-2">
+        <a class="btn btn-primary text-center Creat_pod" href="fpod/{{keys}}">First del pod</a>
+        </div>
+    
+   
+
+{% else %}
+<div class="col-md-4 d-flex">
+<div class="btn_section text-center m-2">
+<a class="btn btn-primary text-center Creat_pod" href="sjoin">join Second dell</a>
+    
+</div>  
+
+<div class="btn_section text-center m-2">
+<a class="btn btn-primary text-center Creat_pod" href="/spod">Creat a Second dell</a>
+</div>  
+{% endif %} 
+
+
+{%endif%}
+{%endfor%} {% endcomment %}
+
+
 </div>
 <div class="col-md-4"></div>
 </div>

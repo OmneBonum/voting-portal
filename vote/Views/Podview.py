@@ -12,8 +12,19 @@ import string
 
 
 def podshow(request):  
+     all=pod_groups.objects.all()
+     al=firstdel_groups.objects.all()
+     pod_key=pod_groups.objects.filter(group_owner_id=request.user.id)
+     f_key=firstdel_groups.objects.filter(group_owner_id=request.user.id)
+     s_key=seconddel_groups.objects.filter(group_owner_id=request.user.id)
+     pkey=pod_key.values_list("group_key",flat=True).first()
+     print("pod",pkey)
+     bkey=f_key.values_list("group_key",flat=True).first()
+     print("bkey",bkey)
+     skey=s_key.values_list("group_key",flat=True).first()
+     print(skey)
      key1=pod_groups_members.objects.filter(member_id=request.user.id)
-     print(key1)
+     
      fpods=pod_groups.objects.filter(group_owner_id=request.user.id)
      k=fpods.values_list('group_owner_id',flat=True)
      print("k",k)
@@ -24,20 +35,20 @@ def podshow(request):
 
     
      if key1:
-          print(key1)
+          print(key1) 
           for i in key1:
                z=i.group_id
+     
           
           print("asdf")
           current_user =request.user.id
           a = pod_groups_members.objects.filter(member_id=current_user).exists()
-          
-          return render(request,'pod/home.html',{'key1':z,'a':a,'fpod':owner_id,"fkey":0})
+          return render(request,'pod/home.html',{'key1':z,'a':a,'fpod':owner_id,"fkey":0,'bkey':bkey,'pod':all,'al':al,'pkey':pkey})
      
      else:      
           current_user =request.user.id
           a = pod_groups_members.objects.filter(member_id=current_user).exists()
-     return render(request,'pod/home.html',{'a':a,'fpod':fpods})
+     return render(request,'pod/home.html',{'a':a,'fpods':fpods,'pkey':bkey,'pod':all,al:'al'})
 
 
 def validate(request):

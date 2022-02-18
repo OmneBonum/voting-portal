@@ -166,7 +166,3 @@ def show(request,id):
     return render(request,"key/key.html",{'user':users,'key1':key1,'stat':status,'is_key_generate':0,'podlen':podlength,"owner_id":owner_id,'all':all,'votegive':hell,"evote":evote}) 
  
     
-
-
-
-
