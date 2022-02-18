@@ -11,13 +11,13 @@ import random
 import string
 
 
-def fifthpodshow(request):  
-     key2=fifthdel_groups_members.objects.filter(member_id=request.user.id)
+def sixthpodshow(request):  
+     key2=sixthdel_groups_members.objects.filter(member_id=request.user.id)
      print(key2)
-     fpods=fifthdel_groups.objects.filter(group_owner_id=request.user.id)
+     fpods=sixthdel_groups.objects.filter(group_owner_id=request.user.id)
      k=fpods.values_list('group_owner_id',flat=True)
      print("k",k)
-     if fifthdel_groups.objects.filter(group_owner_id=request.user).exists():
+     if sixthdel_groups.objects.filter(group_owner_id=request.user).exists():
         owner_id=k[0]
      else:
         owner_id=0
@@ -32,24 +32,24 @@ def fifthpodshow(request):
           # if pod_groups_members.objects.filter(member_status = 0,group_id=z):
           #      pod_groups_members.objects.update(vote_given=0)
           current_user =request.user.id
-          a = fifthdel_groups_members.objects.filter(member_id=current_user).exists()
+          a = sixthdel_groups_members.objects.filter(member_id=current_user).exists()
           
-          return render(request,'pod/fifthhome.html',{'keys':z,'a':a,'fipod':owner_id,'fikey':0})
+          return render(request,'pod/sixthhome.html',{'keys':z,'a':a,'sipod':owner_id,'sikey':0})
      
      else:      
           current_user =request.user.id
-          a = fifthdel_groups_members.objects.filter(member_id=current_user).exists()
-     return render(request,'pod/fifthhome.html',{'a':a})
+          a = sixthdel_groups_members.objects.filter(member_id=current_user).exists()
+     return render(request,'pod/sixthhome.html',{'a':a})
 
 
-def fifthvalidate(request):
+def sixthvalidate(request):
      if request.method =="POST":
-          join=fifthdel_groups_members()
+          join=sixthdel_groups_members()
          
           uname= request.POST.get('pod_key')
           print("uname",uname)
-          if fifthdel_groups.objects.filter(group_key=uname).exists()  :
-               key1=fifthdel_groups.objects.filter(group_key=uname)
+          if sixthdel_groups.objects.filter(group_key=uname).exists()  :
+               key1=sixthdel_groups.objects.filter(group_key=uname)
                for i in key1:
                     z=i.id
                     print('z',z)
@@ -59,15 +59,15 @@ def fifthvalidate(request):
                join.member_id=current_user
                join.group_id=z    
                join.member_status=0
-               a=len(fifthdel_groups_members.objects.filter(group_id=z))
+               a=len(sixthdel_groups_members.objects.filter(group_id=z))
                print("a",a)
                #if a <= 11:
                join.save()
-               return redirect('/fishow')
+               return redirect('/sishow')
           else:
                messages.error(request,"Invalid key")
-               return redirect('/fijoin') 
-     return render(request,"pod/fifthjoin.html")
+               return redirect('/sijoin') 
+     return render(request,"pod/sixthjoin.html")
 
 # def trying (request):
 #      t=validate(request)

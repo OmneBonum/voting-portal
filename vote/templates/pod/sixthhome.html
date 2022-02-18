@@ -1,0 +1,215 @@
+{%include "app/header.html"%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>pagep-2</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+{% comment %} <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script> {% endcomment %}
+
+
+<style>
+
+input#Yea,input#Nay,input#Prtesent, input#Proxy {
+float: right;
+width: 20px;
+height: 30px;
+}
+button.btn.btn_More {
+border: 1px solid #c5c5c5;
+background-image: linear-gradient(#fffefe, #ebebeb);
+}
+button.btn.btn-primary.text-center.Join_Pod,.Creat_pod {
+color: #fff;
+background-color: #337ab7;
+border-color: #2e6da4;
+padding: 10px 30px;
+font-size: 20px;
+border-radius: 10px;
+width: 100%;
+}
+button.btn.btn-primary.text-center.Join_Pod,.Creat_pod:hover {
+color: #fff;
+background-color: #337ab7;
+border-color: #0062cc;
+}
+.text-left.section_lable_input {
+margin-bottom: 7px;
+}
+</style>
+
+</head>
+<body>
+{% comment %} 	
+{%for context in i %} 
+<h1>{{i}}</h1>
+{%endfor%} {% endcomment %}
+<h1><center>Voter Page for {{request.user.name}}</center></h1>
+    
+
+<div class="container mt-5">
+	
+
+<div class="row mb-3">
+<div class="col-md-4"></div>
+
+
+{% if sipod == request.user.id%}
+<div class="col-md-4 d-flex">
+    <div class="btn_section text-center m-2">
+        <a class="btn btn-primary text-center Creat_pod" href="sipod/{{keys}}">Sixth del pod</a>
+        </div>
+
+    <div class="btn_section text-center m-2">
+    <a class="btn btn-primary text-center Creat_pod" href="join">join Sixth del</a>
+    </div> 
+    <div class="btn_section text-center m-2">
+    <a class="btn btn-primary text-center Creat_pod" href="tpod">Create Sixth del</a>
+    </div>
+     
+</div>
+
+
+    {%elif sikey == 0%}
+
+    <div class="btn_section text-center m-2">
+        <a class="btn btn-primary text-center Creat_pod" href="sipod/{{keys}}">Sixth del pod</a>
+        </div>
+    
+   
+
+{% else %}
+<h1>dsfd</h1>
+
+
+<div class="col-md-4 d-flex">
+<div class="btn_section text-center m-2">
+<a class="btn btn-primary text-center Creat_pod" href="tjoin">join Sixth dell</a>
+    
+</div>  
+
+<div class="btn_section text-center m-2">
+<a class="btn btn-primary text-center Creat_pod" href="/tpod">Creat a Sixth dell</a>
+</div>  
+{% endif %} 
+
+
+
+{% comment %} <div class="btn_section text-center m-2">
+    <a class="btn btn-primary text-center Creat_pod" href="/Hellouser">Creat a pod</a>
+</div> {% endcomment %}
+
+
+
+
+</div>
+<div class="col-md-4"></div>
+</div>
+
+
+
+<h3 class="text-center">List of Bills</h3>
+<table class="table table-bordered text-center">
+<thead>
+<tr>
+<th>Bill Number</th>
+<th>Short Title</th>
+<th>Sched'd for Vote</th>
+<th>Advice</th>
+<th>More...</th>
+<th>Your Vote</th>
+<th>District Tally</th>
+<th>Nat'l Tally</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H.R. 0001</td>
+<td>Short Title</td>
+<td>Date</td>
+<td>Yea</td>
+<td><button type="button" class="btn btn_More">More...</button></td>
+<td>
+<fieldset>
+<div class="text-left section_lable_input">
+<label for="coding">Yea</label>
+<input type="checkbox" id="Yea" name="interest" value="coding">
+</div>
+<div class="text-left section_lable_input">
+<label for="coding">Nay</label>
+<input type="checkbox" id="Nay" name="interest" value="coding">
+</div>
+<div class="text-left section_lable_input">
+<label for="coding">Prtesent</label>
+<input type="checkbox" id="Prtesent" name="interest" value="coding">
+</div>
+<div class="text-left section_lable_input">
+<label for="coding">Proxy</label>
+<input type="checkbox" id="Proxy" name="interest" value="coding">
+</div>
+</fieldset>
+</td>
+<td>
+<div><input id="textInput" class="custom mb-2" size="12"></div>
+<div><input id="textInput" class="custom mb-2" size="12"></div>
+<div><input id="textInput" class="custom mb-2" size="12"></div>
+<div><input id="textInput" class="custom" size="12"></div>
+</td>
+<td>
+<div><input id="textInput" class="custom mb-2" size="12"></div>
+<div><input id="textInput" class="custom mb-2" size="12"></div>
+<div><input id="textInput" class="custom mb-2" size="12"></div>
+<div><input id="textInput" class="custom" size="12"></div>
+</td>
+</tr>
+<tr>
+<td>H.R 0002</td>
+<td>Short Title</td>
+<td>Date</td>
+<td>Yea</td>
+<td><button type="button" class="btn btn_More">More...</button></td>
+<td>
+<fieldset>
+<div class="text-left section_lable_input">
+<label for="coding" class="text-left">Yea</label>
+<input type="checkbox" id="Yea" name="interest" value="coding">
+</div>
+<div class="text-left section_lable_input">
+<label for="coding" class="text-left">Nay</label>
+<input type="checkbox" id="Nay" name="interest" value="coding">
+</div>
+<div class="text-left section_lable_input">
+<label for="coding" class="text-left">Prtesent</label>
+<input type="checkbox" id="Prtesent" name="interest" value="coding">
+</div>
+<div class="text-left section_lable_input">
+<label for="coding">Proxy</label>
+<input type="checkbox" id="Proxy" name="interest" value="coding">
+</div>
+</fieldset>
+</td>
+<td>
+<div><input id="textInput" class="custom mb-2" size="12"></div>
+<div><input id="textInput" class="custom mb-2" size="12"></div>
+<div><input id="textInput" class="custom mb-2" size="12"></div>
+<div><input id="textInput" class="custom" size="12"></div>
+</td>
+<td>
+<div><input id="textInput" class="custom mb-2" size="12"></div>
+<div><input id="textInput" class="custom mb-2" size="12"></div>
+<div><input id="textInput" class="custom mb-2" size="12"></div>
+<div><input id="textInput" class="custom" size="12"></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</body>
+</html>
