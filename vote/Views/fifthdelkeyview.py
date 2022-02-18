@@ -20,7 +20,7 @@ def index(request):
          
 def fifthkey_generator(request):
     podlength=len(fourthdel_groups_members.objects.filter(member_status = 1))
-    print(">>>>>>>>>>>",podlength)
+    # print(">>>>>>>>>>>",podlength)
     user = fifthdel_groups.objects.filter(group_owner_id=request.user).order_by('group_owner_id')  
     
     if request.method=="POST":
@@ -49,13 +49,13 @@ def fifthshow(request,id):
     # print("dskdksdhkshbd",currnt)
     hello = currnt.values_list("vote_given",flat=True)
     hell=hello[0]     
-    print("hell",hell)
+    # print("hell",hell)
     hello = currnt.values_list("elect_vote_given",flat=True)
     evote=hello[0]
-    print(evote)    
+    # print(evote)    
 
     key1=fifthdel_groups.objects.get(id=id)
-    print("key1",key1)
+    # print("key1",key1)
     all=fifthdel_groups.objects.filter(id=key1.id)
     users = fifthdel_groups.objects.filter(id=key1.id) 
     user = fifthdel_groups.objects.filter(group_owner_id=request.user)
@@ -66,7 +66,7 @@ def fifthshow(request,id):
         owner_id=0       
     approval_obj = fifthdel_groups_members.objects.filter(group_id=key1)
     podlength=len(fifthdel_groups_members.objects.filter(group_id=key1,member_status = 1))
-    print(">>>>>>>>>>>>>>>>>>>>>",podlength)
+    # print(">>>>>>>>>>>>>>>>>>>>>",podlength)
     array=[]
     z=approval_obj
     print("z",len(z))
