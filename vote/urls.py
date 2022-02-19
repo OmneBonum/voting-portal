@@ -93,13 +93,7 @@ urlpatterns = [
     path("sipod",sixthdelkeyview.sixthkey_generator,name="sikey"),
     path('sipod/<int:id>', sixthdelkeyview.sixthshow, name="sikey2"),     
 
-
-
-
-
-
-
-#member urls
+#memberkey urls
 path('member',memberview.memberIndex,name="member_index"),
 
 

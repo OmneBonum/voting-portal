@@ -17,18 +17,9 @@ from django.urls import reverse
 
 
 def index(request):
-    con=pod_groups.objects.all()
-    fcon=seconddel_groups.objects.all()
-    context = sixthdel_groups.objects.all()
-    s_key=seconddel_groups.objects.filter(group_owner_id=request.user.id)
-    skey=s_key.values_list("group_key",flat=True).first()
-    print("pod",skey)
     f_key=pod_groups.objects.filter(group_owner_id=request.user.id)
     pkey=f_key.values_list("group_key",flat=True).first()
     print("pod",pkey)
-    pod_key=sixthdel_groups.objects.filter(group_owner_id=request.user.id)
-    kkey=pod_key.values_list("group_key",flat=True).first()
-    print("pod",kkey)
     if pod_groups.objects.filter(group_key=pkey):
       if firstdel_groups.objects.filter(group_owner_id=request.user.id):
         if seconddel_groups.objects.filter(group_owner_id=request.user.id):
@@ -36,20 +27,20 @@ def index(request):
             if fourthdel_groups.objects.filter(group_owner_id=request.user.id): 
               if fifthdel_groups.objects.filter(group_owner_id=request.user.id):
                 if sixthdel_groups.objects.filter(group_owner_id=request.user.id):
-                  return render(request,"app/index.html",{'context':context,'kkey':kkey,'fcon':fcon,'pkey':skey,'z':0})  
+                  return render(request,"app/index.html",{'z':0})  
                 else:
-                  return render(request,"app/index.html",{'context':context,'kkey':kkey,'fcon':fcon,'pkey':skey,'si':0})
+                  return render(request,"app/index.html",{'si':0})
               else:
-                return render(request,"app/index.html",{'context':context,'kkey':kkey,'fcon':fcon,'pkey':skey,'fi':0})
+                return render(request,"app/index.html",{'fi':0})
             else:
-              return render(request,"app/index.html",{'context':context,'kkey':kkey,'fcon':fcon,'pkey':skey,'fo':0})
+              return render(request,"app/index.html",{'fo':0})
           else:
-            return render(request,"app/index.html",{'context':context,'kkey':kkey,'fcon':fcon,'pkey':skey,'th':0 }) 
+            return render(request,"app/index.html",{'th':0 }) 
         else:
-          return render(request,"app/index.html",{'context':context,'kkey':kkey,'con':con,'pkey':pkey,'s':0}) 
+          return render(request,"app/index.html",{'s':0}) 
       else:  
-        return render(request,"app/index.html",{'context':context,'kkey':kkey,'con':con,'pkey':pkey,'f':0})  
-    return render(request,"app/index.html",{'context':context,'kkey':kkey,'con':con,'pkey':pkey,'f': 0}) 
+        return render(request,"app/index.html",{'f':0})  
+    return render(request,"app/index.html",{'f': 0}) 
 
 def user_login(request):
     if request.method == "POST":
@@ -71,7 +62,7 @@ def user_login(request):
         
         b=a.values_list("group_key",flat=True)
         print("group",b)
-        
+        #d
         if users is not None:
             login(request,users)
 
