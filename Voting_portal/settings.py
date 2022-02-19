@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 import pymysql
 pymysql.version_info = (1, 4, 13, "final", 0)
-
 pymysql.install_as_MySQLdb()
 
 
@@ -47,7 +46,7 @@ MESSAGE_TAGS = {
         messages.ERROR: 'alert-danger',
  }
 
-# ALLOWED_HOSTS = ['15.206.128.44']
+#ALLOWED_HOSTS = ['15.206.128.44']
 # ALLOWED_HOSTS = ['184.168.122.169']
 
 
@@ -125,6 +124,7 @@ WSGI_APPLICATION = 'Voting_portal.wsgi.application'
 #         }
 #     }
 # }
+
 
 DATABASES = {
     'default': {
