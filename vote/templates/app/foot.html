@@ -27,14 +27,88 @@
                id="bs-example-navbar-collapse-1">
              {% comment %} <li><a href="/">Home</a></li> {% endcomment %}
              
-             <li><a href="/fshow">Voter</a></li>
+             {% comment %} <li><a href="/fshow">Voter</a></li>
              <li><a href="/help">Help</a></li>
              <li><a href="/logout">Logout</a></li>
              <li><a href="/member">Members</a></li>
              <img src="/static/image/user.png" alt="..." class="img-circle profile_img" height="40px">{{request.user.name}}</li>
             </ul>
-        </nav>
+        </nav> {% endcomment %}
 
+            {%if q == 0%}
+                  
+             <li><a href="/show">Voter</a></li>
+             <li><a href="/help">Help</a></li>
+             <li><a href="/logout">Logout</a></li>
+             <li><a href="/member">Members</a></li>
+             <img src="/static/image/user.png" alt="..." class="img-circle profile_img" height="40px">{{request.user.name}}</li>
+            </ul>
+            {%endif%}
+        
+          {% if w == 0 %}
+
+          <li><a href="/fshow">Voter</a></li>
+          <li><a href="/help">Help</a></li>
+          <li><a href="/logout">Logout</a></li>
+          <li><a href="/member">Members</a></li>
+          <img src="/static/image/user.png" alt="..." class="img-circle profile_img" height="40px">{{request.user.name}}</li>
+         </ul>
+         {%endif%}
+
+         {% if e == 0 %}
+
+         <li><a href="/sshow">Voter</a></li>
+         <li><a href="/help">Help</a></li>
+         <li><a href="/logout">Logout</a></li>
+         <li><a href="/member">Members</a></li>
+         <img src="/static/image/user.png" alt="..." class="img-circle profile_img" height="40px">{{request.user.name}}</li>
+        </ul>
+        {%endif%}
+        {% if r == 0 %}
+
+        <li><a href="/tshow">Voter</a></li>
+        <li><a href="/help">Help</a></li>
+        <li><a href="/logout">Logout</a></li>
+        <li><a href="/member">Members</a></li>
+        <img src="/static/image/user.png" alt="..." class="img-circle profile_img" height="40px">{{request.user.name}}</li>
+       </ul>
+
+        {%endif%}
+
+        {% if t == 0 %}
+
+        <li><a href="/foshow">Voter</a></li>
+        <li><a href="/help">Help</a></li>
+        <li><a href="/logout">Logout</a></li>
+        <li><a href="/member">Members</a></li>
+        <img src="/static/image/user.png" alt="..." class="img-circle profile_img" height="40px">{{request.user.name}}</li>
+       </ul>
+
+        {%endif%}
+
+        {% if y == 0 %}
+
+        <li><a href="/fishow">Voter</a></li>
+        <li><a href="/help">Help</a></li>
+        <li><a href="/logout">Logout</a></li>
+        <li><a href="/member">Members</a></li>
+        <img src="/static/image/user.png" alt="..." class="img-circle profile_img" height="40px">{{request.user.name}}</li>
+       </ul>
+
+        {%endif%}
+
+
+        {% if u == 0 %}
+
+        <li><a href="/sishow">Voter</a></li>
+        <li><a href="/help">Help</a></li>
+        <li><a href="/logout">Logout</a></li>
+        <li><a href="/member">Members</a></li>
+        <img src="/static/image/user.png" alt="..." class="img-circle profile_img" height="40px">{{request.user.name}}</li>
+       </ul>
+
+        {%endif%}
+     </nav>
 
 
 
