@@ -44,11 +44,11 @@ MESSAGE_TAGS = {
         messages.ERROR: 'alert-danger',
  }
 
-# ALLOWED_HOSTS = ['15.206.128.44']
+ALLOWED_HOSTS = ['15.206.128.44']
 # ALLOWED_HOSTS = ['184.168.122.169']
 
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
 
 
 
@@ -107,23 +107,6 @@ WSGI_APPLICATION = 'Voting_portal.wsgi.application'
 # }
 
 
-# DATABASES = {
-#     'default': {
-#        'ENGINE': 'django.db.backends.mysql', 
-#        'NAME': 'vote',
-#        'HOST': 'localhost',
-#        'PORT': '3306',
-#        'USER': 'root',
-#        'PASSWORD': 'AdMiN@123456',
-#        'OPTIONS': {
-#             'init_command': 'SET sql_mode="STRICT_TRANS_TABLES"',
-            
-             
-#         }
-#     }
-# }
-
-
 DATABASES = {
     'default': {
        'ENGINE': 'django.db.backends.mysql', 
@@ -131,7 +114,7 @@ DATABASES = {
        'HOST': 'localhost',
        'PORT': '3306',
        'USER': 'root',
-       'PASSWORD': '',
+       'PASSWORD': 'AdMiN@123456',
        'OPTIONS': {
             'init_command': 'SET sql_mode="STRICT_TRANS_TABLES"',
             
@@ -139,6 +122,23 @@ DATABASES = {
         }
     }
 }
+
+
+# DATABASES = {
+#     'default': {
+#        'ENGINE': 'django.db.backends.mysql', 
+#        'NAME': 'vote',
+#        'HOST': 'localhost',
+#        'PORT': '3306',
+#        'USER': 'root',
+#        'PASSWORD': '',
+#        'OPTIONS': {
+#             'init_command': 'SET sql_mode="STRICT_TRANS_TABLES"',
+            
+             
+#         }
+#     }
+# }
 
 
 # Password validation
