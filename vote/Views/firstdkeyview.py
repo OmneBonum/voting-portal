@@ -1,7 +1,6 @@
 from tokenize import group
 from django.shortcuts import render
 from django.template import loaders
-# from numpy import append, array
 import vote
 from vote.models import *
 from django.shortcuts import redirect
@@ -40,22 +39,19 @@ def fkey_generator(request):
         member.member_id=current_user.id
         member.save()   
         return HttpResponseRedirect(reverse("vote:fkey2",args=[key.id])) 
-    return render(request,"key/firstdelkey.html",{'user':user,'is_key_generate':1})
+    return render(request,"key/firstdelkey.html",{'user':user,'is_key_generate':1,'w':0})
 
 
 
 def fshow(request,id):   
     currnt = firstdel_groups_members.objects.filter(member_id = request.user.id)
-    # print("dskdksdhkshbd",currnt)
     hello = currnt.values_list("vote_given",flat=True)
     hell=hello[0]     
-    print("hell",hell)
     hello = currnt.values_list("elect_vote_given",flat=True)
     evote=hello[0]
-    print(evote)    
+    # print(evote)    
 
     key1=firstdel_groups.objects.get(id=id)
-    print("key1",key1)
     all=firstdel_groups.objects.filter(id=key1.id)
     users = firstdel_groups.objects.filter(id=key1.id) 
     user = firstdel_groups.objects.filter(group_owner_id=request.user)
@@ -66,10 +62,8 @@ def fshow(request,id):
         owner_id=0       
     approval_obj = firstdel_groups_members.objects.filter(group_id=key1)
     podlength=len(firstdel_groups_members.objects.filter(group_id=key1,member_status = 1))
-    print(">>>>>>>>>>>>>>>>>>>>>",podlength)
     array=[]
     z=approval_obj
-    print("z",len(z))
     for i in z:
         if i.member_status == 1:
             array.append(i)
@@ -100,9 +94,7 @@ def fshow(request,id):
         for i in show:
             print("Elect",i.vote_count)
         if i.vote_count > length:
-            print(i.member.id)
             firstdel_groups_members.objects.filter(member_status =1,group_id=key1)
-            # print("true")
             firstdel_groups_members.objects.update(vote_given=0)
             member.pod_owner_id_id=firstdel_groups_members.objects.filter(id=q).update(member_status=1)   
         return redirect(request.path_info)   
@@ -131,15 +123,15 @@ def fshow(request,id):
         podlen=len(firstdel_groups_members.objects.filter(group_id=key1,member_status = 1))
         podLen=podlen/2
         length=podLen
-        print("pod_length",length)
+        # print("pod_length",length)
         show=firstdel_groups_members.objects.filter(id=q)
         for i in show:
              print("Elect",i.elect_count,i.group.group_owner_id)
         if i.elect_count > length:
-            print(i.member.id)
+            # print(i.member.id)
             mem.group_owner_id=firstdel_groups.objects.filter(group_owner=i.group.group_owner_id).update(group_owner=i.member.id)     
         return redirect(request.path_info)   
-    return render(request,"key/firstdelkey.html",{'user':users,'key1':key1,'stat':status,'is_key_generate':0,'podlen':podlength,"owner_id":owner_id,'all':all,'votegive':hell,"evote":evote}) 
+    return render(request,"key/firstdelkey.html",{'user':users,'key1':key1,'stat':status,'is_key_generate':0,'podlen':podlength,"owner_id":owner_id,'all':all,'votegive':hell,"evote":evote,'w':0}) 
  
     
 

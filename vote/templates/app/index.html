@@ -1,4 +1,6 @@
+
 {% if user.is_authenticated %} 
+
 <html>
   <head>
     <title>The Democracy Straight-Up Project</title>
@@ -11,6 +13,7 @@
 
     <link rel="stylesheet" type="text/css" href="static/style.css">
 
+  {% comment %} <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script> {% endcomment %}
 
   </head>
   <body>
@@ -35,15 +38,73 @@
             </div>
             <ul class="nav navbar-nav navbar-right collapse navbar-collapse"
                 id="bs-example-navbar-collapse-1">
-               
-              
+              {% if f == 0%} 
               <li><a href="/show">Voter</a></li>
               <li><a href="/help">Help</a></li>
               <li><a href="/logout">Logout</a></li>
               <li><a href="/member">Members</a></li>
               <img src="/static/image/user.png" alt="..." class="img-circle profile_img" height="40px">{{request.user.name}}</li>
+              {%endif%}              
+
+              {% if t == 0%} 
+              <li><a href="/show">Voter</a></li>
+              <li><a href="/help">Help</a></li>
+              <li><a href="/logout">Logout</a></li>
+              <li><a href="/member">Members</a></li>
+              <img src="/static/image/user.png" alt="..." class="img-circle profile_img" height="40px">{{request.user.name}}</li>
+              {%endif%}        
+
+              {% if s == 0%} 
+              <li><a href="/fshow">Voter</a></li>
+              <li><a href="/help">Help</a></li>
+              <li><a href="/logout">Logout</a></li>
+              <li><a href="/member">Members</a></li>
+              <img src="/static/image/user.png" alt="..." class="img-circle profile_img" height="40px">{{request.user.name}}</li>
+              {%endif%}        
+
+              {% if th == 0%} 
+              <li><a href="/sshow">Voter</a></li>
+              <li><a href="/help">Help</a></li>
+              <li><a href="/logout">Logout</a></li>
+              <li><a href="/member">Members</a></li>
+              <img src="/static/image/user.png" alt="..." class="img-circle profile_img" height="40px">{{request.user.name}}</li>
+              {%endif%}   
+
+              {% if fo == 0%} 
+              <li><a href="/tshow">Voter</a></li>
+              <li><a href="/help">Help</a></li>
+              <li><a href="/logout">Logout</a></li>
+              <li><a href="/member">Members</a></li>
+              <img src="/static/image/user.png" alt="..." class="img-circle profile_img" height="40px">{{request.user.name}}</li>
+              {%endif%}
+              
+              {% if fi == 0%} 
+              <li><a href="/foshow">Voter</a></li>
+              <li><a href="/help">Help</a></li>
+              <li><a href="/logout">Logout</a></li>
+              <li><a href="/member">Members</a></li>
+              <img src="/static/image/user.png" alt="..." class="img-circle profile_img" height="40px">{{request.user.name}}</li>
+              {%endif%}
+
+              {% if si == 0%} 
+              <li><a href="/fishow">Voter</a></li>
+              <li><a href="/help">Help</a></li>
+              <li><a href="/logout">Logout</a></li>
+              <li><a href="/member">Members</a></li>
+              <img src="/static/image/user.png" alt="..." class="img-circle profile_img" height="40px">{{request.user.name}}</li>
+              {%endif%}
+
+              {% if z == 0%} 
+              <li><a href="/sishow">Voter</a></li>
+              <li><a href="/help">Help</a></li>
+              <li><a href="/logout">Logout</a></li>
+              <li><a href="/member">Members</a></li>
+              <img src="/static/image/user.png" alt="..." class="img-circle profile_img" height="40px">{{request.user.name}}</li>
+              {%endif%}
+    
               
             </ul>
+
          </nav>
        </div>
       </header>
@@ -82,6 +143,8 @@
 
 </body>
 </html>
+
+
 {%else%}
 <html>
 <head>
@@ -95,7 +158,7 @@
 
 <link rel="stylesheet" type="text/css" href="static/style.css">
 
-
+{% comment %} <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script> {% endcomment %}
 
 </head>
 <body>
@@ -167,8 +230,26 @@ The Democracy Straight-Up Project
 </footer>
 
 </div>
+<!-- Here starts the code copied directly from the MaxCDN section of this page: https://www.w3schools.com/bootstrap4/bootstrap_get_started.asp -->
 
+<!-- Optional theme (already greyed)-->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous"> -->
+
+<!-- Latest compiled and minified CSS -->
+<!-- (newly greyed here down) <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- end of 'MaxCDN' code -->
   </body>
 </html>
 {%endif%}
+
+
 

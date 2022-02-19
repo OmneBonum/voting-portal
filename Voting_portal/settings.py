@@ -12,8 +12,11 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import pymysql
+pymysql.version_info = (1, 4, 13, "final", 0)
 
 pymysql.install_as_MySQLdb()
+
+
 
 
 
@@ -80,7 +83,7 @@ ROOT_URLCONF = 'Voting_portal.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -122,7 +125,6 @@ WSGI_APPLICATION = 'Voting_portal.wsgi.application'
 #         }
 #     }
 # }
-
 
 DATABASES = {
     'default': {
