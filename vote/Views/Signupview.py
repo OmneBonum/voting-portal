@@ -34,7 +34,7 @@ def create(request):
 
 def update(request,id):
     users = user.objects.get(id=id)
-    print(users)
+    # print(users)
     if request.method=="POST":
 
         users.district = request.POST.get('district')
