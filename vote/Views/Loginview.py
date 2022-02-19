@@ -3,7 +3,7 @@ from tokenize import group
 from django.forms import NullBooleanField
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.template import loader
+# from django.template import loader
 from pymysql import NULL
 from vote.models import *
 from django.contrib.auth import authenticate, login,logout
