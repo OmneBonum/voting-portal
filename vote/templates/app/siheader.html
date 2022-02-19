@@ -31,15 +31,22 @@
                id="bs-example-navbar-collapse-1">
             {% if user.is_authenticated %}
              
-             <li><a href="/show">Voter</a></li>
-             
+             <li><a href="/sishow">Voter</a></li>
              <li><a href="/help">Help</a></li>
              <li><a href="/logout">Logout</a></li>
              <li><a href="/member">Members</a></li>
              <img src="/static/image/user.png" alt="..." class="img-circle profile_img" height="40px">{{request.user.name}}</li>
             
-            {%else%}
-            <li><a href="/">Home</a></li>
+             {% elif sikey == 1%}
+            <li><a href="/sishow">Voter</a></li>
+             <li><a href="/help">Help</a></li>
+             <li><a href="/logout">Logout</a></li>
+             <li><a href="/member">Members</a></li>
+             <img src="/static/image/user.png" alt="..." class="img-circle profile_img" height="40px">{{request.user.name}}</li>
+            
+             {%else%}
+
+            <li><a href="/" >Home</a></li>
             <li><a href="/help">Help</a></li>
             <li><a href="/login">login</a></li>
            </ul>

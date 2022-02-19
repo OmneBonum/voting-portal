@@ -1,4 +1,4 @@
-{%include "app/header.html"%}
+{%include "app/siheader.html"%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,37 +66,9 @@ margin-bottom: 7px;
         <a class="btn btn-primary text-center Creat_pod" href="sipod/{{keys}}">Sixth del pod</a>
         </div>
 
-    <div class="btn_section text-center m-2">
-    <a class="btn btn-primary text-center Creat_pod" href="join">join Sixth del</a>
-    </div> 
-    <div class="btn_section text-center m-2">
-    <a class="btn btn-primary text-center Creat_pod" href="tpod">Create Sixth del</a>
-    </div>
-     
-</div>
 
 
-    {%elif sikey == 0%}
-
-    <div class="btn_section text-center m-2">
-        <a class="btn btn-primary text-center Creat_pod" href="sipod/{{keys}}">Sixth del pod</a>
-        </div>
-    
-   
-
-{% else %}
-<h1>dsfd</h1>
-
-
-<div class="col-md-4 d-flex">
-<div class="btn_section text-center m-2">
-<a class="btn btn-primary text-center Creat_pod" href="tjoin">join Sixth dell</a>
-    
-</div>  
-
-<div class="btn_section text-center m-2">
-<a class="btn btn-primary text-center Creat_pod" href="/tpod">Creat a Sixth dell</a>
-</div>  
+  
 {% endif %} 
 
 

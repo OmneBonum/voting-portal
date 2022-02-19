@@ -1,4 +1,6 @@
+
 {% if user.is_authenticated %} 
+
 <html>
   <head>
     <title>The Democracy Straight-Up Project</title>
@@ -36,15 +38,73 @@
             </div>
             <ul class="nav navbar-nav navbar-right collapse navbar-collapse"
                 id="bs-example-navbar-collapse-1">
-               
-              
+              {% if f == 0%} 
               <li><a href="/show">Voter</a></li>
               <li><a href="/help">Help</a></li>
               <li><a href="/logout">Logout</a></li>
               <li><a href="/member">Members</a></li>
               <img src="/static/image/user.png" alt="..." class="img-circle profile_img" height="40px">{{request.user.name}}</li>
+              {%endif%}              
+
+              {% if t == 0%} 
+              <li><a href="/show">Voter</a></li>
+              <li><a href="/help">Help</a></li>
+              <li><a href="/logout">Logout</a></li>
+              <li><a href="/member">Members</a></li>
+              <img src="/static/image/user.png" alt="..." class="img-circle profile_img" height="40px">{{request.user.name}}</li>
+              {%endif%}        
+
+              {% if s == 0%} 
+              <li><a href="/fshow">Voter</a></li>
+              <li><a href="/help">Help</a></li>
+              <li><a href="/logout">Logout</a></li>
+              <li><a href="/member">Members</a></li>
+              <img src="/static/image/user.png" alt="..." class="img-circle profile_img" height="40px">{{request.user.name}}</li>
+              {%endif%}        
+
+              {% if th == 0%} 
+              <li><a href="/sshow">Voter</a></li>
+              <li><a href="/help">Help</a></li>
+              <li><a href="/logout">Logout</a></li>
+              <li><a href="/member">Members</a></li>
+              <img src="/static/image/user.png" alt="..." class="img-circle profile_img" height="40px">{{request.user.name}}</li>
+              {%endif%}   
+
+              {% if fo == 0%} 
+              <li><a href="/tshow">Voter</a></li>
+              <li><a href="/help">Help</a></li>
+              <li><a href="/logout">Logout</a></li>
+              <li><a href="/member">Members</a></li>
+              <img src="/static/image/user.png" alt="..." class="img-circle profile_img" height="40px">{{request.user.name}}</li>
+              {%endif%}
+              
+              {% if fi == 0%} 
+              <li><a href="/foshow">Voter</a></li>
+              <li><a href="/help">Help</a></li>
+              <li><a href="/logout">Logout</a></li>
+              <li><a href="/member">Members</a></li>
+              <img src="/static/image/user.png" alt="..." class="img-circle profile_img" height="40px">{{request.user.name}}</li>
+              {%endif%}
+
+              {% if si == 0%} 
+              <li><a href="/fishow">Voter</a></li>
+              <li><a href="/help">Help</a></li>
+              <li><a href="/logout">Logout</a></li>
+              <li><a href="/member">Members</a></li>
+              <img src="/static/image/user.png" alt="..." class="img-circle profile_img" height="40px">{{request.user.name}}</li>
+              {%endif%}
+
+              {% if z == 0%} 
+              <li><a href="/sishow">Voter</a></li>
+              <li><a href="/help">Help</a></li>
+              <li><a href="/logout">Logout</a></li>
+              <li><a href="/member">Members</a></li>
+              <img src="/static/image/user.png" alt="..." class="img-circle profile_img" height="40px">{{request.user.name}}</li>
+              {%endif%}
+    
               
             </ul>
+
          </nav>
        </div>
       </header>
@@ -83,6 +143,8 @@
 
 </body>
 </html>
+
+
 {%else%}
 <html>
 <head>
@@ -188,4 +250,6 @@ The Democracy Straight-Up Project
   </body>
 </html>
 {%endif%}
+
+
 
