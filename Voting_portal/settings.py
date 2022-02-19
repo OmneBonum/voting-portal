@@ -110,17 +110,19 @@ WSGI_APPLICATION = 'Voting_portal.wsgi.application'
 # DATABASES = {
 #     'default': {
 #        'ENGINE': 'django.db.backends.mysql', 
-#        'NAME': 'voting_portal',
+#        'NAME': 'vote',
 #        'HOST': 'localhost',
 #        'PORT': '3306',
-#        'USER': 'voting',
-#        'PASSWORD': 'l3w@61kV',
+#        'USER': 'root',
+#        'PASSWORD': 'AdMiN@123456',
 #        'OPTIONS': {
 #             'init_command': 'SET sql_mode="STRICT_TRANS_TABLES"',
-                     
+            
+             
 #         }
 #     }
 # }
+
 
 DATABASES = {
     'default': {
