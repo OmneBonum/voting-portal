@@ -17,30 +17,9 @@ from django.urls import reverse
 
 
 def index(request):
-    f_key=pod_groups.objects.filter(group_owner_id=request.user.id)
-    pkey=f_key.values_list("group_key",flat=True).first()
-    print("pod",pkey)
-    if pod_groups.objects.filter(group_key=pkey):
-      if firstdel_groups.objects.filter(group_owner_id=request.user.id):
-        if seconddel_groups.objects.filter(group_owner_id=request.user.id):
-          if thirddel_groups.objects.filter(group_owner_id=request.user.id): 
-            if fourthdel_groups.objects.filter(group_owner_id=request.user.id): 
-              if fifthdel_groups.objects.filter(group_owner_id=request.user.id):
-                if sixthdel_groups.objects.filter(group_owner_id=request.user.id):
-                  return render(request,"app/index.html",{'z':0})  
-                else:
-                  return render(request,"app/index.html",{'si':0})
-              else:
-                return render(request,"app/index.html",{'fi':0})
-            else:
-              return render(request,"app/index.html",{'fo':0})
-          else:
-            return render(request,"app/index.html",{'th':0 }) 
-        else:
-          return render(request,"app/index.html",{'s':0}) 
-      else:  
-        return render(request,"app/index.html",{'f':0})  
-    return render(request,"app/index.html",{'f': 0}) 
+    context = {}
+    template = loader.get_template('app/index.html')
+    return HttpResponse(template.render(context, request))
 
 def user_login(request):
     if request.method == "POST":
@@ -48,7 +27,7 @@ def user_login(request):
         print(uname)
         upass= request.POST.get('password')
         print(upass)      
-        # print("hritik")
+        print("hritik")
         a=pod_groups.objects.all()
         for i in a: 
           b=i.id
@@ -62,44 +41,53 @@ def user_login(request):
         
         b=a.values_list("group_key",flat=True)
         print("group",b)
-        #d
+        
         if users is not None:
             login(request,users)
 
             pod_key=fifthdel_groups.objects.filter(group_owner_id=request.user.id)
             pkey=pod_key.values_list("group_key",flat=True).first()
-            # print("pod",pkey)
-            
-            pod_key=sixthdel_groups.objects.filter(group_owner_id=request.user.id)
-            kkey=pod_key.values_list("group_key",flat=True).first()
-            print("pod",kkey)
+            print("pod",pkey)
             
             #group_keys=pkey[0]
             #print(group_keys[0])
             
-            if firstdel_groups.objects.filter(group_owner_id=request.user.id) or firstdel_groups_members.objects.filter(member_id=request.user.id):
-                if seconddel_groups.objects.filter(group_owner_id= request.user.id) or seconddel_groups_members.objects.filter(member_id=request.user.id)  :
-                    if thirddel_groups.objects.filter(group_owner_id= request.user.id) or thirddel_groups_members.objects.filter(member_id=request.user.id):
-                      if fourthdel_groups.objects.filter(group_owner_id= request.user.id) or fourthdel_groups_members.objects.filter(member_id=request.user.id):   
+            if firstdel_groups.objects.filter(group_owner_id=request.user.id) and firstdel_groups_members.objects.filter(member_id=request.user.id):
+                
+
+                if seconddel_groups.objects.filter(group_owner_id= request.user.id) and seconddel_groups_members.objects.filter(member_id=request.user.id):
+                    if thirddel_groups.objects.filter(group_owner_id= request.user.id) and thirddel_groups_members.objects.filter(member_id=request.user.id):
+                      if fourthdel_groups.objects.filter(group_owner_id= request.user.id) and fourthdel_groups_members.objects.filter(member_id=request.user.id):  
+                        
                         if fifthdel_groups.objects.filter(group_key= pkey) and fifthdel_groups_members.objects.filter(member_id=request.user.id):
-                          if sixthdel_groups.objects.filter(group_owner_id= request.user.id) and sixthdel_groups_members.objects.filter(member_id=request.user.id):
-                            return redirect('/sishow') 
-                          else:
-                            return redirect('/fishow') 
+                          return redirect('/fishow') 
                         else:
                           return redirect('/foshow') 
 
                       else:  
                         return redirect('/tshow') 
-                        
+                        # else:
+                        #     return redirect('/foshow')
                     else: 
                       return redirect('/sshow') 
-                    
+                    # else:
+                    #     return redirect('/tshow')
+
+                        # return redirect('/tshow')
                 else:
                   return redirect('/fshow')  
-         
+            # if seconddel_groups.objects.filter(group_key=bkey) and seconddel_groups_members.objects.filter(member_id=request.user.id):
+            #    return redirect('/sshow') 
             
-            return redirect('/show')  
+            # elif seconddel_groups.objects.filter(group_owner_id=request.user.id) and  thirddel_groups.objects.filter(group_owner_id=request.user.id):
+            #    return redirect('/tshow') 
+            
+            return redirect('/show')
+          
+        # if firstdel_groups.objects.filter(group_owner_id=request.user.id) and user is not None:
+        #   return redirect('/fshow')
+       
+        
 
         else:
           messages.error(request,"Invalid Credential")
@@ -118,3 +106,4 @@ def help(request):
     return HttpResponse(template.render(context, request))    
 
 
+#and seconddel_groups_members.objects.filter(member_id=request.user.id)

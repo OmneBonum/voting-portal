@@ -13,10 +13,10 @@ import string
 
 def fifthpodshow(request):  
      key2=fifthdel_groups_members.objects.filter(member_id=request.user.id)
-     # print(key2)
+     print(key2)
      fpods=fifthdel_groups.objects.filter(group_owner_id=request.user.id)
      k=fpods.values_list('group_owner_id',flat=True)
-     # print("k",k)
+     print("k",k)
      if fifthdel_groups.objects.filter(group_owner_id=request.user).exists():
         owner_id=k[0]
      else:
@@ -26,7 +26,11 @@ def fifthpodshow(request):
           print(key2)
           for i in key2:
                z=i.group_id
-                 
+               print("z id",z)
+          
+          print("asdf")
+          # if pod_groups_members.objects.filter(member_status = 0,group_id=z):
+          #      pod_groups_members.objects.update(vote_given=0)
           current_user =request.user.id
           a = fifthdel_groups_members.objects.filter(member_id=current_user).exists()
           
@@ -48,9 +52,9 @@ def fifthvalidate(request):
                key1=fifthdel_groups.objects.filter(group_key=uname)
                for i in key1:
                     z=i.id
-                    # print('z',z)
+                    print('z',z)
                     
-               # print(uname)
+               print(uname)
                current_user=request.user.id
                join.member_id=current_user
                join.group_id=z    
@@ -65,3 +69,6 @@ def fifthvalidate(request):
                return redirect('/fijoin') 
      return render(request,"pod/fifthjoin.html")
 
+# def trying (request):
+#      t=validate(request)
+#      return HttpResponse("index.html")

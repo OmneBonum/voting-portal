@@ -67,7 +67,7 @@ def tvalidate(request):
           else:
                messages.error(request,"Invalid key")
                return redirect('/tjoin') 
-     return render(request,"pod/thirdjoin.html")
+     return render(request,"pod/tjoin.html")
 
 # def trying (request):
 #      t=validate(request)

@@ -12,11 +12,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import pymysql
-pymysql.version_info = (1, 4, 13, "final", 0)
 
 pymysql.install_as_MySQLdb()
-
-
 
 
 
@@ -47,11 +44,11 @@ MESSAGE_TAGS = {
         messages.ERROR: 'alert-danger',
  }
 
-ALLOWED_HOSTS = ['15.206.128.44']
+# ALLOWED_HOSTS = ['15.206.128.44']
 # ALLOWED_HOSTS = ['184.168.122.169']
 
 
-# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = []
 
 
 
@@ -110,6 +107,21 @@ WSGI_APPLICATION = 'Voting_portal.wsgi.application'
 # }
 
 
+# DATABASES = {
+#     'default': {
+#        'ENGINE': 'django.db.backends.mysql', 
+#        'NAME': 'voting_portal',
+#        'HOST': 'localhost',
+#        'PORT': '3306',
+#        'USER': 'voting',
+#        'PASSWORD': 'l3w@61kV',
+#        'OPTIONS': {
+#             'init_command': 'SET sql_mode="STRICT_TRANS_TABLES"',
+                     
+#         }
+#     }
+# }
+
 DATABASES = {
     'default': {
        'ENGINE': 'django.db.backends.mysql', 
@@ -117,7 +129,7 @@ DATABASES = {
        'HOST': 'localhost',
        'PORT': '3306',
        'USER': 'root',
-       'PASSWORD': 'AdMiN@123456',
+       'PASSWORD': '',
        'OPTIONS': {
             'init_command': 'SET sql_mode="STRICT_TRANS_TABLES"',
             
@@ -125,22 +137,6 @@ DATABASES = {
         }
     }
 }
-
-# DATABASES = {
-#     'default': {
-#        'ENGINE': 'django.db.backends.mysql', 
-#        'NAME': 'vote',
-#        'HOST': 'localhost',
-#        'PORT': '3306',
-#        'USER': 'root',
-#        'PASSWORD': '',
-#        'OPTIONS': {
-#             'init_command': 'SET sql_mode="STRICT_TRANS_TABLES"',
-            
-             
-#         }
-#     }
-# }
 
 
 # Password validation
