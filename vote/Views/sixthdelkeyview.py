@@ -107,7 +107,29 @@ def sixthshow(request,id):
             member.pod_owner_id_id=sixthdel_groups_members.objects.filter(id=q).update(member_status=1)   
         return redirect(request.path_info)   
     
-    
+    if request.method=="POST" and "devote" in request.POST:
+        if sixthdel_groups_members.objects.filter(member_status=0,group_id=key1):
+             sixthdel_groups_members.objects.update(vote_given=0)
+        member=sixthdel_groups_members() 
+        q = request.POST.get('devote')
+        print("q",q)
+        voteCount=F('vote_count')-1   
+        member.vote_count=sixthdel_groups_members.objects.filter(id=q).update(vote_count=voteCount)  
+        # member.vote_given=pod_groups_members.objects.filter(member_id=request.user.id).update(vote_given=1)  
+        # show=pod_groups_members.objects.filter(id=q)
+        # podlen=len(pod_groups_members.objects.filter(group_id=key1,member_status = 1))
+        # podLen=podlen/2
+        # length=podLen
+        # for i in show:
+        #     print("Elect",i.vote_count)
+        # if i.vote_count < length:
+        #     print(i.member.id)
+        #     #pod_groups_members.objects.filter(member_status =1,group_id=key1)
+        #     # print("true")
+        #     #pod_groups_members.objects.update(vote_given=0)
+        #     member.pod_owner_id_id=pod_groups_members.objects.filter(id=q).update(member_status=0)   
+        return redirect(request.path_info)   
+
     if request.method=="POST" and "Delete" in request.POST:
         member=sixthdel_groups_members()
         q = request.POST.get('Delete')

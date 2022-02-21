@@ -139,15 +139,13 @@ h2.text-center.Pod_number {
          
         <td>
           {% if  votegive == 0 and users_list.member_status == 0 %}
-            <button type="submit" class="btn vote" name="submit"  value={{users_list.id}}>vote now</button>
-            
-
+            <button type="submit" class="btn vote" name="submit"  value={{users_list.id}}>vote now</button>       
           {% endif  %}
         </td>
         <td>
-          {% comment %} {%if users_list.member_status == 0 %}  {% endcomment %}
-          <button type="submit" class="btn vote" name="devote"  value={{context}}>Devote</button>
-           {% comment %} {%endif%}    {% endcomment %}
+          {% comment %} {%if users_list.group.group_owner_id != request.user.id %} {% endcomment %}
+          <button type="submit" class="btn vote" name="devote"  value={{users_list.id}}>Devote</button>
+          {% comment %} {%endif%} {% endcomment %}
         </td>
 
         <td>

@@ -126,6 +126,7 @@
 			<th>Email</th>
       <th>District </th>
       <th>Votes</th> 
+      <th>Devote</th>
       <th>Election</th>   
       <th>delete</th>                     
 		  </tr>
@@ -147,11 +148,19 @@
             <button type="submit" class="btn vote" name="submit"  value={{users_list.id}}>vote now</button>
           {% endif  %}
         </td>
+
+        <td>
+          {% comment %} {%if users_list.member_status == 0 %}  {% endcomment %}
+          <button type="submit" class="btn vote" name="devote"  value={{users_list.id}}>Devote</button>
+           {% comment %} {%endif%}    {% endcomment %}
+        </td>
         <td>
           {% if  podlen >= 5 and users_list.member_status == 1 and evote == 0 %}
             <button type="submit" name="elect" value={{users_list.id}}>Election</a></button>
           {% endif  %}
         </td>
+
+        
         
         <td>
           {% if  users_list.member_status == 0 and owner_id == request.user.id %}

@@ -114,6 +114,7 @@ def show(request,id):
              pod_groups_members.objects.update(vote_given=0)
         member=pod_groups_members() 
         q = request.POST.get('devote')
+        print("q",q)
         voteCount=F('vote_count')-1   
         member.vote_count=pod_groups_members.objects.filter(id=q).update(vote_count=voteCount)  
         # member.vote_given=pod_groups_members.objects.filter(member_id=request.user.id).update(vote_given=1)  
