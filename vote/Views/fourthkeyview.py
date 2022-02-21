@@ -40,7 +40,7 @@ def fourthkey_generator(request):
         member.member_id=current_user.id
         member.save()   
         return HttpResponseRedirect(reverse("vote:fokey2",args=[key.id])) 
-    return render(request,"key/fourthdelkey.html",{'user':user,'is_key_generate':1,'t':0})
+    return render(request,"key/fourthdelkey.html",{'user':user,'is_key_generate':1,'g':0})
 
 
 

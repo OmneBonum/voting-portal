@@ -78,3 +78,15 @@ class AddCreateForm(ModelForm):
     class Meta:
         model = user
         fields = ["district","name","registered","email","address","executed_on","password","confirmation"]
+
+    def clean(self):
+        cleaned_data = super(AddCreateForm, self).clean()
+        password = cleaned_data.get("password")
+        confirm_password = cleaned_data.get("confirmation")
+
+        if password != confirm_password:
+             self.add_error("confirmation", forms.ValidationError("password and confirm_password does not match") 
+            # raise forms.ValidationError(
+            #     "password and confirm_password does not match"
+            )  
+       

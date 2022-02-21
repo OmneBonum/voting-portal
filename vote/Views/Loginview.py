@@ -21,6 +21,7 @@ def index(request):
     pkey=f_key.values_list("group_key",flat=True).first()
     template = loader.get_template('app/index.html')
     print("pod",pkey)
+    
     if pod_groups.objects.filter(group_key=pkey):
       if firstdel_groups.objects.filter(group_owner_id=request.user.id):
         if seconddel_groups.objects.filter(group_owner_id=request.user.id):

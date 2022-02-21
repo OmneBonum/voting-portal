@@ -108,6 +108,76 @@
        </ul>
 
         {%endif%}
+
+        
+      {% if a == 0 %}
+
+      <li><a href="/show">Voter</a></li>
+      <li><a href="/help">Help</a></li>
+      <li><a href="/logout">Logout</a></li>
+      <img src="/static/image/user.png" alt="..." class="img-circle profile_img" height="40px">{{request.user.name}}</li>
+
+      {%endif%} 
+      {% if s == 0 %}
+
+      <li><a href="/show">Voter</a></li>
+      <li><a href="/help">Help</a></li>
+      <li><a href="/logout">Logout</a></li>
+      <img src="/static/image/user.png" alt="..." class="img-circle profile_img" height="40px">{{request.user.name}}</li>
+      
+      {%endif%} 
+
+      {% if d == 0 %}
+
+      <li><a href="/fshow">Voter</a></li>
+      <li><a href="/help">Help</a></li>
+      <li><a href="/logout">Logout</a></li>
+      <img src="/static/image/user.png" alt="..." class="img-circle profile_img" height="40px">{{request.user.name}}</li>
+    
+      {%endif%} 
+      {% if f == 0 %}
+
+      <li><a href="/sshow">Voter</a></li>
+      <li><a href="/help">Help</a></li>
+      <li><a href="/logout">Logout</a></li>
+      <img src="/static/image/user.png" alt="..." class="img-circle profile_img" height="40px">{{request.user.name}}</li>
+  
+      {%endif%} 
+
+      {% if g == 0 %}
+
+      <li><a href="/tshow">Voter</a></li>
+      <li><a href="/help">Help</a></li>
+      <li><a href="/logout">Logout</a></li>
+      <img src="/static/image/user.png" alt="..." class="img-circle profile_img" height="40px">{{request.user.name}}</li>
+  
+      {%endif%} 
+
+      {% if h == 0 %}
+
+      <li><a href="/foshow">Voter</a></li>
+      <li><a href="/help">Help</a></li>
+      <li><a href="/logout">Logout</a></li>
+      <img src="/static/image/user.png" alt="..." class="img-circle profile_img" height="40px">{{request.user.name}}</li>
+  
+      {%endif%} 
+
+      {% if j == 0 %}
+
+
+      <li><a href="/fishow">Voter</a></li>
+      <li><a href="/help">Help</a></li>
+      <li><a href="/logout">Logout</a></li>
+      <img src="/static/image/user.png" alt="..." class="img-circle profile_img" height="40px">{{request.user.name}}</li>
+      {%endif%} 
+    
+        
+
+      </ul>
+
+
+
+
      </nav>
 
 

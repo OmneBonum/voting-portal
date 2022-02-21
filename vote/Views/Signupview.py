@@ -45,7 +45,6 @@ def update(request,id):
         users.confirmation = request.POST.get('confirmation')
         users.upload=request.FILES.get("upload")
         users.save()
-
         return render(request,"create.html",{'users_list':users})
 
 

@@ -39,7 +39,7 @@ def fkey_generator(request):
         member.member_id=current_user.id
         member.save()   
         return HttpResponseRedirect(reverse("vote:fkey2",args=[key.id])) 
-    return render(request,"key/firstdelkey.html",{'user':user,'is_key_generate':1,'w':0})
+    return render(request,"key/firstdelkey.html",{'user':user,'is_key_generate':1,'s':0})
 
 
 

@@ -40,7 +40,7 @@ def fifthkey_generator(request):
         member.member_id=current_user.id
         member.save()   
         return HttpResponseRedirect(reverse("vote:fikey2",args=[key.id])) 
-    return render(request,"key/fifthdelkey.html",{'user':user,'is_key_generate':1,'y':0})
+    return render(request,"key/fifthdelkey.html",{'user':user,'is_key_generate':1,'h':0})
 
 
 

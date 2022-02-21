@@ -40,7 +40,7 @@ def tkey_generator(request):
         member.member_id=current_user.id
         member.save()   
         return HttpResponseRedirect(reverse("vote:tkey2",args=[key.id])) 
-    return render(request,"key/thirddelkey.html",{'user':user,'is_key_generate':1,'r':0})
+    return render(request,"key/thirddelkey.html",{'user':user,'is_key_generate':1,'f':0})
 
 
 

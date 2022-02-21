@@ -40,7 +40,7 @@ def sixthkey_generator(request):
         member.member_id=current_user.id
         member.save()   
         return HttpResponseRedirect(reverse("vote:sikey2",args=[key.id])) 
-    return render(request,"key/sixthdelkey.html",{'user':user,'is_key_generate':1,'u':0})
+    return render(request,"key/sixthdelkey.html",{'user':user,'is_key_generate':1,'j':0})
 
 
 

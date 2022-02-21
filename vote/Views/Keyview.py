@@ -40,7 +40,7 @@ def key_generator(request):
         member.member_id=current_user.id
         member.save()   
         return HttpResponseRedirect(reverse("vote:key2",args=[key.id])) 
-    return render(request,"key/key.html",{'user':user,'is_key_generate':1,'q':0})
+    return render(request,"key/key.html",{'user':user,'is_key_generate':1,'a':0})
 
 
 
