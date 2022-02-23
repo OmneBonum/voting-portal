@@ -19,8 +19,15 @@ from django.urls import reverse
 def index(request):
     f_key=pod_groups.objects.filter(group_owner_id=request.user.id)
     pkey=f_key.values_list("group_key",flat=True).first()
+    a=pod_groups_members.objects.filter(member_id=request.user.id).select_related("member")
+    for d in a:
+      print(d)
+    
+  
+
     template = loader.get_template('app/index.html')
     print("pod",pkey)
+    
     
     if pod_groups.objects.filter(group_key=pkey):
       if firstdel_groups.objects.filter(group_owner_id=request.user.id):

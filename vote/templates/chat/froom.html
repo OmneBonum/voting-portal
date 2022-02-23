@@ -86,7 +86,7 @@ body {
 </head>
 <body>
 
-<h2>Pod - Chat Window</h2>
+<h2>Chat Window</h2>
 
 <div id="display">
 
@@ -99,7 +99,7 @@ $(document).ready(function(){
 setInterval(function(){
     $.ajax({
         type: 'GET',
-        url : "getMessages",
+        url : "fgetMessages",
         success: function(response){
             console.log(response);
             $("#display").empty();
@@ -170,7 +170,7 @@ setInterval(function(){
 
     $.ajax({
       type:'POST',
-      url:'/send',
+      url:'/fsend',
       data:{
           username:$('#username').val(),
           {% comment %} room_id:$('#room_id').val(), {% endcomment %}

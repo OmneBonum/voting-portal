@@ -17,6 +17,7 @@ from vote.Views import fifthdelkeyview
 from vote.Views import sixthdelkeyview
 from vote.Views import sixthdelpodview
 from vote.Views import chatview
+from vote.Views import firstchatview
 
 app_name = "vote"
 
@@ -100,6 +101,18 @@ urlpatterns = [
     path('checkview', chatview.checkview, name='checkview'),
     path('send', chatview.send, name='send'),
     path('home/getMessages', chatview.getMessages, name='getMessages'),
+
+
+
+#sroom
+   
+     # path('home', chatview.home, name='home'),
+    path('<str:froom>/1', firstchatview.froom, name='froom'),
+    path('fcheckview', firstchatview.fcheckview, name='fcheckview'),
+    path('fsend', firstchatview.fsend, name='fsend'),
+    path('fhome/fgetMessages', firstchatview.fgetMessages, name='fgetMessages'),
+
+
 
 
 #memberkey urls
