@@ -154,6 +154,6 @@ def fgetMessages(request):
             z=i.group_id
     
 
-    messages = firstMessage.objects.filter(room=z)#ll
+    messages = firstMessage.objects.filter(room=z)
     print("messages",messages)
     return JsonResponse({"messages":list(messages.values())})
