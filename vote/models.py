@@ -5,6 +5,7 @@ from django.utils.translation import gettext_lazy as _
 from .manager import CustomUserManager
 from django.core.validators import validate_comma_separated_integer_list
 
+from datetime import datetime
 # Create your models here.
 class user(AbstractBaseUser,PermissionsMixin):
     district=models.CharField(max_length=200)
@@ -165,3 +166,16 @@ class sixthdel_groups_members(models.Model):
   elect_vote_given=models.IntegerField(default=0)
   created_at = models.DateTimeField(auto_now_add=True,null=True)  
   updated_at =  models.DateTimeField(auto_now=True)
+
+
+
+# Create your models here.
+class Room(models.Model):
+     name = models.CharField(max_length=1000)
+
+    
+class Message(models.Model):
+    value = models.CharField(max_length=100,null=True)
+    date = models.DateTimeField(default=datetime.now, blank=True)
+    user = models.CharField(max_length=100)
+    room = models.CharField(max_length=100)

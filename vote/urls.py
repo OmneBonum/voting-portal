@@ -16,6 +16,7 @@ from vote.Views import fourthpodview
 from vote.Views import fifthdelkeyview
 from vote.Views import sixthdelkeyview
 from vote.Views import sixthdelpodview
+from vote.Views import chatview
 
 app_name = "vote"
 
@@ -93,10 +94,18 @@ urlpatterns = [
     path("sipod",sixthdelkeyview.sixthkey_generator,name="sikey"),
     path('sipod/<int:id>', sixthdelkeyview.sixthshow, name="sikey2"),     
 
+#room
+    # path('home', chatview.home, name='home'),
+    path('<str:room>/', chatview.room, name='room'),
+    path('checkview', chatview.checkview, name='checkview'),
+    path('send', chatview.send, name='send'),
+    path('home/getMessages', chatview.getMessages, name='getMessages'),
+
+
 #memberkey urls
 path('member',memberview.memberIndex,name="member_index"),
 
-
+]
 
 
 
@@ -112,6 +121,6 @@ path('member',memberview.memberIndex,name="member_index"),
 
     
 
-]
+
 
         
