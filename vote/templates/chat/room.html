@@ -173,7 +173,7 @@ setInterval(function(){
       url:'/send',
       data:{
           username:$('#username').val(),
-          {% comment %} room_id:$('#room_id').val(), {% endcomment %}
+           //room_id:$('#room_id').val(),
           message:$('#message').val(),
         csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
       },

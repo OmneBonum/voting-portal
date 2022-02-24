@@ -175,10 +175,10 @@ class Room(models.Model):
 
     
 class Message(models.Model):
-    value = models.CharField(max_length=100,null=True)
+    value = models.CharField(max_length=1000,null=True)
     date = models.DateTimeField(default=datetime.now, blank=True)
-    user = models.CharField(max_length=100)
-    room = models.CharField(max_length=100)
+    user = models.CharField(max_length=1000)
+    room = models.CharField(max_length=1000)
 
 
 
