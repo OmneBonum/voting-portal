@@ -19,7 +19,7 @@ def fcheckview(request):
     # room = request.POST['room_name']
     #username = request.POST['username']
 
-    # if pod_groups.objects.filter(group_owner_id=request.user.id).exists():
+    if pod_groups.objects.filter(group_owner_id=request.user.id).exists():
         if firstdel_groups.objects.filter(group_owner_id=request.user.id).exists():
             if seconddel_groups.objects.filter(group_owner_id=request.user.id).exists():
                 if thirddel_groups.objects.filter(group_owner_id=request.user.id).exists():
@@ -40,7 +40,7 @@ def fcheckview(request):
 
             else:   
                 return redirect('/fcheckview')
-    # return redirect('/fcheckview')
+    return redirect('/fcheckview')
     # else:
     #     new_room = Room.objects.create(name=room)
     #     new_room.save()
