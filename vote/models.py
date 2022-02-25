@@ -175,10 +175,10 @@ class Room(models.Model):
 
     
 class Message(models.Model):
-    value = models.CharField(max_length=1000,null=True)
+    value = models.CharField(max_length=100,null=True)
     date = models.DateTimeField(default=datetime.now, blank=True)
-    user = models.CharField(max_length=1000)
-    room = models.CharField(max_length=1000)
+    user = models.CharField(max_length=100)
+    room = models.CharField(max_length=100)
 
 
 
@@ -188,3 +188,39 @@ class firstMessage(models.Model):
     date = models.DateTimeField(default=datetime.now, blank=True)
     user = models.CharField(max_length=100)
     room = models.CharField(max_length=100)    
+
+class secondMessage(models.Model):
+    value = models.CharField(max_length=100,null=True)
+    date = models.DateTimeField(default=datetime.now, blank=True)
+    user = models.CharField(max_length=100)
+    room = models.CharField(max_length=100)     
+
+
+class thirdMessage(models.Model):
+    value = models.CharField(max_length=100,null=True)
+    date = models.DateTimeField(default=datetime.now, blank=True)
+    user = models.CharField(max_length=100)
+    room = models.CharField(max_length=100)       
+
+
+
+class fourthMessage(models.Model):
+    value = models.CharField(max_length=100,null=True)
+    date = models.DateTimeField(default=datetime.now, blank=True)
+    user = models.CharField(max_length=100)
+    room = models.CharField(max_length=100) 
+
+
+
+class fifthMessage(models.Model):
+    value = models.CharField(max_length=100,null=True)
+    date = models.DateTimeField(default=datetime.now, blank=True)
+    user = models.CharField(max_length=100)
+    room = models.CharField(max_length=100) 
+
+
+class sixthMessage(models.Model):
+    value = models.CharField(max_length=100,null=True)
+    date = models.DateTimeField(default=datetime.now, blank=True)
+    user = models.CharField(max_length=100)
+    room = models.CharField(max_length=100)     

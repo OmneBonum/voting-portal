@@ -6,16 +6,16 @@ from django.http import HttpResponse, JsonResponse
 # def home(request):
 #     return render(request, 'chat/home.html')
 
-def room(request, room):
+def sroom(request, sroom):
     username = request.GET.get('username')
     # room_details = Room.objects.get(name=room)
-    return render(request, 'chat/room.html', {
+    return render(request, 'chat/sroom.html', {
         'username': username,
         # 'room': room,
         # 'room_details': room_details
     })
 
-def checkview(request):
+def scheckview(request):
     # room = request.POST['room_name']
     #username = request.POST['username']
 
@@ -26,30 +26,27 @@ def checkview(request):
                     if fourthdel_groups.objects.filter(group_owner_id=request.user.id).exists():
                         if fifthdel_groups.objects.filter(group_owner_id=request.user.id).exists():
                             if sixthdel_groups.objects.filter(group_owner_id=request.user.id).exists():
-                                return redirect('/checkview')
+                                return redirect('/scheckview')
                             else:
-                                return redirect('/checkview')
+                                return redirect('/scheckview')
                         else:
-                            return redirect('/checkview')
+                            return redirect('/scheckview')
 
                     else:
-                        return redirect('/checkview')
+                        return redirect('/scheckview')
                                        
                 else:
-                    return redirect('/checkview')
+                    return redirect('/scheckview')
 
             else:   
-                return redirect('/checkview')
-        else:   
-                return redirect('/checkview')    
-                    
-    return redirect('/checkview')
+                return redirect('/scheckview')
+    return redirect('/scheckview')
     # else:
     #     new_room = Room.objects.create(name=room)
     #     new_room.save()
     #     return redirect('/checkview')
 
-def send(request):
+def ssend(request):
     message = request.POST['message']   
     key1=pod_groups_members.objects.filter(member_id=request.user.id)
   
@@ -98,13 +95,14 @@ def send(request):
         print(key7) 
         for i in key7:
             z=i.group_id
-    new_message = Message.objects.create(value=message, user=request.user.name,room=z)
+    new_message = secondMessage.objects.create(value=message, user=request.user.name,room=z)
 
     new_message.save()
     return HttpResponse('Message sent successfully')
 
-def getMessages(request):
-#room_details = Room.objects.get(name=room)
+
+def sgetMessages(request):
+    # room_details = Room.objects.get(name=room)
     key1=pod_groups_members.objects.filter(member_id=request.user.id) 
 
     if key1:
@@ -113,13 +111,13 @@ def getMessages(request):
             z=i.group_id
     key2=firstdel_groups_members.objects.filter(member_id=request.user.id)
     
-
+   
 
     if key2:
         print(key2) 
         for i in key2:
             z=i.group_id
-    
+     
     key3=seconddel_groups_members.objects.filter(member_id=request.user.id)
     
     if key3:
@@ -133,7 +131,7 @@ def getMessages(request):
         print(key4) 
         for i in key4:
             z=i.group_id
-        
+          
     key5=fourthdel_groups_members.objects.filter(member_id=request.user.id)
     
     if key5:
@@ -156,6 +154,6 @@ def getMessages(request):
             z=i.group_id
     
 
-    messages = Message.objects.filter(room=z)
+    messages = secondMessage.objects.filter(room=z)
     print("messages",messages)
     return JsonResponse({"messages":list(messages.values())})

@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
- body {
+body {
   margin: 0 auto;
   max-width: 800px;
   padding: 0 20px;
@@ -79,14 +79,14 @@ body {
 .time-left {
   float: left;
   color: #999;
-} 
+}
 
 </style>
 <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
 </head>
 <body>
 
-<h2>Pod - Chat Window</h2>
+<h2>SecondChat Window</h2>
 
 <div id="display">
 
@@ -99,7 +99,7 @@ $(document).ready(function(){
 setInterval(function(){
     $.ajax({
         type: 'GET',
-        url : "getMessages",
+        url : "sgetMessages",
         success: function(response){
             console.log(response);
             $("#display").empty();
@@ -170,7 +170,7 @@ setInterval(function(){
 
     $.ajax({
       type:'POST',
-      url:'/send',
+      url:'/ssend',
       data:{
           username:$('#username').val(),
           {% comment %} room_id:$('#room_id').val(), {% endcomment %}

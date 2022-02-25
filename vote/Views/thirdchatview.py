@@ -6,16 +6,16 @@ from django.http import HttpResponse, JsonResponse
 # def home(request):
 #     return render(request, 'chat/home.html')
 
-def froom(request, froom):
+def troom(request, troom):
     username = request.GET.get('username')
     # room_details = Room.objects.get(name=room)
-    return render(request, 'chat/froom.html', {
+    return render(request, 'chat/troom.html', {
         'username': username,
         # 'room': room,
         # 'room_details': room_details
     })
 
-def fcheckview(request):
+def tcheckview(request):
     # room = request.POST['room_name']
     #username = request.POST['username']
 
@@ -26,34 +26,36 @@ def fcheckview(request):
                     if fourthdel_groups.objects.filter(group_owner_id=request.user.id).exists():
                         if fifthdel_groups.objects.filter(group_owner_id=request.user.id).exists():
                             if sixthdel_groups.objects.filter(group_owner_id=request.user.id).exists():
-                                return redirect('/fcheckview')
+                                return redirect('/tcheckview')
                             else:
-                                return redirect('/fcheckview')
+                                return redirect('/tcheckview')
                         else:
-                            return redirect('/fcheckview')
+                            return redirect('/tcheckview')
 
                     else:
-                        return redirect('/fcheckview')
+                        return redirect('/tcheckview')
                                        
                 else:
-                    return redirect('/fcheckview')
+                    return redirect('/tcheckview')
 
             else:   
-                return redirect('/fcheckview')
-    return redirect('/fcheckview')
+                return redirect('/tcheckview')
+        else:   
+                return redirect('/tcheckview')        
+    return redirect('/tcheckview')
     # else:
     #     new_room = Room.objects.create(name=room)
     #     new_room.save()
     #     return redirect('/checkview')
 
-def fsend(request):
+def tsend(request):
     message = request.POST['message']   
-    # key1=pod_groups_members.objects.filter(member_id=request.user.id)
+    key1=pod_groups_members.objects.filter(member_id=request.user.id)
   
-    # if key1:
-    #     print(key1) 
-    #     for i in key1:
-    #         z=i.group_id
+    if key1:
+        print(key1) 
+        for i in key1:
+            z=i.group_id
     key2=firstdel_groups_members.objects.filter(member_id=request.user.id)
     
     if key2:
@@ -95,20 +97,19 @@ def fsend(request):
         print(key7) 
         for i in key7:
             z=i.group_id
-    new_message = firstMessage.objects.create(value=message, user=request.user.name,room=z)
-
+    new_message = thirdMessage.objects.create(value=message, user=request.user.name,room=z)
     new_message.save()
     return HttpResponse('Message sent successfully')
 
 
-def fgetMessages(request):
-    #room_details = Room.objects.get(name=room)
-    # key1=pod_groups_members.objects.filter(member_id=request.user.id) 
+def tgetMessages(request):
+    # room_details = Room.objects.get(name=room)
+    key1=pod_groups_members.objects.filter(member_id=request.user.id) 
 
-    # if key1:
-    #     print(key1) 
-    #     for i in key1:
-    #         z=i.group_id
+    if key1:
+        print(key1) 
+        for i in key1:
+            z=i.group_id
     key2=firstdel_groups_members.objects.filter(member_id=request.user.id)
     
    
@@ -154,6 +155,6 @@ def fgetMessages(request):
             z=i.group_id
     
 
-    messages = firstMessage.objects.filter(room=z)
+    messages = thirdMessage.objects.filter(room=z)
     print("messages",messages)
     return JsonResponse({"messages":list(messages.values())})

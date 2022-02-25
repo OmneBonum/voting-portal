@@ -18,6 +18,12 @@ from vote.Views import sixthdelkeyview
 from vote.Views import sixthdelpodview
 from vote.Views import chatview
 from vote.Views import firstchatview
+from vote.Views import secondchatview
+from vote.Views import thirdchatview
+from vote.Views import fourthchatview
+from vote.Views import fifthchatview
+from vote.Views import sixthchatview
+
 
 app_name = "vote"
 
@@ -104,13 +110,60 @@ urlpatterns = [
 
 
 
-#sroom
+#froom
    
      # path('home', chatview.home, name='home'),
     path('<str:froom>/1', firstchatview.froom, name='froom'),
     path('fcheckview', firstchatview.fcheckview, name='fcheckview'),
     path('fsend', firstchatview.fsend, name='fsend'),
     path('fhome/fgetMessages', firstchatview.fgetMessages, name='fgetMessages'),
+
+
+#sroom
+   
+     # path('home', chatview.home, name='home'),
+    path('<str:sroom>/2', secondchatview.sroom, name='sroom'),
+    path('scheckview', secondchatview.scheckview, name='scheckview'),
+    path('ssend', secondchatview.ssend, name='ssend'),
+    path('shome/sgetMessages', secondchatview.sgetMessages, name='sgetMessages'),
+
+
+#troom
+   
+    # path('home', chatview.home, name='home'),
+    path('<str:troom>/3', thirdchatview.troom, name='troom'),
+    path('tcheckview', thirdchatview.tcheckview, name='tcheckview'),
+    path('tsend', thirdchatview.tsend, name='tsend'),
+    path('thome/tgetMessages', thirdchatview.tgetMessages, name='tgetMessages'),
+
+
+#fourthroom
+   
+     # path('home', chatview.home, name='home'),
+    path('<str:foroom>/4', fourthchatview.foroom, name='foroom'),
+    path('focheckview', fourthchatview.focheckview, name='focheckview'),
+    path('fosend', fourthchatview.fosend, name='fosend'),
+    path('fohome/fogetMessages', fourthchatview.fogetMessages, name='fogetMessages'),
+
+
+#fifthroom
+   
+     # path('home', chatview.home, name='home'),
+    path('<str:firoom>/5', fifthchatview.firoom, name='firoom'),
+    path('ficheckview', fifthchatview.ficheckview, name='ficheckview'),
+    path('fisend', fifthchatview.fisend, name='fisend'),
+    path('fihome/figetMessages', fifthchatview.figetMessages, name='figetMessages'),
+
+
+
+# #Sixthroom
+   
+#      # path('home', chatview.home, name='home'),
+#     path('<str:siroom>/6', sixthchatview.siroom, name='siroom'),
+#     path('sicheckview', sixthchatview.sicheckview, name='sicheckview'),
+#     path('sisend', sixthchatview.sisend, name='sisend'),
+#     path('sihome/sigetMessages', sixthchatview.sigetMessages, name='sigetMessages'),
+
 
 
 
