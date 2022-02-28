@@ -23,6 +23,9 @@ def podshow(request):
      print("bkey",bkey)
      skey=s_key.values_list("group_key",flat=True).first()
      print(skey)
+     values_obj=pod_groups.objects.count()
+     user_obj=(values_obj)
+     print(",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,''''''''",user_obj)
      key1=pod_groups_members.objects.filter(member_id=request.user.id)
      
      fpods=pod_groups.objects.filter(group_owner_id=request.user.id)
@@ -43,7 +46,7 @@ def podshow(request):
           print("asdf")
           current_user =request.user.id
           a = pod_groups_members.objects.filter(member_id=current_user).exists()
-          return render(request,'pod/home.html',{'key1':z,'a':a,'fpod':owner_id,"fkey":0,'bkey':bkey,'pod':all,'al':al,'pkey':pkey})
+          return render(request,'pod/home.html',{'key1':z,'a':a,'fpod':owner_id,"fkey":0,'bkey':bkey,'pod':all,'al':al,'pkey':pkey,"value":user_obj})
      
      else:      
           current_user =request.user.id

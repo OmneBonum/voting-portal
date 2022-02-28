@@ -16,6 +16,8 @@ def fpodshow(request):
      print(key2)
      fpods=firstdel_groups.objects.filter(group_owner_id=request.user.id)
      k=fpods.values_list('group_owner_id',flat=True)
+     values_obj=firstdel_groups.objects.count()
+     user_obj=(values_obj)
      # print("k",k)
      if firstdel_groups.objects.filter(group_owner_id=request.user).exists():
         owner_id=k[0]
@@ -32,7 +34,7 @@ def fpodshow(request):
           current_user =request.user.id
           a = firstdel_groups_members.objects.filter(member_id=current_user).exists()
           
-          return render(request,'pod/firsthome.html',{'keys':z,'a':a,'fpod':owner_id,'fkey':0})
+          return render(request,'pod/firsthome.html',{'keys':z,'a':a,'fpod':owner_id,'fkey':0,"value":user_obj})
      
      else:      
           current_user =request.user.id

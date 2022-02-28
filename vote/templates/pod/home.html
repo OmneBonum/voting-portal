@@ -63,13 +63,15 @@ margin-bottom: 7px;
 <div class="row mb-3">
 <div class="col-md-4"></div>
 
-{% if fpod == request.user.id  %}
+{% if fpod == request.user.id and  value > 2 %}
+{% comment %} <h1>{{value}}</h1> {% endcomment %}
+
 
 <div class="col-md-4 d-flex">
     <div class="btn_section text-center m-2">
         <a class="btn btn-primary text-center Creat_pod" href="pod/{{key1}}">My pod</a>
         </div>
-
+     
     <div class="btn_section text-center m-2">
     <a class="btn btn-primary text-center Creat_pod" href="fjoin">join First del</a>
     </div> 
@@ -77,9 +79,12 @@ margin-bottom: 7px;
     <a class="btn btn-primary text-center Creat_pod" href="fpod">Create First del</a>
     </div>
     
+    
     <div class="btn_section text-center m-2">
         <a class="btn btn-primary text-center Creat_pod" href="/home">chat</a>
-        </div>
+    </div>
+
+
 </div>
         
     

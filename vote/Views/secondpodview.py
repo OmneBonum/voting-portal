@@ -17,6 +17,8 @@ def spodshow(request):
      
      fpods=seconddel_groups.objects.filter(group_owner_id=request.user.id)
      k=fpods.values_list('group_owner_id',flat=True)
+     values_obj=firstdel_groups.objects.count()
+     user_obj=(values_obj)
      print("k",k)
      if seconddel_groups.objects.filter(group_owner_id=request.user).exists():
         owner_id=k[0]
@@ -35,7 +37,7 @@ def spodshow(request):
           current_user =request.user.id
           a = seconddel_groups_members.objects.filter(member_id=current_user).exists()
           
-          return render(request,'pod/secondhome.html',{'keys':z,'a':a,'spod':owner_id,'skey':0})
+          return render(request,'pod/secondhome.html',{'keys':z,'a':a,'spod':owner_id,'skey':0,"value":user_obj})
      
      else:      
           current_user =request.user.id

@@ -19,8 +19,11 @@ def index(request):
 	return render(request,"key/key.html",context )
          
 def key_generator(request):
+    a= pod_groups.objects.all()
+    z=len(a)
+    # print(">............................",z)
     podlength=len(pod_groups_members.objects.filter(member_status = 1))
-    print(">>>>>>>>>>>",podlength)
+    print("",podlength)
     user = pod_groups.objects.filter(group_owner_id=request.user).order_by('group_owner_id')  
     
     if request.method=="POST":
@@ -40,7 +43,7 @@ def key_generator(request):
         member.member_id=current_user.id
         member.save()   
         return HttpResponseRedirect(reverse("vote:key2",args=[key.id])) 
-    return render(request,"key/key.html",{'user':user,'is_key_generate':1,'a':0})
+    return render(request,"key/key.html",{'user':user,'is_key_generate':1,'a':0,"z":z})
 
 
 

@@ -35,7 +35,7 @@
              
              <li><a href="/help">Help</a></li>
              <li><a href="/logout">Logout</a></li>
-             <li><a href="/member">Members</a></li>
+             {% comment %} <li><a href="/member">Members</a></li> {% endcomment %}
              <img src="/static/image/user.png" alt="..." class="img-circle profile_img" height="40px">{{request.user.name}}</li>
             
             {%else%}
