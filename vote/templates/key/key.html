@@ -12,7 +12,7 @@
   
   
  <style>
- 
+
 
 
 
@@ -82,7 +82,8 @@ h2.text-center.Pod_number {
 <body>
 	
 
-
+ 
+  <h1>dsfg</h1>
     <form class="form-horizontal form-label-left" method="POST" novalidate>
         {% csrf_token %}
 <div class="container section_container">
@@ -108,7 +109,7 @@ h2.text-center.Pod_number {
     {% if  owner_id == request.user.id%}
       <button id="send" type="submit" name="hello"  class="btn btn-success">Generate Key</a></button>
     {%elif is_key_generate == 1%}
-      <button id="send" type="submit" name="hello" class="btn btn-success">Generate Key</a></button> 
+      <button id="send" type="submit" name="hello" class="btn btn-success">Update Key</a></button> 
     {% endif  %}  
 	</div>
 	
