@@ -52,11 +52,19 @@ def show(request,id):
     currnt = pod_groups_members.objects.filter(member_id = request.user.id)
     # print("dskdksdhkshbd",currnt)
     hello = currnt.values_list("vote_given",flat=True)
-    hell=hello[0]     
+    if pod_groups_members.objects.filter(member_id = request.user.id).exists():
+        hell=hello[0]
+    else:
+        hell=0
+
+        
     print("hell",hell)
     hello = currnt.values_list("elect_vote_given",flat=True)
-    evote=hello[0]
-    print(evote)
+    if pod_groups_members.objects.filter(member_id = request.user.id).exists():
+        evote=hello[0]
+    else:
+        evote=0
+   
 
     key1=pod_groups.objects.get(id=id)
     print("key1",key1)
