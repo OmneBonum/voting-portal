@@ -24,6 +24,6 @@ def memberIndex(request):
         q = request.POST.get('subm')
         print("querty",q[0])
         member.text_status=pod_groups_members.objects.filter(member_id=q[0]).update(member_comment=quer)
-    return render(request,"pod/data.html",{'context':user_obj})
+    return render(request,"pod/data.html",{'context':user_obj,"q":0})
 
 

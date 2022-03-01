@@ -40,6 +40,9 @@ def scheckview(request):
 
             else:   
                 return redirect('/scheckview')
+        else:   
+                return redirect('/scheckview')        
+
     return redirect('/scheckview')
     # else:
     #     new_room = Room.objects.create(name=room)
@@ -103,12 +106,12 @@ def ssend(request):
 
 def sgetMessages(request):
     # room_details = Room.objects.get(name=room)
-    # key1=pod_groups_members.objects.filter(member_id=request.user.id) 
+    key1=pod_groups_members.objects.filter(member_id=request.user.id) 
 
-    # if key1:
-    #     print(key1) 
-    #     for i in key1:
-    #         z=i.group_id
+    if key1:
+        print(key1) 
+        for i in key1:
+            z=i.group_id
     key2=firstdel_groups_members.objects.filter(member_id=request.user.id)
     
    
@@ -118,12 +121,12 @@ def sgetMessages(request):
         for i in key2:
             z=i.group_id
      
-    # key3=seconddel_groups_members.objects.filter(member_id=request.user.id)
+    key3=seconddel_groups_members.objects.filter(member_id=request.user.id)
     
-    # if key3:
-    #     print(key3) 
-    #     for i in key3:
-    #         z=i.group_id
+    if key3:
+        print(key3) 
+        for i in key3:
+            z=i.group_id
     
     # key4=thirddel_groups_members.objects.filter(member_id=request.user.id)
     

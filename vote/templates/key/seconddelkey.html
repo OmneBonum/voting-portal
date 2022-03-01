@@ -73,7 +73,38 @@
  h2.text-center.Pod_number {
    font-size: 32px;
  }
- 
+ .Pod_section p {
+  font-size: 18px !important;
+  color: #001687 !important;
+}
+
+.btn-success {
+  color: #fff;
+  background-color: #28a745 !important;
+  border-color: #28a745 !important;
+  font-size: 16px !important;
+}
+.Pod_section p {
+  font-size: 18px !important;
+  color: #ff0000 !important;
+  font-weight: 600 !important;
+}
+ .btn.vote {
+  border: 1px solid #0050a6;
+  background: #0069d9;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+
+.delete {
+  background: #0069d9;
+  border: 2px solid #0069d9;
+  color: #fff;
+  border-radius: 5px;
+  padding: 3px 7px;
+}
  /*7-feb-2022 css end */
  
  
@@ -112,7 +143,7 @@
     {% comment %}  {% if podlen == 0 %}
     <button id="send" type="submit" name="hello" class="btn btn-success">Generate Key</a></button> {% endcomment %}
     {% if  owner_id == request.user.id%}
-      <button id="send" type="submit" name="hello" class="btn btn-success">generate Key</a></button>
+      <button id="send" type="submit" name="hello" class="btn btn-success">Update Key</a></button>
     {%elif is_key_generate == 1%}
       <button id="send" type="submit" name="hello" class="btn btn-success">generate Key</a></button> 
     {% endif  %}  

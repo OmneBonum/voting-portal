@@ -106,12 +106,13 @@ def fsend(request):
 
 def fgetMessages(request):
     # room_details = Room.objects.get(name=room)
-    # key1=pod_groups_members.objects.filter(member_id=request.user.id) 
+    key1=pod_groups_members.objects.filter(member_id=request.user.id) 
 
-    # if key1:
-    #     print(key1) 
-    #     for i in key1:
-    #         z=i.group_id
+    if key1:
+        print(key1) 
+        for i in key1:
+            z=i.group_id
+            
     key2=firstdel_groups_members.objects.filter(member_id=request.user.id)
     
    

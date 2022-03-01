@@ -111,7 +111,9 @@ def getMessages(request):
         print(key1) 
         for i in key1:
             z=i.group_id
-    print("...........",z)
+
+    messages = Message.objects.filter(room=z)
+    
     # key2=firstdel_groups_members.objects.filter(member_id=request.user.id)
     
 
@@ -120,6 +122,7 @@ def getMessages(request):
     #     print(key2) 
     #     for i in key2:
     #         z=i.group_id
+    #         print("...........",z)
     
     # key3=seconddel_groups_members.objects.filter(member_id=request.user.id)
     
@@ -127,6 +130,7 @@ def getMessages(request):
     #     print(key3) 
     #     for i in key3:
     #         z=i.group_id
+    #         print("...........",z)
     
     # key4=thirddel_groups_members.objects.filter(member_id=request.user.id)
     
@@ -134,6 +138,7 @@ def getMessages(request):
     #     print(key4) 
     #     for i in key4:
     #         z=i.group_id
+    #         print("...........",z)
         
     # key5=fourthdel_groups_members.objects.filter(member_id=request.user.id)
     
@@ -141,6 +146,7 @@ def getMessages(request):
     #     print(key5) 
     #     for i in key5:
     #         z=i.group_id
+    #         print("...........",z)
 
     # key6=fifthdel_groups_members.objects.filter(member_id=request.user.id)
     
@@ -148,6 +154,7 @@ def getMessages(request):
     #     print(key6) 
     #     for i in key6:
     #         z=i.group_id
+    #         print("...........",z)
 
     # key7=sixthdel_groups_members.objects.filter(member_id=request.user.id)
     
@@ -155,6 +162,7 @@ def getMessages(request):
     #     print(key7) 
     #     for i in key7:
     #         z=i.group_id
+    #         print("...........",z)
     
 
     messages = Message.objects.filter(room=z)

@@ -25,7 +25,7 @@ def podshow(request):
      print(skey)
      values_obj=pod_groups.objects.count()
      user_obj=(values_obj)
-     print(",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,''''''''",user_obj)
+     print(",,,,,,,,,,,,,,,,,,,,,,,,,,,,,''''''''",user_obj)
      key1=pod_groups_members.objects.filter(member_id=request.user.id)
      
      fpods=pod_groups.objects.filter(group_owner_id=request.user.id)
