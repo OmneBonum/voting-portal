@@ -57,6 +57,8 @@ def send(request):
         print(key1) 
         for i in key1:
             z=i.group_id
+    new_message = Message.objects.create(value=message, user=request.user.name,room=z)
+    new_message.save()      
     key2=firstdel_groups_members.objects.filter(member_id=request.user.id)
     
     if key2:
@@ -98,9 +100,8 @@ def send(request):
         print(key7) 
         for i in key7:
             z=i.group_id
-    new_message = Message.objects.create(value=message, user=request.user.name,room=z)
-
-    new_message.save()
+    # new_message = Message.objects.create(value=message, user=request.user.name,room=z)
+    # new_message.save()
     return HttpResponse('Message sent successfully')
 
 def getMessages(request):

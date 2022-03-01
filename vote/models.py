@@ -52,6 +52,7 @@ class pod_groups_members(models.Model):
   elect_vote_given=models.IntegerField(default=0)
   created_at = models.DateTimeField(auto_now_add=True,null=True)  
   updated_at =  models.DateTimeField(auto_now=True)
+  devote_given = models.IntegerField(default=0)
 
 
 # class elect_count(models.Model):

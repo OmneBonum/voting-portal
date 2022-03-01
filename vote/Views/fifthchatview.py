@@ -91,6 +91,8 @@ def fisend(request):
         print(key6) 
         for i in key6:
             z=i.group_id
+    new_message = fifthMessage.objects.create(value=message, user=request.user.name,room=z)
+    new_message.save()        
 
     key7=sixthdel_groups_members.objects.filter(member_id=request.user.id)
     
@@ -98,8 +100,8 @@ def fisend(request):
         print(key7) 
         for i in key7:
             z=i.group_id
-    new_message = fifthMessage.objects.create(value=message, user=request.user.name,room=z)
-    new_message.save()
+    # new_message = fifthMessage.objects.create(value=message, user=request.user.name,room=z)
+    # new_message.save()
     return HttpResponse('Message sent successfully')
 
 

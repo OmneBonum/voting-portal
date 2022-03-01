@@ -184,9 +184,10 @@ h2.text-center.Pod_number {
           {% endif  %}
         </td>
         <td>
-          {% comment %} {%if users_list.group.group_owner_id != request.user.id %} {% endcomment %}
+          {% if  devote == 0 %}
           <button type="submit" class="btn vote" name="devote"  value={{users_list.id}}>Devote</button>
-          {% comment %} {%endif%} {% endcomment %}
+          {%endif%}
+
         </td>
 
         <td>

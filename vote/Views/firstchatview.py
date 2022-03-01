@@ -57,17 +57,20 @@ def fsend(request):
         print(key1) 
         for i in key1:
             z=i.group_id
+         
     key2=firstdel_groups_members.objects.filter(member_id=request.user.id)
     
     if key2:
         print(key2) 
         for i in key2:
-            z=i.group_id
+            z=i.group_id         
+    new_message = firstMessage.objects.create(value=message, user=request.user.name,room=z)
 
+    new_message.save()
     key3=seconddel_groups_members.objects.filter(member_id=request.user.id)
     
     if key3:
-        print(key3) 
+        print(key3)     
         for i in key3:
             z=i.group_id
 
@@ -98,9 +101,9 @@ def fsend(request):
         print(key7) 
         for i in key7:
             z=i.group_id
-    new_message = firstMessage.objects.create(value=message, user=request.user.name,room=z)
+    # new_message = firstMessage.objects.create(value=message, user=request.user.name,room=z)
 
-    new_message.save()
+    # new_message.save()
     return HttpResponse('Message sent successfully')
 
 

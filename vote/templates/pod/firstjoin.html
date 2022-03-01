@@ -1,8 +1,8 @@
-{%include "app/fheader.html"%}
+{%include "app/header.html"%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title> Joins a Pod </title>
+<title> Join a Pod </title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
@@ -10,6 +10,10 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--Bootstrap CSS-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+ 
 
 <style>
 .center_box {
@@ -44,7 +48,13 @@ margin-bottom: 30px;
 }
 
 
-
+input#pod_key {
+  font-size: 16px;
+}
+ul.messages {
+  padding: 0 !important;
+  font-size: 16px !important;
+}
 
 </style>
 </head>
@@ -65,13 +75,19 @@ margin-bottom: 30px;
 <form action="" method="POST" novalidate>
     {% csrf_token %}
     <label for="POD">Enter Pod_key</label>
-    <input class="form-control" type="text" name="pod_keys" id="pod_keys" />
+    <input class="form-control" type="text" name="pod_key" id="pod_key" />
 
-    {% for message in messages%}
-    <div class="alert alert-error">
-      <h1><strong>{{message}}<strong></h1>
-    </div>
-    {% endfor %}
+    {% if messages%}
+    <ul class="messages">
+        {% for message in messages %}
+        <div class="container-fluid p-0">
+          <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+        <center>{{ message }}</center> 
+        {% endfor %}
+    </ul>
+    {% endif %}
+    
+    
     <input type="submit" name="commit" value="Join the pod" class="btn-xl btn-primary" data-disable-with="Enter the Floor" />
 </form> 
  </div>

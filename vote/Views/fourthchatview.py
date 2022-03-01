@@ -84,6 +84,8 @@ def fosend(request):
         print(key5) 
         for i in key5:
             z=i.group_id
+    new_message = fourthMessage.objects.create(value=message, user=request.user.name,room=z)
+    new_message.save()        
 
     key6=fifthdel_groups_members.objects.filter(member_id=request.user.id)
     
@@ -98,8 +100,8 @@ def fosend(request):
         print(key7) 
         for i in key7:
             z=i.group_id
-    new_message = fourthMessage.objects.create(value=message, user=request.user.name,room=z)
-    new_message.save()
+    # new_message = fourthMessage.objects.create(value=message, user=request.user.name,room=z)
+    # new_message.save()
     return HttpResponse('Message sent successfully')
 
 

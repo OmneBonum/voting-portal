@@ -76,6 +76,9 @@ def tsend(request):
         print(key4) 
         for i in key4:
             z=i.group_id
+
+    new_message = thirdMessage.objects.create(value=message, user=request.user.name,room=z)
+    new_message.save()    
           
     key5=fourthdel_groups_members.objects.filter(member_id=request.user.id)
     
@@ -97,8 +100,8 @@ def tsend(request):
         print(key7) 
         for i in key7:
             z=i.group_id
-    new_message = thirdMessage.objects.create(value=message, user=request.user.name,room=z)
-    new_message.save()
+    # new_message = thirdMessage.objects.create(value=message, user=request.user.name,room=z)
+    # new_message.save()
     return HttpResponse('Message sent successfully')
 
 

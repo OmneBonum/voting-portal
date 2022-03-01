@@ -56,7 +56,7 @@ def show(request,id):
         hell=hello[0]
     else:
         hell=0
-
+    
         
     print("hell",hell)
     hello = currnt.values_list("elect_vote_given",flat=True)
@@ -64,7 +64,15 @@ def show(request,id):
         evote=hello[0]
     else:
         evote=0
+
    
+    # print("dskdksdhkshbd",currnt)
+    devote = currnt.values_list("devote_given",flat=True)
+    if pod_groups_members.objects.filter(member_id = request.user.id).exists():
+        devotee=devote[0]
+    else:
+        devotee=0
+
 
     key1=pod_groups.objects.get(id=id)
     print("key1",key1)
@@ -128,6 +136,7 @@ def show(request,id):
         print("q",q)
         voteCount=F('vote_count')-1   
         member.vote_count=pod_groups_members.objects.filter(id=q).update(vote_count=voteCount)  
+        member.devote_given=pod_groups_members.objects.filter(member_id=request.user.id).update(devote_given=1) 
         # member.vote_given=pod_groups_members.objects.filter(member_id=request.user.id).update(vote_given=1)  
         # show=pod_groups_members.objects.filter(id=q)
         # podlen=len(pod_groups_members.objects.filter(group_id=key1,member_status = 1))
@@ -175,6 +184,6 @@ def show(request,id):
             print(i.member.id)
             mem.group_owner_id=pod_groups.objects.filter(group_owner=i.group.group_owner_id).update(group_owner=i.member.id)     
         return redirect(request.path_info)   
-    return render(request,"key/key.html",{'user':users,'key1':key1,'stat':status,'is_key_generate':0,'podlen':podlength,"owner_id":owner_id,'all':all,'votegive':hell,"evote":evote,'q':0}) 
+    return render(request,"key/key.html",{'user':users,'key1':key1,'stat':status,'is_key_generate':0,'podlen':podlength,"owner_id":owner_id,'all':all,'votegive':hell,"evote":evote,'q':0,"devote":devotee}) 
  
     
