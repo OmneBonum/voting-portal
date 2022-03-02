@@ -42,8 +42,8 @@ def tkey_generator(request):
         member.member_id=current_user.id
         member.save()   
         return HttpResponseRedirect(reverse("vote:tkey2",args=[key.id])) 
-    # if thirddel_groups_members.objects.filter(member_id=request.user.id).exists():
-    #     return redirect("/")
+    if thirddel_groups_members.objects.filter(member_id=request.user.id).exists():
+        return redirect("/tshow")
     return render(request,"key/thirddelkey.html",{'user':user,'is_key_generate':1,'f':0})
 
 

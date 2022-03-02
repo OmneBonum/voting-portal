@@ -74,6 +74,8 @@ def svalidate(request):
           else:
                messages.error(request,"Invalid key")
                return redirect('/sjoin') 
+     if seconddel_groups_members.objects.filter(member_id=request.user.id).exists():
+        return redirect("/sshow")
      return render(request,"pod/secondjoin.html")
 
 # def trying (request):

@@ -120,7 +120,7 @@
 <body>
 	
   
-<h1>dsfg</h1>
+
 
 
 <form class="form-horizontal form-label-left" method="POST" novalidate>
@@ -130,7 +130,7 @@
     {{item.group_owner.name}}
     {%endfor%}
 	<h2 class="text-center Pod_number">Pod {{keys.id}} Housekeeping Page</h2>
-	<div class="Pod_section">
+	  <div class="Pod_section">
      {%if owner_id == request.user.id%}
 		<p class="text-center">Pod Invitation Key is:{% for item in user %}
 			{{item.group_key}}

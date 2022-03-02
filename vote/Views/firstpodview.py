@@ -71,6 +71,8 @@ def fvalidate(request):
           else:
                messages.error(request,"Invalid key")
                return redirect('/fjoin') 
+     if firstdel_groups_members.objects.filter(member_id=request.user.id).exists():
+        return redirect("/fshow")
      return render(request,"pod/firstjoin.html")
 
 

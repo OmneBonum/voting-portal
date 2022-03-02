@@ -41,8 +41,8 @@ def fkey_generator(request):
         member.member_id=current_user.id
         member.save()   
         return HttpResponseRedirect(reverse("vote:fkey2",args=[key.id])) 
-    # if firstdel_groups_members.objects.filter(member_id=request.user.id).exists():
-    #     return redirect("/")
+    if firstdel_groups_members.objects.filter(member_id=request.user.id).exists():
+        return redirect("/fshow")
     return render(request,"key/firstdelkey.html",{'user':user,'is_key_generate':1,'s':0})
 
 

@@ -71,6 +71,8 @@ def sixthvalidate(request):
           else:
                messages.error(request,"Invalid key")
                return redirect('/sijoin') 
+     if sixthdel_groups_members.objects.filter(member_id=request.user.id).exists():
+        return redirect("/sishow")
      return render(request,"pod/sixthjoin.html")
 
 # def trying (request):

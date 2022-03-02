@@ -77,6 +77,7 @@ class firstdel_groups_members(models.Model):
   elect_vote_given=models.IntegerField(default=0)
   created_at = models.DateTimeField(auto_now_add=True,null=True)  
   updated_at =  models.DateTimeField(auto_now=True)
+  devote_given = models.IntegerField(default=0)  
 
 class seconddel_groups(models.Model):
   group_key =  models.CharField(unique=True, editable=False,max_length=6)
@@ -95,6 +96,7 @@ class seconddel_groups_members(models.Model):
   elect_vote_given=models.IntegerField(default=0)
   created_at = models.DateTimeField(auto_now_add=True,null=True)  
   updated_at =  models.DateTimeField(auto_now=True)
+  devote_given = models.IntegerField(default=0)
 
 class thirddel_groups(models.Model):
   group_key =  models.CharField(unique=True, editable=False,max_length=6)
@@ -113,6 +115,7 @@ class thirddel_groups_members(models.Model):
   elect_vote_given=models.IntegerField(default=0)
   created_at = models.DateTimeField(auto_now_add=True,null=True)  
   updated_at =  models.DateTimeField(auto_now=True)
+  devote_given = models.IntegerField(default=0)
 
 class fourthdel_groups(models.Model):
   group_key =  models.CharField(unique=True, editable=False,max_length=6)
@@ -131,6 +134,7 @@ class fourthdel_groups_members(models.Model):
   elect_vote_given=models.IntegerField(default=0)
   created_at = models.DateTimeField(auto_now_add=True,null=True)  
   updated_at =  models.DateTimeField(auto_now=True)
+  devote_given = models.IntegerField(default=0)
 
 class fifthdel_groups(models.Model):
   group_key =  models.CharField(unique=True, editable=False,max_length=6)
@@ -149,6 +153,7 @@ class fifthdel_groups_members(models.Model):
   elect_vote_given=models.IntegerField(default=0)
   created_at = models.DateTimeField(auto_now_add=True,null=True)  
   updated_at =  models.DateTimeField(auto_now=True)
+  devote_given = models.IntegerField(default=0)
 
 class sixthdel_groups(models.Model):
   group_key =  models.CharField(unique=True, editable=False,max_length=6)
@@ -167,6 +172,7 @@ class sixthdel_groups_members(models.Model):
   elect_vote_given=models.IntegerField(default=0)
   created_at = models.DateTimeField(auto_now_add=True,null=True)  
   updated_at =  models.DateTimeField(auto_now=True)
+  devote_given = models.IntegerField(default=0)
 
 
 
