@@ -144,17 +144,19 @@ def show(request,id):
         voteCount=F('vote_count')-1   
         member.vote_count=pod_groups_members.objects.filter(id=q).update(vote_count=voteCount)  
         member.devote_given=pod_groups_members.objects.filter(member_id=request.user.id).update(devote_given=1) 
-        member.vote_given=pod_groups_members.objects.filter(member_id=request.user.id).update(vote_given=1)  
+      
         show=pod_groups_members.objects.filter(id=q)
         podlen=len(pod_groups_members.objects.filter(group_id=key1,member_status = 1))
         podLen=podlen/2
         length=podLen
         for i in show:
             print("Elect",i.vote_count)
-        if i.vote_count < length:
-            print(i.member.id)
-            pod_groups_members.objects.filter(member_status =1,group_id=key1)
-            print("true")
+        # if i.vote_count < length:
+        #     print(i.member.id)
+        
+            # print("true")
+        pod_groups_members.objects.filter(member_status =1).update(devote_given=0)
+          
             
             #member.pod_owner_id_id=pod_groups_members.objects.filter(id=q).update(member_status=0)   
         return redirect(request.path_info)   
@@ -163,6 +165,7 @@ def show(request,id):
         member=pod_groups_members()
         q = request.POST.get('Delete')
         member.count=pod_groups_members.objects.filter(id=q).delete()
+        pod_groups_members.objects.filter(member_status =1).update(devote_given=0)
         return redirect(request.path_info) 
 
     if request.method == "POST" and "hello" in request.POST:
