@@ -63,7 +63,11 @@ def sshow(request,id):
     else:
         evote=0
     
-    
+    devote = currnt.values_list("devote_given",flat=True)
+    if seconddel_groups_members.objects.filter(member_id = request.user.id).exists():
+        devotee=devote[0]
+    else:
+        devotee=0
 
      
 
@@ -129,17 +133,19 @@ def sshow(request,id):
         q = request.POST.get('devote')
         print("q",q)
         voteCount=F('vote_count')-1   
-        member.vote_count=seconddel_groups_members.objects.filter(id=q).update(vote_count=voteCount)   
-        # show=pod_groups_members.objects.filter(id=q)
-        # podlen=len(pod_groups_members.objects.filter(group_id=key1,member_status = 1))
-        # podLen=podlen/2
-        # length=podLen
-        # for i in show:
-        #     print("Elect",i.vote_count)
-        # if i.vote_count < length:
-        #     print(i.member.id)
-        #     #pod_groups_members.objects.filter(member_status =1,group_id=key1)
-        #     # print("true")
+        member.vote_count=seconddel_groups_members.objects.filter(id=q).update(vote_count=voteCount)
+        member.devote_given=seconddel_groups_members.objects.filter(member_id=request.user.id).update(devote_given=1)
+   
+        show=seconddel_groups_members.objects.filter(id=q)
+        podlen=len(seconddel_groups_members.objects.filter(group_id=key1,member_status = 1))
+        podLen=podlen/2
+        length=podLen
+        for i in show:
+            print("Elect",i.vote_count)
+        if i.vote_count < length:
+            print(i.member.id)
+            seconddel_groups_members.objects.filter(member_status =1,group_id=key1)
+            # print("true")
         #     #pod_groups_members.objects.update(vote_given=0)
         #     member.pod_owner_id_id=pod_groups_members.objects.filter(id=q).update(member_status=0)   
         return redirect(request.path_info)   
@@ -176,7 +182,7 @@ def sshow(request,id):
             print(i.member.id)
             mem.group_owner_id=seconddel_groups.objects.filter(group_owner=i.group.group_owner_id).update(group_owner=i.member.id)     
         return redirect(request.path_info)   
-    return render(request,"key/seconddelkey.html",{'user':users,'key1':key1,'stat':status,'is_key_generate':0,'podlen':podlength,"owner_id":owner_id,'all':all,'votegive':hell,"evote":evote,'e':0}) 
+    return render(request,"key/seconddelkey.html",{'user':users,'key1':key1,'stat':status,'is_key_generate':0,'podlen':podlength,"owner_id":owner_id,'all':all,'votegive':hell,"evote":evote,'e':0,"devote":devotee}) 
  
     
 

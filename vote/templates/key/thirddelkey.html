@@ -185,9 +185,10 @@
         </td>
 
         <td>
-          {% comment %} {%if users_list.member_status == 0 %}  {% endcomment %}
+          {% if  devote == 0 and  users_list.member_status == 0%}
           <button type="submit" class="btn vote" name="devote"  value={{users_list.id}}>Devote</button>
-           {% comment %} {%endif%}    {% endcomment %}
+          {%endif%}
+
         </td>
 
         <td>
