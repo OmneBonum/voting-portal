@@ -42,6 +42,9 @@ def fifthkey_generator(request):
         member.member_id=current_user.id
         member.save()   
         return HttpResponseRedirect(reverse("vote:fikey2",args=[key.id])) 
+    # if fifthdel_groups_members.objects.filter(member_id=request.user.id).exists():
+    #     return redirect("/")
+    
     return render(request,"key/fifthdelkey.html",{'user':user,'is_key_generate':1,'h':0})
 
 

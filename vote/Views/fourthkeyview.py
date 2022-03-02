@@ -42,6 +42,8 @@ def fourthkey_generator(request):
         member.member_id=current_user.id
         member.save()   
         return HttpResponseRedirect(reverse("vote:fokey2",args=[key.id])) 
+    # if fourthdel_groups_members.objects.filter(member_id=request.user.id).exists():
+    #     return redirect("/")
     return render(request,"key/fourthdelkey.html",{'user':user,'is_key_generate':1,'g':0})
 
 

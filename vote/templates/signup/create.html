@@ -46,36 +46,81 @@
       <div class="col-md-6 col-md-offset-3 {% if form.errors %} has-error  {% endif %}" id="big-font">
         <label for="{{ form.district.id_for_label }}">District:</label>
         {{ form.district }}
-        {{ form.district.errors }}<br>
+        {% for error in form.district.errors %}
+        <span class="error text-danger">
+            <strong>{{ error|escape }}</strong>
+        </span>
+        {%endfor%}<br>
+       
     
      
         <label for="{{ form.name.id_for_label }}">Name:</label>
         {{ form.name }}
-        {{ form.name.errors }}<br>
+      
+        {% for error in form.name.errors %}
+        <span class="error text-danger">
+            <strong>{{ error|escape }}</strong>
+        </span>
+        {%endfor%}<br>
 
         <label for="{{ form.registered.id_for_label }}">Registered:</label>
         {{form.registered}}
-        {{ form.registered.errors }}<br>
+     
+
+        {% for error in form.registered.errors %}
+        <span class="error text-danger">
+            <strong>{{ error|escape }}</strong>
+        </span>
+        {%endfor%}<br>
         
         <label for="{{ form.email.id_for_label }}">Email:</label>
         {{form.email}}
-        {{ form.email.errors }}<br>
+       
+
+        {% for error in form.email.errors %}
+        <span class="error text-danger">
+            <strong>{{ error|escape }}</strong>
+        </span>
+        {%endfor%}<br>
 
         <label for="{{ form.address.id_for_label }}">Address:</label>
         {{form.address}}
-        {{ form.address.errors }}<br>
+        {% for error in form.address.errors %}
+        <span class="error text-danger">
+            <strong>{{ error|escape }}</strong>
+        </span>
+        {%endfor%}<br>
+        
 
         <label for="{{ form.executed_on.id_for_label }}">Executed on:</label>
         {{form.executed_on}}
-        {{ form.executed_on.errors }}<br>
+     
+
+        {% for error in form.executed_on.errors %}
+        <span class="error text-danger">
+            <strong>{{ error|escape }}</strong>
+        </span>
+        {%endfor%}<br>
        
         <label for="{{ form.password.id_for_label }}">Password:</label>
         {{ form.password }}
-        {{ form.password.errors }}<br>
+      
+
+        {% for error in form.password.errors %}
+        <span class="error text-danger">
+            <strong>{{ error|escape }}</strong>
+        </span>
+        {%endfor%}<br>
 
         <label for="{{ form.confirmation.id_for_label }}">Confirm Password:</label>
         {{ form.confirmation }}
-        {{ form.confirmation.errors }}
+        
+
+        {% for error in form.confirmation.errors %}
+        <span class="error text-danger">
+            <strong>{{ error|escape }}</strong>
+        </span>
+        {%endfor%}<br>
       </div>
       </div> 
     <div class="center jumbotron input_box"> 

@@ -42,6 +42,8 @@ def skey_generator(request):
         member.member_id=current_user.id
         member.save()   
         return HttpResponseRedirect(reverse("vote:skey2",args=[key.id])) 
+    # if seconddel_groups_members.objects.filter(member_id=request.user.id).exists():
+    #     return redirect("/")
     return render(request,"key/seconddelkey.html",{'user':user,'is_key_generate':1,'d':0})
 
 

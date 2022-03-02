@@ -12,6 +12,7 @@ import string
 
 
 def podshow(request):  
+    
      all=pod_groups.objects.all()
      al=firstdel_groups.objects.all()
      pod_key=pod_groups.objects.filter(group_owner_id=request.user.id)
@@ -50,6 +51,8 @@ def podshow(request):
           print("asdf")
           current_user =request.user.id
           a = pod_groups_members.objects.filter(member_id=current_user).exists()
+          # if request.user.is_authenticated:
+          #      return redirect("sshow")
           return render(request,'pod/home.html',{'key1':z,'a':a,'fpod':owner_id,"fkey":0,'bkey':bkey,'pod':all,'al':al,'pkey':pkey,"value":user_obj})
      
      else:      
