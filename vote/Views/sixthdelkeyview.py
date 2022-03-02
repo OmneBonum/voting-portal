@@ -19,6 +19,8 @@ def index(request):
 	return render(request,"key/key.html",context )
          
 def sixthkey_generator(request):
+    if not request.user.is_authenticated:
+        return redirect("/")
     podlength=len(fifthdel_groups_members.objects.filter(member_status = 1))
     print(">>>>>>>>>>>",podlength)
     user = sixthdel_groups.objects.filter(group_owner_id=request.user).order_by('group_owner_id')  
@@ -48,16 +50,23 @@ def sixthshow(request,id):
     currnt = sixthdel_groups_members.objects.filter(member_id = request.user.id)
     # print("dskdksdhkshbd",currnt)
     hello = currnt.values_list("vote_given",flat=True)
-    hell=hello[0]     
-    print("hell",hell)
+    if sixthdel_groups_members.objects.filter(member_id = request.user.id).exists():
+        hell=hello[0]
+    else:
+        hell=0
+       
     hello = currnt.values_list("elect_vote_given",flat=True)
-    evote=hello[0]
-    print(evote)    
+    if sixthdel_groups_members.objects.filter(member_id = request.user.id).exists():
+        evote=hello[0]
+    else:
+        evote=0     
 
     key1=sixthdel_groups.objects.get(id=id)
     print("key1",key1)
     all=sixthdel_groups.objects.filter(id=key1.id)
     users = sixthdel_groups.objects.filter(id=key1.id) 
+    if not request.user.is_authenticated:
+      return redirect("/")
     user = sixthdel_groups.objects.filter(group_owner_id=request.user)
     k=user.values_list('group_owner_id',flat=True)
     if sixthdel_groups.objects.filter(group_owner_id=request.user).exists():

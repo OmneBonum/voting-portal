@@ -20,6 +20,8 @@ def spodshow(request):
      values_obj=firstdel_groups.objects.count()
      user_obj=(values_obj)
      print("k",k)
+     if not request.user.is_authenticated:
+      return redirect("/")
      if seconddel_groups.objects.filter(group_owner_id=request.user).exists():
         owner_id=k[0]
      else:
@@ -46,6 +48,8 @@ def spodshow(request):
 
 
 def svalidate(request):
+     if not request.user.is_authenticated:
+      return redirect("/")
      if request.method =="POST":
           join=seconddel_groups_members()
          

@@ -19,6 +19,8 @@ def index(request):
 	return render(request,"key/key.html",context )
          
 def fourthkey_generator(request):
+    if not request.user.is_authenticated:
+        return redirect("/")
     podlength=len(thirddel_groups_members.objects.filter(member_status = 1))
     print(">>>>>>>>>>>",podlength)
     user = fourthdel_groups.objects.filter(group_owner_id=request.user).order_by('group_owner_id')  
@@ -48,16 +50,23 @@ def fourthshow(request,id):
     currnt = fourthdel_groups_members.objects.filter(member_id = request.user.id)
     # print("dskdksdhkshbd",currnt)
     hello = currnt.values_list("vote_given",flat=True)
-    hell=hello[0]     
-    print("hell",hell)
+    if fourthdel_groups_members.objects.filter(member_id = request.user.id).exists():
+        hell=hello[0]
+    else:
+        hell=0
+       
     hello = currnt.values_list("elect_vote_given",flat=True)
-    evote=hello[0]
-    print(evote)    
+    if fourthdel_groups_members.objects.filter(member_id = request.user.id).exists():
+        evote=hello[0]
+    else:
+        evote=0 
 
     key1=fourthdel_groups.objects.get(id=id)
     print("key1",key1)
     all=fourthdel_groups.objects.filter(id=key1.id)
     users = fourthdel_groups.objects.filter(id=key1.id) 
+    if not request.user.is_authenticated:
+      return redirect("/")
     user = fourthdel_groups.objects.filter(group_owner_id=request.user)
     k=user.values_list('group_owner_id',flat=True)
     if fourthdel_groups.objects.filter(group_owner_id=request.user).exists():

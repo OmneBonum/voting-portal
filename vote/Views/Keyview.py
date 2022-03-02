@@ -19,6 +19,8 @@ def index(request):
 	return render(request,"key/key.html",context )
          
 def key_generator(request):
+    if not request.user.is_authenticated:
+      return redirect("/")
     a= pod_groups.objects.all()
     z=len(a)
     # print(">............................",z)
@@ -50,7 +52,6 @@ def key_generator(request):
 def show(request,id):   
     
     currnt = pod_groups_members.objects.filter(member_id = request.user.id)
-    # print("dskdksdhkshbd",currnt)
     hello = currnt.values_list("vote_given",flat=True)
     if pod_groups_members.objects.filter(member_id = request.user.id).exists():
         hell=hello[0]
@@ -78,6 +79,9 @@ def show(request,id):
     print("key1",key1)
     all=pod_groups.objects.filter(id=key1.id)
     users = pod_groups.objects.filter(id=key1.id) 
+    if not request.user.is_authenticated:
+      return redirect("/")
+
     user = pod_groups.objects.filter(group_owner_id=request.user)
     k=user.values_list('group_owner_id',flat=True)
     if pod_groups.objects.filter(group_owner_id=request.user).exists():

@@ -18,6 +18,8 @@ def index(request):
 	return render(request,"key/key.html",context )
          
 def fkey_generator(request):
+    if not request.user.is_authenticated:
+      return redirect("/")
     podlength=len(pod_groups_members.objects.filter(member_status = 1))
     print(">>>>>>>>>>>",podlength)
     user = firstdel_groups.objects.filter(group_owner_id=request.user).order_by('group_owner_id')  
@@ -46,15 +48,26 @@ def fkey_generator(request):
 def fshow(request,id):   
     currnt = firstdel_groups_members.objects.filter(member_id = request.user.id)
     hello = currnt.values_list("vote_given",flat=True)
-    hell=hello[0]     
+    if firstdel_groups_members.objects.filter(member_id = request.user.id).exists():
+        hell=hello[0]
+    else:
+        hell=0
+       
     hello = currnt.values_list("elect_vote_given",flat=True)
-    evote=hello[0]
+    if firstdel_groups_members.objects.filter(member_id = request.user.id).exists():
+        evote=hello[0]
+    else:
+        evote=0
+   
     # print(evote)    
 
     key1=firstdel_groups.objects.get(id=id)
     all=firstdel_groups.objects.filter(id=key1.id)
     users = firstdel_groups.objects.filter(id=key1.id) 
+    if not request.user.is_authenticated:
+      return redirect("/")
     user = firstdel_groups.objects.filter(group_owner_id=request.user)
+    
     k=user.values_list('group_owner_id',flat=True)
     if firstdel_groups.objects.filter(group_owner_id=request.user).exists():
         owner_id=k[0]

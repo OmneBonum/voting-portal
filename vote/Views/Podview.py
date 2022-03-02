@@ -31,6 +31,10 @@ def podshow(request):
      fpods=pod_groups.objects.filter(group_owner_id=request.user.id)
      k=fpods.values_list('group_owner_id',flat=True)
      print("k",k)
+     if not request.user.is_authenticated:
+      return redirect("/")
+
+
      if pod_groups.objects.filter(group_owner_id=request.user).exists():
         owner_id=k[0]
      else:
@@ -55,6 +59,8 @@ def podshow(request):
 
 
 def validate(request):
+     if not request.user.is_authenticated:
+        return redirect("/")
      if request.method =="POST":
           join=pod_groups_members()
          

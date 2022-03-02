@@ -17,6 +17,8 @@ def tpodshow(request):
      fpods=thirddel_groups.objects.filter(group_owner_id=request.user.id)
      k=fpods.values_list('group_owner_id',flat=True)
      print("k",k)
+     if not request.user.is_authenticated:
+      return redirect("/")
      if thirddel_groups.objects.filter(group_owner_id=request.user).exists():
         owner_id=k[0]
      else:
@@ -43,6 +45,8 @@ def tpodshow(request):
 
 
 def tvalidate(request):
+     if not request.user.is_authenticated:
+        return redirect("/")
      if request.method =="POST":
           join=thirddel_groups_members()
          
