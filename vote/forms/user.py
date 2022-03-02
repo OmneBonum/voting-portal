@@ -1,7 +1,7 @@
 from ast import Break
 from django.forms import IntegerField, ModelForm
 from django import forms
-
+from localflavor.us.forms import USStateField
 from vote.models import *
 
 FRUIT_CHOICES= [
@@ -10,15 +10,17 @@ FRUIT_CHOICES= [
     ]
 
 
+
 class AddCreateForm(ModelForm):
     
-    district = forms.CharField(required = True,widget=forms.TextInput(
-        attrs={
-        'class':'form-control',
-        'placeholder':'Enter your District'
-        }
-    )) 
-
+    # district = forms.CharField(required = True,widget=forms.TextInput(
+    #     attrs={
+    #     'class':'form-control',
+    #     'placeholder':'Enter your District'
+    #     }
+    # )) 
+    
+    district= USStateField()
     
     email = forms.CharField(required = True,widget=forms.TextInput(
         attrs={
