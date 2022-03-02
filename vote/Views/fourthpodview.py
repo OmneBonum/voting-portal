@@ -71,6 +71,8 @@ def fourthvalidate(request):
           else:
                messages.error(request,"Invalid key")
                return redirect('/fojoin') 
+     if fourthdel_groups_members.objects.filter(member_id=request.user.id).exists():
+        return redirect("/foshow")
      return render(request,"pod/fourthjoin.html")
 
 # def trying (request):

@@ -87,6 +87,9 @@ def validate(request):
           else:
                messages.error(request,"Invalid key")
                return redirect('/join') 
+     if pod_groups_members.objects.filter(member_id=request.user.id).exists():
+
+        return redirect("/show")
      return render(request,"pod/join.html")
 
 # def trying (request):

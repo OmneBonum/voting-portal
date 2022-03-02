@@ -71,6 +71,8 @@ def tvalidate(request):
           else:
                messages.error(request,"Invalid key")
                return redirect('/tjoin') 
+     if thirddel_groups_members.objects.filter(member_id=request.user.id).exists():
+        return redirect("/tshow")
      return render(request,"pod/thirdjoin.html")
 
 # def trying (request):

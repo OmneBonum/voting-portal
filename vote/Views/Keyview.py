@@ -46,7 +46,8 @@ def key_generator(request):
         member.save()   
         return HttpResponseRedirect(reverse("vote:key2",args=[key.id])) 
     if pod_groups_members.objects.filter(member_id=request.user.id).exists():
-        return redirect("/")
+
+        return redirect("/show")
            
     return render(request,"key/key.html",{'user':user,'is_key_generate':1,'a':0,"z":z})
 

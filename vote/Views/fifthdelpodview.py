@@ -67,5 +67,7 @@ def fifthvalidate(request):
           else:
                messages.error(request,"Invalid key")
                return redirect('/fijoin') 
+     if fifthdel_groups_members.objects.filter(member_id=request.user.id).exists():
+        return redirect("/fishow")
      return render(request,"pod/fifthjoin.html")
 
