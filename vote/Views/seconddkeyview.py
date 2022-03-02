@@ -127,8 +127,7 @@ def sshow(request,id):
         q = request.POST.get('devote')
         print("q",q)
         voteCount=F('vote_count')-1   
-        member.vote_count=seconddel_groups_members.objects.filter(id=q).update(vote_count=voteCount)  
-        # member.vote_given=pod_groups_members.objects.filter(member_id=request.user.id).update(vote_given=1)  
+        member.vote_count=seconddel_groups_members.objects.filter(id=q).update(vote_count=voteCount)   
         # show=pod_groups_members.objects.filter(id=q)
         # podlen=len(pod_groups_members.objects.filter(group_id=key1,member_status = 1))
         # podLen=podlen/2

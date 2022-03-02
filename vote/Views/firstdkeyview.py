@@ -60,6 +60,11 @@ def fshow(request,id):
         evote=0
    
     # print(evote)    
+    devote = currnt.values_list("devote_given",flat=True)
+    if firstdel_groups_members.objects.filter(member_id = request.user.id).exists():
+        devotee=devote[0]
+    else:
+        devotee=0
 
     key1=firstdel_groups.objects.get(id=id)
     all=firstdel_groups.objects.filter(id=key1.id)
@@ -120,17 +125,17 @@ def fshow(request,id):
         print("q",q)
         voteCount=F('vote_count')-1   
         member.vote_count=firstdel_groups_members.objects.filter(id=q).update(vote_count=voteCount)  
-        # member.vote_given=pod_groups_members.objects.filter(member_id=request.user.id).update(vote_given=1)  
-        # show=pod_groups_members.objects.filter(id=q)
-        # podlen=len(pod_groups_members.objects.filter(group_id=key1,member_status = 1))
-        # podLen=podlen/2
-        # length=podLen
-        # for i in show:
-        #     print("Elect",i.vote_count)
-        # if i.vote_count < length:
-        #     print(i.member.id)
-        #     #pod_groups_members.objects.filter(member_status =1,group_id=key1)
-        #     # print("true")
+        member.devote_given=firstdel_groups_members.objects.filter(member_id=request.user.id).update(devote_given=1)
+        show=firstdel_groups_members.objects.filter(id=q)
+        podlen=len(firstdel_groups_members.objects.filter(group_id=key1,member_status = 1))
+        podLen=podlen/2
+        length=podLen
+        for i in show:
+            print("Elect",i.vote_count)
+        if i.vote_count < length:
+            print(i.member.id)
+            firstdel_groups_members.objects.filter(member_status =1,group_id=key1)
+            print("true")
         #     #pod_groups_members.objects.update(vote_given=0)
         #     member.pod_owner_id_id=pod_groups_members.objects.filter(id=q).update(member_status=0)   
         return redirect(request.path_info)   
@@ -166,7 +171,7 @@ def fshow(request,id):
             # print(i.member.id)
             mem.group_owner_id=firstdel_groups.objects.filter(group_owner=i.group.group_owner_id).update(group_owner=i.member.id)     
         return redirect(request.path_info)   
-    return render(request,"key/firstdelkey.html",{'user':users,'key1':key1,'stat':status,'is_key_generate':0,'podlen':podlength,"owner_id":owner_id,'all':all,'votegive':hell,"evote":evote,'w':0}) 
+    return render(request,"key/firstdelkey.html",{'user':users,'key1':key1,'stat':status,'is_key_generate':0,'podlen':podlength,"owner_id":owner_id,'all':all,'votegive':hell,"evote":evote,'w':0,"devote":devotee}) 
  
     
 
