@@ -146,6 +146,7 @@ def fshow(request,id):
         member=firstdel_groups_members()
         q = request.POST.get('Delete')
         member.count=firstdel_groups_members.objects.filter(id=q).delete()
+        pod_groups_members.objects.filter(member_status =1).update(devote_given=0)
         return redirect(request.path_info) 
 
     if request.method == "POST" and "hello" in request.POST:

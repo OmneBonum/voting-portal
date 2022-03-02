@@ -155,7 +155,7 @@ def show(request,id):
         #     print(i.member.id)
         
             # print("true")
-        pod_groups_members.objects.filter(member_status =1).update(devote_given=0)
+        
           
             
             #member.pod_owner_id_id=pod_groups_members.objects.filter(id=q).update(member_status=0)   
