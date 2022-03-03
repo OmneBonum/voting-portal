@@ -122,8 +122,43 @@ def userLogout(request):
 
 
 def help(request):
-    context = {}
-    template = loader.get_template('help.html')
+    context = {"q":0}
+    template = loader.get_template('help.html',)
+    print("hritik")
     return HttpResponse(template.render(context, request))    
 
 
+
+def fhelp(request):
+    context = {"w":0}
+    if firstdel_groups_members.objects.filter(member_id=request.user.id):
+      print("hritikasddsad")
+      template = loader.get_template('fhelp.html',)
+      return HttpResponse(template.render(context, request))   
+
+def shelp(request):
+    context = {}
+
+    template = loader.get_template('shelp.html')
+    return HttpResponse(template.render(context, request))     
+
+def thelp(request):
+    context = {}
+    template = loader.get_template('thelp.html')
+    return HttpResponse(template.render(context, request))         
+
+def fohelp(request):
+    context = {}
+    template = loader.get_template('fohelp.html')
+    return HttpResponse(template.render(context, request))  
+
+
+def fihelp(request):
+    context = {}
+    template = loader.get_template('fihelp.html')
+    return HttpResponse(template.render(context, request))    
+
+def sihelp(request):
+    context = {}
+    template = loader.get_template('sihelp.html')
+    return HttpResponse(template.render(context, request))               

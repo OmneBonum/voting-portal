@@ -33,6 +33,13 @@ urlpatterns = [
     path("login",Loginview.user_login,name='login'),
     path('logout',Loginview.userLogout,name='logout'),
     path("help",Loginview.help,name='help'),
+    path("fhelp",Loginview.fhelp,name='fhelp'),
+    path("shelp",Loginview.shelp,name='shelp'),
+    path("thelp",Loginview.thelp,name='thelp'),
+    path("fohelp",Loginview.fohelp,name='fohelp'),
+    path("fihelp",Loginview.fihelp,name='fihelp'),
+    path("sihelp",Loginview.sihelp,name='sihelp'),
+
 
 
 # signup urls  
