@@ -125,8 +125,24 @@
       </div> 
     <div class="center jumbotron input_box"> 
       <div class="input_btn" id="">
+  
       <input type="submit" name="commit" value="Create my account" class="btn-xl btn-primary btn-wrap-text" data-disable-with="Create my account" />
-</form>  </div>
+      {% if messages%}
+      <ul class="messages">
+          {% for message in messages %}
+          <div class="container-fluid p-0">
+              <div class="row">
+                  {% comment %} <div class="col-sm-2">
+              <div class="image_check"><img src="/static/image/check.jpg"></div></div> {% endcomment %}
+              {%if "logout" in message.tags%}
+              <div class="col-sm-12"><div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+                  <div class="image_check"><img src="/static/image/check.jpg"></div>
+                  <center>{{ message }}</center> 
+                  {%endif%}
+                  {% endfor %}
+      </ul> 
+        {%endif%} 
+      </form>  </div>
 </div>
 
       <!-- <footer class="footer">

@@ -8,6 +8,15 @@ from django.urls import reverse
 from django.contrib.auth.hashers import make_password
 from vote.forms.user import *
 from django.db.models import F
+from django.utils.crypto import get_random_string
+from django.template.loader import render_to_string
+from django.utils.encoding import force_bytes,force_str
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from .token import account_activation_token
+from django.core.mail import EmailMessage
+from django.contrib.sites.shortcuts import get_current_site
+from django.contrib.auth import authenticate, login,logout
+from django.contrib.auth import get_user_model
 
 
 def index(request):   
@@ -19,18 +28,72 @@ def create(request):
     if request.method == 'POST':
         accountform = AddCreateForm(request.POST)
         if accountform.is_valid():
-            new_user = accountform.save()
+            names=request.POST.get("name")
+            print("names",names)
+            unique_id = get_random_string(length=5)
+            uniqueName=names + unique_id
+            accountform.name=uniqueName
+            new_user = accountform.save(commit=False)
+            new_user.is_active = False
+            new_user.save()
+            new_user.name=uniqueName
+
+
             new_user.set_password(
                 accountform.cleaned_data.get('password')         
             )
-            if accountform.save():
-                messages.success(request,'Account Added Successfully.')
-                return redirect('/login')
+            current_site = get_current_site(request)
+            mail_subject = 'Activate your account.'
+            message = render_to_string('signup/acc_active_email.html', {
+                'user': new_user,
+                'domain': current_site.domain,
+                'uid':urlsafe_base64_encode(force_bytes(new_user.pk)),
+                'token':account_activation_token.make_token(new_user),
+            })
+            to_email = accountform.cleaned_data.get('email')
+            email = EmailMessage(
+                        mail_subject, 
+                        message, 
+                        to=[to_email]
+            )
+           
+
+            a=accountform.save()
+            print(a.id)
+            email.send()
+            messages.success(request,"Thanks for registering with us.Please confirm your email address to complete the registration.",extra_tags='logout')
+            return redirect('/create')
+
         else:
             return render(request,"signup/create.html",{'form':accountform})
 
     form = AddCreateForm()
     return render(request,"signup/create.html",{'form':form})
+
+
+def activate(request, uidb64, token):
+    User=get_user_model()
+    
+    try:
+        uid = force_str(urlsafe_base64_decode(uidb64))
+        users = User.objects.get(id=uid)
+        print("hritik")
+        print("user",users)
+    except(TypeError, ValueError, OverflowError, User.DoesNotExist):
+        users = None
+        print("hritik")
+        print("user",users)
+    if users is not None and account_activation_token.check_token(users, token):
+        users.is_active = user.objects.filter(id=uid).update(is_active=True)
+        login(request, users)
+        # messages.success(request,"Successfully Registered")
+        return redirect('/')
+        # return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
+    else:
+        return HttpResponse('Activation link is invalid!')
+
+
+
 
 def update(request,id):
     users = user.objects.get(id=id)

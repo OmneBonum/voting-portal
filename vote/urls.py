@@ -33,6 +33,7 @@ urlpatterns = [
     path("login",Loginview.user_login,name='login'),
     path('logout',Loginview.userLogout,name='logout'),
     path("help",Loginview.help,name='help'),
+    path('activate/<uidb64>/<token>/',Signupview.activate, name='activate'),
 
 
 # signup urls  

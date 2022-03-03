@@ -53,7 +53,7 @@ def index(request):
 
 def user_login(request):
     if request.method == "POST":
-        uname= request.POST.get('email')
+        uname= request.POST.get('name')
         print(uname)
         upass= request.POST.get('password')
         print(upass)      

@@ -10,7 +10,7 @@ from datetime import datetime
 class user(AbstractBaseUser,PermissionsMixin):
     district=models.CharField(max_length=200)
     voterid=models.IntegerField(max_length=200,null=True)
-    name=models.CharField(max_length=200)
+    name=models.CharField(max_length=200,unique=True)
     email=models.EmailField(_('email'),unique=True,blank=True)
     password=models.CharField(max_length=200)
     confirmation=models.CharField(max_length=200)
@@ -25,10 +25,11 @@ class user(AbstractBaseUser,PermissionsMixin):
 		Unselect this instead of deleting accounts.')
     created_at = models.DateTimeField(auto_now_add=True,null=True)
     updated_at =  models.DateTimeField(auto_now=True)
+    entry_code=models.CharField(max_length=200,null=True)
 
 
 
-    USERNAME_FIELD 	='email'
+    USERNAME_FIELD 	='name'
     objects = CustomUserManager()
 
     def __str__(self):
