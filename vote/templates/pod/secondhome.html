@@ -59,12 +59,11 @@ margin-bottom: 7px;
 <div class="row mb-3">
 <div class="col-md-4"></div>
 
-{% if spod == request.user.id and  value > 1%}
+{% if spod == request.user.id %}
 <div class="col-md-4 d-flex">
     <div class="btn_section text-center m-2">
         <a class="btn btn-primary text-center Creat_pod" href="spod/{{keys}}">Second del pod</a>
         </div>
-
     <div class="btn_section text-center m-2">
     <a class="btn btn-primary text-center Creat_pod" href="tjoin">join Third del</a>
     </div> 

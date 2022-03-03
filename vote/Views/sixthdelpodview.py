@@ -52,7 +52,7 @@ def sixthvalidate(request):
          
           uname= request.POST.get('pod_key')
           print("uname",uname)
-          if sixthdel_groups.objects.filter(group_key=uname).exists()  :
+          if sixthdel_groups.objects.filter(group_key=uname).exists():
                key1=sixthdel_groups.objects.filter(group_key=uname)
                for i in key1:
                     z=i.id
