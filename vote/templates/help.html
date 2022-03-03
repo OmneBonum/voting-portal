@@ -1,33 +1,9 @@
 
-
+{% if q == 0 %}
 {%include "app/header.html" %}
-
+{%endif%} 
   <body>
-  <!-- <header class="navbar navbar-fixed-top navbar-inverse"> 
-
-  <div class="container"> 
-    <a id="logo" href="/">DSU</a>
-    <nav>
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed"
-                data-toggle="collapse"
-                data-target="#bs-example-navbar-collapse-1"
-                aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-      </div>
-      <ul class="nav navbar-nav navbar-right collapse navbar-collapse"
-          id="bs-example-navbar-collapse-1">
-        <li><a href="/">Home</a></li>
-        <li><a href="/help">Help</a></li>
-          <li><a href="/login">Log in</a></li>
-      </ul>
-    </nav>
-  </div>
-</header> -->
+  
 
 <div class="container Enter_the_Floor">
 
@@ -36,23 +12,22 @@
   {%include "app/footer.html" %}
 </div>
 
-<!-- Here starts the code copied directly from the MaxCDN section of this page: https://www.w3schools.com/bootstrap4/bootstrap_get_started.asp -->
+</body>
+</html>
 
-<!-- Optional theme (already greyed)-->
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous"> -->
+{% if w == 0 %}
+{%include "app/fheader.html" %}
+{%endif%} 
+  <body>
+  
 
-<!-- Latest compiled and minified CSS -->
-<!-- (newly greyed here down) <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<div class="container Enter_the_Floor">
 
-<!-- jQuery library -->
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <p class="help_section">No Help Yet!</p>
+  
+  {%include "app/footer.html" %}
+</div>
 
-<!-- Popper JS -->
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<!-- end of 'MaxCDN' code -->
 
   </body>
 </html>
