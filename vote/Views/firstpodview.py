@@ -50,7 +50,7 @@ def fvalidate(request):
      if request.method =="POST":
           join=firstdel_groups_members()
          
-          uname= request.POST.get('pod_keys')
+          uname= request.POST.get('pod_key')
           # print("uname",uname)
           if firstdel_groups.objects.filter(group_key=uname).exists()  :
                key1=firstdel_groups.objects.filter(group_key=uname)
