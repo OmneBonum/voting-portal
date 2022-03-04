@@ -26,6 +26,7 @@ class user(AbstractBaseUser,PermissionsMixin):
     created_at = models.DateTimeField(auto_now_add=True,null=True)
     updated_at =  models.DateTimeField(auto_now=True)
     entry_code=models.CharField(max_length=200,null=True)
+    
 
 
 

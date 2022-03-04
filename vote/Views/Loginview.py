@@ -122,19 +122,54 @@ def userLogout(request):
 
 
 def help(request):
-    context = {"q":0}
-    template = loader.get_template('help.html',)
+  if firstdel_groups_members.objects.filter(member_id=request.user.id):
     print("hritik")
-    return HttpResponse(template.render(context, request))    
+    context = {"q":0}
+    template = loader.get_template('fhelp.html')
+  
+    
+    if seconddel_groups_members.objects.filter(member_id=request.user.id):
+      print("hritik2")
+      context = {"q":0}
+      template = loader.get_template('shelp.html')
+      
+      if thirddel_groups_members.objects.filter(member_id=request.user.id):
+        print("hritik3")
+        context = {"q":0}
+        template = loader.get_template('thelp.html')
+          
+        if fourthdel_groups_members.objects.filter(member_id=request.user.id):
+          print("hritik4")
+          context = {"q":0}
+          template = loader.get_template('fohelp.html')
+          
+          if fifthdel_groups_members.objects.filter(member_id=request.user.id):
+            print("hritik5")
+            context = {"q":0}
+            template = loader.get_template('fihelp.html')
+     
+            if sixthdel_groups_members.objects.filter(member_id=request.user.id):
+              print("hritik6")
+              context = {"q":0}
+              template = loader.get_template('sihelp.html')
+            return HttpResponse(template.render(context, request))
+          return HttpResponse(template.render(context, request))
+        return HttpResponse(template.render(context, request))
+      return HttpResponse(template.render(context, request))
+    return HttpResponse(template.render(context, request))  
+  context = {"q":0}  
+  template = loader.get_template('help.html')
+  print("hritik")
+  return HttpResponse(template.render(context, request))   
 
 
 
-def fhelp(request):
+def fhelp(request):   
+  if firstdel_groups_members.objects.filter(member_id=request.user.id):
     context = {"w":0}
-    if firstdel_groups_members.objects.filter(member_id=request.user.id):
-      print("hritikasddsad")
-      template = loader.get_template('fhelp.html',)
-      return HttpResponse(template.render(context, request))   
+    print("hritikasddsad")
+    template = loader.get_template('fhelp.html')
+    return HttpResponse(template.render(context, request))   
 
 def shelp(request):
     context = {}
