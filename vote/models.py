@@ -8,7 +8,7 @@ from django.core.validators import validate_comma_separated_integer_list
 from datetime import datetime
 # Create your models here.
 class user(AbstractBaseUser,PermissionsMixin):
-    district=models.CharField(max_length=200)
+    district=models.CharField(max_length=4)
     voterid=models.IntegerField(max_length=200,null=True)
     name=models.CharField(max_length=200,unique=True)
     email=models.EmailField(_('email'),unique=True,blank=True)

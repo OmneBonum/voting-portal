@@ -29,7 +29,7 @@ def create(request):
         accountform = AddCreateForm(request.POST)
         if accountform.is_valid():
             names=request.POST.get("Legal_name")
-            print("Legal_names",names)
+            print("Legal_name",names)
             unique_id = get_random_string(length=5)
             uniqueName=names + unique_id
             accountform.name=uniqueName
@@ -64,7 +64,7 @@ def create(request):
             a=user.objects.filter(created_at__lte=datetime.now()-timedelta(minutes=10),registered=1).exists()
             print("true")
         
-            messages.success(request,"Thanks for registering with us.Please confirm your email address to complete the registration.",extra_tags='logout')
+            messages.success(request,"Thanks for registering with us. Please confirm your email address to complete the registration.",extra_tags='logout')
             return redirect('/create')
 
         else:

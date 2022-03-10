@@ -7,8 +7,9 @@ from localflavor.us.forms import USStateField
 from vote.models import *
 
 
+
 FRUIT_CHOICES= [
-    (' I_am_a_registered_voter_in_this_district” with “I am legally registered to vote in this US congressional district.'  ,  'I_am_a_registered_voter_in_this_district” with “I am legally registered to vote in this US congressional district.' ),
+    (' I_am_a_registered_voter_in_this_district” with “I am legally registered to vote in this US congressional district.'  ,  'I_am_a_registered_voter_in_this_district” with “I am legally registered to vote in this US congressional district."' ),
     ('I believe i am eligible to vote in this district uder the name and address i will provide below and i intend to register as a voter within 30 days','I believe i am eligible to vote in this district uder the name and address i will provide below and i intend to register as a voter within 30 days')
     ]
 
@@ -21,6 +22,7 @@ class AddCreateForm(ModelForm):
         'class':'form-control',
         'placeholder':'Enter your District',
         
+        
         }
     )) 
     
@@ -32,7 +34,7 @@ class AddCreateForm(ModelForm):
         'placeholder':'Enter your Email address'
         }
     ))
-    Legal_name = forms.CharField(label="Legal_name",required = True,widget=forms.TextInput(
+    Legal_name = forms.CharField(label="Legal Name",required = True,widget=forms.TextInput(
         attrs={
         'class':'form-control',
         'placeholder':'Enter your name',
