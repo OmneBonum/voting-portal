@@ -148,9 +148,16 @@ h2.text-center.Pod_number {
     <button id="send" type="submit" name="hello" value={{request.user.id}} class="btn btn-success">Generate Key</a></button> {% endcomment %}
     {% if  owner_id == request.user.id%}
       <button id="send" type="submit" name="hello"  class="btn btn-success">Update Key</a></button>
+      <a class="btn btn-success" href="/member">Members</a>
     {%elif is_key_generate == 1%}
       <button id="send" type="submit" name="hello" class="btn btn-success">Generate Key</a></button> 
+      {% comment %} <a class="btn btn-success" href="/member">Members</a> {% endcomment %}
     {% endif  %}  
+    
+    {% comment %} <a href="{% url 'member' %}">
+      <button type="button" class="btn btn-primary center_btn">member</button> 
+    </a>   {% endcomment %}
+    
 	</div>
 	
   <table class="table table-bordered table-sm">
@@ -191,8 +198,8 @@ h2.text-center.Pod_number {
         </td>
 
         <td>
-          {% if  podlen >= 5 and users_list.member_status == 1 and evote == 0 %}
-            <button type="submit" name="elect" value={{users_list.id}}>Election</a></button>
+          {% if  podlen >= 6 and users_list.member_status == 1 and evote == 0 %}
+            <button type="submit" name="elect" value={{users_list.id}}>vote</a></button>
           {% endif  %}
         </td>
         

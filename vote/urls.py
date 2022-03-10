@@ -40,6 +40,7 @@ urlpatterns = [
     path("fohelp",Loginview.fohelp,name='fohelp'),
     path("fihelp",Loginview.fihelp,name='fihelp'),
     path("sihelp",Loginview.sihelp,name='sihelp'),
+    path('member',memberview.memberIndex,name="member_index"),
 
 
 
@@ -177,7 +178,7 @@ urlpatterns = [
 
 
 #memberkey urls
-path('member',memberview.memberIndex,name="member_index"),
+
 
 ]
 

@@ -148,6 +148,7 @@
     <button id="send" type="submit" name="hello" class="btn btn-success">Generate Key</a></button> {% endcomment %}
     {% if  owner_id == request.user.id%}
       <button id="send" type="submit" name="hello" class="btn btn-success">Update Key</a></button>
+      <a class="btn btn-success" href="/member">Members</a>
     {%elif is_key_generate == 1%}
       <button id="send" type="submit" name="hello" class="btn btn-success">generate Key</a></button> 
     {% endif  %}  
@@ -191,8 +192,8 @@
 
         </td>
         <td>
-          {% if  podlen >= 5 and users_list.member_status == 1 and evote == 0 %}
-            <button type="submit" name="elect" value={{users_list.id}}>Election</a></button>
+          {% if  podlen >= 6 and users_list.member_status == 1 and evote == 0 %}
+            <button type="submit" name="elect" value={{users_list.id}}>vote</a></button>
           {% endif  %}
         </td>
 

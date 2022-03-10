@@ -137,9 +137,13 @@
                   {% comment %} <div class="col-sm-2">
               <div class="image_check"><img src="/static/image/check.jpg"></div></div> {% endcomment %}
               {%if "logout" in message.tags%}
-              <div class="col-sm-12"><div class="alert {{ message.tags }} alert-dismissible" role="alert" >
-                  <div class="image_check"><img src="/static/image/download.png"></div>
-                  <center>{{ message }}</center> 
+              
+              <div class="col-sm-12 padding-box"><div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+                  {% comment %} <div class="image_check"><img src="/static/image/download.png"></div>
+                  <center>{{ message }}</center>  {% endcomment %}
+
+                  <div class="image_check"><img src="/static/image/download.png"><center>{{ message }}</center> </div>
+
                   {%endif%}
                   {% endfor %}
       </ul> 

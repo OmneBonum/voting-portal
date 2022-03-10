@@ -281,4 +281,18 @@ input[type=text], select {
     top: -16px;
 }
 
-
+.padding-box{
+padding: 0 !important;
+margin-top: 20px !important;
+}
+ul.messages {
+  padding-left: 0 !important;
+}
+.image_check {
+  display: flex;
+}
+.image_check img {
+  width: 30px;
+    margin-right: 0px;
+    height: 30px;
+}
