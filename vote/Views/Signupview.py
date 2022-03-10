@@ -28,8 +28,8 @@ def create(request):
     if request.method == 'POST':
         accountform = AddCreateForm(request.POST)
         if accountform.is_valid():
-            names=request.POST.get("name")
-            print("names",names)
+            names=request.POST.get("Legal_name")
+            print("Legal_names",names)
             unique_id = get_random_string(length=5)
             uniqueName=names + unique_id
             accountform.name=uniqueName

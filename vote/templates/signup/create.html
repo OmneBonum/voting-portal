@@ -43,9 +43,11 @@
     {% csrf_token %}
       
       <div class="row">
+        <input type="hidden">
       <div class="col-md-6 col-md-offset-3 {% if form.errors %} has-error  {% endif %}" id="big-font">
         <label for="{{ form.district.id_for_label }}">District:</label>
         {{ form.district }}
+
         {% for error in form.district.errors %}
         <span class="error text-danger">
             <strong>{{ error|escape }}</strong>
@@ -54,8 +56,8 @@
        
     
      
-        <label for="{{ form.name.id_for_label }}">Name:</label>
-        {{ form.name }}
+        <label for="{{ form.name.id_for_label }}">Legal_Name:</label>
+        {{ form.Legal_name }}
       
         {% for error in form.name.errors %}
         <span class="error text-danger">
@@ -92,8 +94,8 @@
         {%endfor%}<br>
         
 
-        <label for="{{ form.executed_on.id_for_label }}">Executed on:</label>
-        {{form.executed_on}}
+        {% comment %} <label for="{{ form.executed_on.id_for_label }}">Executed on:</label>
+        {{form.executed_on}} {% endcomment %}
      
 
         {% for error in form.executed_on.errors %}
@@ -136,7 +138,7 @@
               <div class="image_check"><img src="/static/image/check.jpg"></div></div> {% endcomment %}
               {%if "logout" in message.tags%}
               <div class="col-sm-12"><div class="alert {{ message.tags }} alert-dismissible" role="alert" >
-                  <div class="image_check"><img src="/static/image/check.jpg"></div>
+                  <div class="image_check"><img src="/static/image/download.png"></div>
                   <center>{{ message }}</center> 
                   {%endif%}
                   {% endfor %}
