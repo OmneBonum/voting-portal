@@ -93,7 +93,11 @@ class AddCreateForm(ModelForm):
     def clean(self):
         cleaned_data = super(AddCreateForm, self).clean()
         password = cleaned_data.get("password")
-        district = cleaned_data.get("district").upper()
+        district = cleaned_data.get("district")
+        if district is None:
+            district = "hello"
+        else:
+            district.upper()
         print("hhhhh",district)
         confirm_password = cleaned_data.get("confirmation")
 

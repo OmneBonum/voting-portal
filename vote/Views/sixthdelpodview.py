@@ -16,6 +16,8 @@ def sixthpodshow(request):
      print(key2)
      fpods=sixthdel_groups.objects.filter(group_owner_id=request.user.id)
      k=fpods.values_list('group_owner_id',flat=True)
+     obj=user.objects.filter(id=request.user.id).values_list("district",flat=True)
+     dist=obj[0]
      print("k",k)
      if not request.user.is_authenticated:
       return redirect("/")
@@ -36,12 +38,12 @@ def sixthpodshow(request):
           current_user =request.user.id
           a = sixthdel_groups_members.objects.filter(member_id=current_user).exists()
           
-          return render(request,'pod/sixthhome.html',{'keys':z,'a':a,'sipod':owner_id,'sikey':0})
+          return render(request,'pod/sixthhome.html',{'keys':z,'a':a,'sipod':owner_id,'sikey':0,"obj":dist})
      
      else:      
           current_user =request.user.id
           a = sixthdel_groups_members.objects.filter(member_id=current_user).exists()
-     return render(request,'pod/sixthhome.html',{'a':a})
+     return render(request,'pod/sixthhome.html',{'a':a,"obj":dist})
 
 
 def sixthvalidate(request):

@@ -16,6 +16,8 @@ def fifthpodshow(request):
      # print(key2)
      fpods=fifthdel_groups.objects.filter(group_owner_id=request.user.id)
      k=fpods.values_list('group_owner_id',flat=True)
+     obj=user.objects.filter(id=request.user.id).values_list("district",flat=True)
+     dist=obj[0]
      # print("k",k)
      if not request.user.is_authenticated:
       return redirect("/")
@@ -32,12 +34,12 @@ def fifthpodshow(request):
           current_user =request.user.id
           a = fifthdel_groups_members.objects.filter(member_id=current_user).exists()
           
-          return render(request,'pod/fifthhome.html',{'keys':z,'a':a,'fipod':owner_id,'fikey':0})
+          return render(request,'pod/fifthhome.html',{'keys':z,'a':a,'fipod':owner_id,'fikey':0,"obj":dist})
      
      else:      
           current_user =request.user.id
           a = fifthdel_groups_members.objects.filter(member_id=current_user).exists()
-     return render(request,'pod/fifthhome.html',{'a':a})
+     return render(request,'pod/fifthhome.html',{'a':a,"obj":dist})
 
 
 def fifthvalidate(request):

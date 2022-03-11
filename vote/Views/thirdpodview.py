@@ -16,6 +16,9 @@ def tpodshow(request):
      print(key2)
      fpods=thirddel_groups.objects.filter(group_owner_id=request.user.id)
      k=fpods.values_list('group_owner_id',flat=True)
+     obj=user.objects.filter(id=request.user.id).values_list("district",flat=True)
+     dist=obj[0]
+
      print("k",k)
      if not request.user.is_authenticated:
       return redirect("/")
@@ -36,12 +39,12 @@ def tpodshow(request):
           current_user =request.user.id
           a = thirddel_groups_members.objects.filter(member_id=current_user).exists()
           
-          return render(request,'pod/thirdhome.html',{'keys':z,'a':a,'tpod':owner_id,'tkey':0})
+          return render(request,'pod/thirdhome.html',{'keys':z,'a':a,'tpod':owner_id,'tkey':0,"obj":dist})
      
      else:      
           current_user =request.user.id
           a = thirddel_groups_members.objects.filter(member_id=current_user).exists()
-     return render(request,'pod/thirdhome.html',{'a':a})
+     return render(request,'pod/thirdhome.html',{'a':a,"obj":dist})
 
 
 def tvalidate(request):

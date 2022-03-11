@@ -17,6 +17,8 @@ def spodshow(request):
      
      fpods=seconddel_groups.objects.filter(group_owner_id=request.user.id)
      k=fpods.values_list('group_owner_id',flat=True)
+     obj=user.objects.filter(id=request.user.id).values_list("district",flat=True)
+     dist=obj[0]
      values_obj=firstdel_groups.objects.count()
      user_obj=(values_obj)
      print("k",k)
@@ -39,12 +41,12 @@ def spodshow(request):
           current_user =request.user.id
           a = seconddel_groups_members.objects.filter(member_id=current_user).exists()
           
-          return render(request,'pod/secondhome.html',{'keys':z,'a':a,'spod':owner_id,'skey':0,"value":user_obj})
+          return render(request,'pod/secondhome.html',{'keys':z,'a':a,'spod':owner_id,'skey':0,"value":user_obj,"obj":dist})
      
      else:      
           current_user =request.user.id
           a = seconddel_groups_members.objects.filter(member_id=current_user).exists()
-     return render(request,'pod/secondhome.html',{'a':a})
+     return render(request,'pod/secondhome.html',{'a':a,"obj":dist})
 
 
 def svalidate(request):

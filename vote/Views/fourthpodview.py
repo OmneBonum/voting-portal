@@ -16,6 +16,9 @@ def fourthpodshow(request):
      print(key2)
      fpods=fourthdel_groups.objects.filter(group_owner_id=request.user.id)
      k=fpods.values_list('group_owner_id',flat=True)
+     obj=user.objects.filter(id=request.user.id).values_list("district",flat=True)
+     dist=obj[0]
+
      print("k",k)
      if not request.user.is_authenticated:
       return redirect("/")
@@ -36,12 +39,12 @@ def fourthpodshow(request):
           current_user =request.user.id
           a = fourthdel_groups_members.objects.filter(member_id=current_user).exists()
           
-          return render(request,'pod/fourthhome.html',{'keys':z,'a':a,'fopod':owner_id,'fokey':0})
+          return render(request,'pod/fourthhome.html',{'keys':z,'a':a,'fopod':owner_id,'fokey':0,"obj":dist})
      
      else:      
           current_user =request.user.id
           a = fourthdel_groups_members.objects.filter(member_id=current_user).exists()
-     return render(request,'pod/fourthhome.html',{'a':a})
+     return render(request,'pod/fourthhome.html',{'a':a,"obj":dist})
 
 
 def fourthvalidate(request):
