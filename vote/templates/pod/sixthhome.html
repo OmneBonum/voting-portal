@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>pagep-2</title>
+<title>My Voter Page</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
@@ -42,6 +42,31 @@ border-color: #0062cc;
 .text-left.section_lable_input {
 margin-bottom: 7px;
 }
+.table thead th {
+    border-bottom: unset !important;
+  }
+  
+  tbody {
+    border: 2px solid #000000 !important;
+  }
+  
+  ul.a {
+    list-style: none;
+    font-size: 16px;
+  }
+  .d-flex.button_sec {
+    align-items: center;
+    justify-content: center;
+}
+input#Proxy {
+    float: right;
+    width: 20px;
+    height: 20px !important;
+}
+input[type=checkbox] {
+   
+    box-shadow: unset !important;
+}
 </style>
 
 </head>
@@ -54,14 +79,24 @@ margin-bottom: 7px;
     
 
 <div class="container mt-5">
+<div class="row mb-3">
+<div class="col-md-3"> 
+    <ul class="a">
+        <li>list of Delegates</li>
+        <li>Back-and-Forth </li>
+        <li>Member Contact Page </li>
+        <li>Pod Housekeeping</li>
+        </ul>
+                    
+</div>       
 	
 
-<div class="row mb-3">
-<div class="col-md-4"></div>
+
 
 
 {% if sipod == request.user.id  %}
-<div class="col-md-4 d-flex">
+<div class="col-md-6">
+    <div class="d-flex button_sec ">
     <div class="btn_section text-center m-2">
         <a class="btn btn-primary text-center Creat_pod" href="sipod/{{keys}}">Sixth del pod</a>
         </div>
@@ -69,6 +104,19 @@ margin-bottom: 7px;
             <a class="btn btn-primary text-center Creat_pod" href="/fihome/5">fifthhdel chat</a>
         </div>
     </div>
+    </div>
+    <div class="col-md-3">
+
+        <ul class="a">
+            <li>First Meeting Schedule</li>
+            <li>Meeting Minutes Log</li>
+            <li>Bill Metrics</li>
+            <li>Voting Settings</li>
+          </ul>
+          
+    </div>
+    </div>  
+        
 
 
   
@@ -89,7 +137,7 @@ margin-bottom: 7px;
 
 
 
-<h3 class="text-center">List of Bills</h3>
+<h3 class="text-center mt-4">List of Bills</h3>
 <table class="table table-bordered text-center">
 <thead>
 <tr>

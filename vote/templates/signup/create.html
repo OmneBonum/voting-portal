@@ -2,31 +2,10 @@
 
 
   <body>
-  <!-- <header class="navbar navbar-fixed-top navbar-inverse"> 
-
-  <div class="container"> 
-    <a id="logo" href="/">dsu</a>
-    <nav>
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed"
-                data-toggle="collapse"
-                data-target="#bs-example-navbar-collapse-1"
-                aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-      </div>
-      <ul class="nav navbar-nav navbar-right collapse navbar-collapse"
-          id="bs-example-navbar-collapse-1">
-        <li><a href="/">Home</a></li>
-        <li><a href="/help">Help</a></li>
-          <li><a href="/login">Log in</a></li>
-      </ul>
-    </nav>
-  </div>
-</header> -->
+ <title>Signup</title>
+<style> .user {
+  text-transform: uppercase;
+}</style>
     <div class="container Enter_the_Floor">
 
 <div class="center If_already">
@@ -44,23 +23,22 @@
       
       <div class="row">
         <input type="hidden">
-      <div class="col-md-6 col-md-offset-3 {% if form.errors %} has-error  {% endif %}" id="big-font">
+      <div class="col-md-6 col-md-offset-3" id="big-font">
         <label for="{{ form.district.id_for_label }}">District:</label>
-        {{ form.district|capfirst }}
-
+        {{ form.district }}
         {% for error in form.district.errors %}
         <span class="error text-danger">
             <strong>{{ error|escape }}</strong>
         </span>
         {%endfor%}<br>
+
        
     
      
         <label for="{{ form.name.id_for_label }}">Legal Name:</label>
         {{ form.Legal_name }}
-      
-        {% for error in form.name.errors %}
-        <span class="error text-danger">
+        {% for error in form.Legal_name.errors %}
+        <span class="error text-danger">  
             <strong>{{ error|escape }}</strong>
         </span>
         {%endfor%}<br>

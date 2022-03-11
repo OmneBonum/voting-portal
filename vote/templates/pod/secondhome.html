@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>pagep-2</title>
+<title>My Voter Page</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
@@ -42,6 +42,32 @@ border-color: #0062cc;
 .text-left.section_lable_input {
 margin-bottom: 7px;
 }
+
+.table thead th {
+    border-bottom: unset !important;
+  }
+  
+  tbody {
+    border: 2px solid #000000 !important;
+  }
+  
+  ul.a {
+    list-style: none;
+    font-size: 16px;
+  }
+  .d-flex.button_sec {
+    align-items: center;
+    justify-content: center;
+}
+input#Proxy {
+    float: right;
+    width: 20px;
+    height: 20px !important;
+}
+input[type=checkbox] {
+   
+    box-shadow: unset !important;
+}
 </style>
 
 </head>
@@ -54,19 +80,33 @@ margin-bottom: 7px;
     
 
 <div class="container mt-5">
-	
 
 <div class="row mb-3">
-<div class="col-md-4"></div>
+<div class="col-md-3"> 
+    <ul class="a">
+        <li>list of Delegates</li>
+        <li>Back-and-Forth </li>
+        <li>Member Contact Page </li>
+        <li>Pod Housekeeping</li>
+        </ul>
+              
+</div>    
+	
+
+
+
 
 {% if spod == request.user.id %}
-<div class="col-md-4 d-flex">
+<div class="col-md-6">
+    <div class="d-flex button_sec ">
     <div class="btn_section text-center m-2">
         <a class="btn btn-primary text-center Creat_pod" href="spod/{{keys}}">Second del pod</a>
         </div>
     <div class="btn_section text-center m-2">
-    <a class="btn btn-primary text-center Creat_pod" href="tjoin">join Third del</a>
+    <a class="btn btn-primary text-center Creat_pod" href="tjoin">Join Third del</a>
     </div> 
+</div>
+    <div class="d-flex button_sec ">
     <div class="btn_section text-center m-2">
     <a class="btn btn-primary text-center Creat_pod" href="tpod">Create Third del</a>
     </div>
@@ -74,8 +114,9 @@ margin-bottom: 7px;
     <div class="btn_section text-center m-2">
         <a class="btn btn-primary text-center Creat_pod" href="/home">chat</a>
     </div>
+</div>
    
-    
+    <div class="d-flex button_sec ">
     <div class="btn_section text-center m-2">
         <a class="btn btn-primary text-center Creat_pod" href="/fhome/1">firstdel chat</a>
     </div>
@@ -83,8 +124,21 @@ margin-bottom: 7px;
     <div class="btn_section text-center m-2">
         <a class="btn btn-primary text-center Creat_pod" href="/shome/2">seconddel chat</a>
     </div>
+</div>
      
 </div>
+<div class="col-md-3">
+
+    <ul class="a">
+        <li>First Meeting Schedule</li>
+        <li>Meeting Minutes Log</li>
+        <li>Bill Metrics</li>
+        <li>Voting Settings</li>
+      </ul>
+      
+</div>
+</div>  
+
 
 
     {%elif skey == 0%}
@@ -102,19 +156,19 @@ margin-bottom: 7px;
 <h1>{{spod}}</h1>
 <div class="col-md-4 d-flex">
 <div class="btn_section text-center m-2">
-<a class="btn btn-primary text-center Creat_pod" href="tjoin">join Third dell</a>
+<a class="btn btn-primary text-center Creat_pod" href="tjoin">Join Third dell</a>
     
 </div>  
 
 <div class="btn_section text-center m-2">
-<a class="btn btn-primary text-center Creat_pod" href="/tpod">Creat a Third dell</a>
+<a class="btn btn-primary text-center Creat_pod" href="/tpod">Create a Third dell</a>
 </div>  
 {% endif %} 
 
 
 
 </div>
-<div class="col-md-4"></div>
+<h3 class="text-center mt-4">Get Registered</h3>
 </div>
 
 

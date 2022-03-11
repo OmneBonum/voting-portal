@@ -31,6 +31,8 @@ def podshow(request):
      
      fpods=pod_groups.objects.filter(group_owner_id=request.user.id)
      k=fpods.values_list('group_owner_id',flat=True)
+     obj=user.objects.filter(id=request.user.id).values_list("district",flat=True)
+     print("userrrrrrrrrrrrr",obj)
      print("k",k)
      if not request.user.is_authenticated:
       return redirect("/")
@@ -53,7 +55,7 @@ def podshow(request):
           a = pod_groups_members.objects.filter(member_id=current_user).exists()
           # if request.user.is_authenticated:
           #      return redirect("sshow")
-          return render(request,'pod/home.html',{'key1':z,'a':a,'fpod':owner_id,"fkey":0,'bkey':bkey,'pod':all,'al':al,'pkey':pkey,"value":user_obj})
+          return render(request,'pod/home.html',{'key1':z,'a':a,'fpod':owner_id,"fkey":0,'bkey':bkey,'pod':all,'al':al,'pkey':pkey,"value":user_obj,"obj":obj})
      
      else:      
           current_user =request.user.id
