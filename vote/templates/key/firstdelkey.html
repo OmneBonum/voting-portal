@@ -192,8 +192,8 @@
           {%endif%}
         </td>
         <td>
-          {% if  podlen >= 6 and users_list.member_status == 1 and evote == 0 %}
-            <button type="submit" name="elect" value={{users_list.id}}>vote</a></button>
+          {% if  podlen >= 1 and users_list.member_status == 1 and evote == 0 %}
+            <button type="submit" name="elect" value={{users_list.id}}>Election</a></button>
           {% endif  %}
         </td>
 
