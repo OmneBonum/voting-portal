@@ -96,7 +96,7 @@ input[type=checkbox] {
 
 
 
-{% if spod == request.user.id %}
+{% if spod == request.user.id and value > 10 %}
 <div class="col-md-6">
     <div class="d-flex button_sec ">
     <div class="btn_section text-center m-2">
