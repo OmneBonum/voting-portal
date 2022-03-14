@@ -34,7 +34,6 @@ def podshow(request):
      k=fpods.values_list('group_owner_id',flat=True)
      obj=user.objects.filter(id=request.user.id).values_list("district",flat=True)
      dist=obj[0]
-
      print("userrrrrrrrrrrrr",dist)
      print("k",k)
      if not request.user.is_authenticated:
@@ -86,11 +85,14 @@ def validate(request):
                join.member_status=0
                a=len(pod_groups_members.objects.filter(group_id=z))
                print("a",a)
-               #if a <= 11:
-               join.save()
-               return redirect('/show')
+               if a <= 11:
+                    messages.error(request,"Sorry, this Pod is full!",extra_tags="don")
+                    
+                    join.save()
+                    return redirect('/show')
+     
           else:
-               messages.error(request,"Invalid key")
+               messages.error(request,"invalid key ",extra_tags="invalid")
                return redirect('/join') 
      if pod_groups_members.objects.filter(member_id=request.user.id).exists():
 

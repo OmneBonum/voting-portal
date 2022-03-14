@@ -153,19 +153,18 @@ input[type=checkbox] {
         <div class="btn_section text-center m-2">
             <a class="btn btn-primary text-center Creat_pod" href="/home">chat</a>
             </div> 
-               
-        {% comment %} {%elif fkey == 0 %}
-    
-        <div class="btn_section text-center m-2">
-        <a class="btn btn-primary text-center Creat_pod" href="pod/{{key1}}">My pod</a>
-        </div>
-         {% endcomment %}
-        {% comment %} {%elif a == true %}
+            
+            <div class="col-md-3">
 
-    <div class="btn_section text-center m-2">
-    <a class="btn btn-primary text-center Creat_pod" href="pod/{{key1}}">My pod</a>
-    </div>
-  {% endcomment %}
+                <ul class="a">
+                    <li>First  Link Meeting Schedule</li>
+                    <li>Meeting Minutes Log</li>
+                    <li>Bill Metrics</li>
+                    <li>Voting Settings</li>
+                  </ul>
+                  
+            </div>               
+        
 </div>
 
 
@@ -187,57 +186,11 @@ input[type=checkbox] {
 
 
 
-{% comment %} <div class="btn_section text-center m-2">
-    <a class="btn btn-primary text-center Creat_pod" href="/Hellouser">Creat a pod</a>
-</div> {% endcomment %}
 
 
 {% endif %} 
 
-{% comment %} 
-{%for i in al%}
-{%if i.group_owner_id == request.user.id and i.group_key == bkey%}
 
-{% if fpod == request.user.id %}
-
-<div class="col-md-4 d-flex">
-    <div class="btn_section text-center m-2">
-        <a class="btn btn-primary text-center Creat_pod" href="fpod/{{bpod}}">First del pod</a>
-        </div>
-
-    <div class="btn_section text-center m-2">
-    <a class="btn btn-primary text-center Creat_pod" href="sjoin">join Second del</a>
-    </div> 
-    <div class="btn_section text-center m-2">
-    <a class="btn btn-primary text-center Creat_pod" href="spod">Create Second del</a>
-    </div>
-     
-</div>
-
-
-    {%elif fkey == 0%}
-
-    <div class="btn_section text-center m-2">
-        <a class="btn btn-primary text-center Creat_pod" href="fpod/{{keys}}">First del pod</a>
-        </div>
-    
-   
-
-{% else %}
-<div class="col-md-4 d-flex">
-<div class="btn_section text-center m-2">
-<a class="btn btn-primary text-center Creat_pod" href="sjoin">join Second dell</a>
-    
-</div>  
-
-<div class="btn_section text-center m-2">
-<a class="btn btn-primary text-center Creat_pod" href="/spod">Creat a Second dell</a>
-</div>  
-{% endif %} 
-
-
-{%endif%}
-{%endfor%} {% endcomment %}
 </div>
 <h3 class="text-center mt-4">Get Registered</h3>
 
@@ -248,7 +201,7 @@ input[type=checkbox] {
         <li>First  Link Meeting Schedule</li>
         <li>Meeting Minutes Log</li>
         <li>Bill Metrics</li>
-        <li>Voting Settings</li>
+        <li>Voting Settings1</li>
       </ul>
       
 </div>

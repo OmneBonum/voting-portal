@@ -125,19 +125,22 @@ h2.text-center.Pod_number {
 
  
   
-    <form class="form-horizontal form-label-left" method="POST" novalidate>
-        {% csrf_token %}
+  <form class="form-horizontal form-label-left" method="POST" novalidate>
+      {% csrf_token %}
+      <div class="Pod_section">
+        {%if owner_id == request.user.id%}
+        <p class="text-center">Pod Invitation Key is:{% for item in user %}
+          {{item.group_key}}
+          {%endfor%}
+          {%endif%}
+<h2 class="text-center Pod_number">Pod {{key1.id}} Housekeeping Page</h2>         
+        
 <div class="container section_container">
   <h2 class="text-center Pod_number">Current First Delegations :{% for item in all%}
     {{item.group_owner.name}}
     {%endfor%}
-	<h2 class="text-center Pod_number">Pod {{key1.id}} Housekeeping Page</h2>
-	<div class="Pod_section">
-     {%if owner_id == request.user.id%}
-		<p class="text-center">Pod Invitation Key is:{% for item in user %}
-			{{item.group_key}}
-			{%endfor%}
-      {%endif%}
+	
+	
 			
 			 <button type="button" class="close" aria-label="Close">
 			<span aria-hidden="true"></span>
