@@ -10,7 +10,7 @@ from vote.models import *
 
 
 FRUIT_CHOICES= [
-    ('“I am legally registered to vote in this US congressional district.'  ,  '“I am legally registered to vote in this US congressional district."' ),
+    ('I am legally registered to vote in this US congressional district.'  ,  'I am legally registered to vote in this US congressional district.' ),
     ('I believe i am eligible to vote in this district under the name and address i will provide below and i intend to register as a voter within 30 days.','I believe i am eligible to vote in this district under the name and address i will provide below and i intend to register as a voter within 30 days.')
     ]
 
