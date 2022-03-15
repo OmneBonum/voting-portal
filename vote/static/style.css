@@ -67,6 +67,7 @@ ul.nav-item li {
 .center.img_section img {
   width: 96%;
   height: 100%;
+  margin-left: 19%;
 }
 a.btn-xl.btn-primary {
   padding: 10px 40px;
