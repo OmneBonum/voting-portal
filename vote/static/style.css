@@ -65,7 +65,7 @@ ul.nav-item li {
   /*padding: 10px 60px !important;*/
 }
 .center.img_section img {
-  width: 100%;
+  width: 87%;
   height: 100%;
 }
 a.btn-xl.btn-primary {
@@ -91,7 +91,7 @@ small.small_section {
 .center.img_section {
   position: relative;
   top: 60px;
-  width: 100%;
+  width: 87%;
   height: 430px;
 }
 
