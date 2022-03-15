@@ -13,7 +13,7 @@ class user(AbstractBaseUser,PermissionsMixin):
     name=models.CharField(max_length=200,unique=True)
     email=models.EmailField(_('email'),unique=True,blank=True)
     password=models.CharField(max_length=200)
-    confirmation=models.CharField(max_length=200)
+    Registration_Status=models.CharField(max_length=200)
     upload=models.ImageField(upload_to='images/',null=True,blank=True)
     address=models.CharField(max_length=100,null=True)
     executed_on=models.DateField(null=True)

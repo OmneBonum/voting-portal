@@ -43,11 +43,11 @@
         </span>
         {%endfor%}<br>
 
-        <label for="{{ form.registered.id_for_label }}">Registered:</label>
-        {{form.registered}}
+        <label for="{{ form.registered.id_for_label }}">Registration Status:</label>
+        {{form.Registration_Status}}
      
 
-        {% for error in form.registered.errors %}
+        {% for error in form.Registration_Status.errors %}
         <span class="error text-danger">
             <strong>{{ error|escape }}</strong>
         </span>

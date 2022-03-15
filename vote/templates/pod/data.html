@@ -76,6 +76,7 @@ button.btn.vote {
 <table class="table table-bordered table-hover dt-responsive">
 <thead>
 <tr>
+
 <th>S.No</th>
 <th> District</th>
 <th> Name </th>
@@ -87,7 +88,8 @@ button.btn.vote {
 <tbody>  
 {% for users_list in context%}
 <tr>
-<td>{{forloop.counter}}</td>
+  
+<td>{{0}}{{forloop.counter}}
 <td>{{users_list.district }}</td>
 <td> {{users_list.name}}</td>
 <td>{{users_list.email}}</td>

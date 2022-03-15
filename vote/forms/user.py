@@ -1,4 +1,5 @@
 from ast import Break
+from cProfile import label
 from multiprocessing.sharedctypes import Value
 
 from django.forms import HiddenInput, IntegerField, ModelForm
@@ -44,7 +45,7 @@ class AddCreateForm(ModelForm):
     ))
 
     
-    registered= forms.BooleanField( widget=forms.RadioSelect(choices=FRUIT_CHOICES))
+    Registration_Status= forms.BooleanField(label="Registration Status", widget=forms.RadioSelect(choices=FRUIT_CHOICES))
       
     
     
@@ -88,7 +89,7 @@ class AddCreateForm(ModelForm):
 
     class Meta:
         model = user
-        fields = ["district","Legal_name","registered","email","address","password","confirmation"]
+        fields = ["district","Legal_name","Registration_Status","email","address","password","confirmation"]
 
     def clean(self):
         cleaned_data = super(AddCreateForm, self).clean()

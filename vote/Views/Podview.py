@@ -86,10 +86,9 @@ def validate(request):
                a=len(pod_groups_members.objects.filter(group_id=z))
                print("a",a)
                if a <= 11:
-                    messages.error(request,"Sorry, this Pod is full!",extra_tags="don")
-                    
+                    messages.error(request,"Sorry, this Pod is full!",extra_tags="don")  
                     join.save()
-                    return redirect('/show')
+                    return redirect('/show',{"a":a})
      
           else:
                messages.error(request,"invalid key ",extra_tags="invalid")

@@ -38,7 +38,7 @@ def index(request):
                 if sixthdel_groups.objects.filter(group_owner_id=request.user.id):
                   return render(request,"app/index.html",{'z':0})  
                 else:
-                  return render(request,"app/index.html",{'si':0})
+                  return render(request,"app/index.html",{'si':0})       
               else:
                 return render(request,"app/index.html",{'fi':0})
             else:
