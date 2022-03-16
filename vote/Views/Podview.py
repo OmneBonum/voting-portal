@@ -1,4 +1,6 @@
+from genericpath import exists
 from math import dist
+from tokenize import group
 from urllib import request
 from django.shortcuts import render
 from django.template import loader
@@ -66,33 +68,68 @@ def podshow(request):
 
 
 def validate(request):
+    
+     
+     destic=user.objects.filter(id=request.user.id).values_list("district",flat=True)
+     if user.objects.filter(id=request.user.id).exists():
+          hello=destic[0]
+     else:
+          hello="bbdb"
+     print("zzzzzzzzzzzzzz",hello)
+     
+     if user.objects.filter(district=hello):
+          print("bjcbcjbcd",destic)
+     else:
+          print("kkdvdvbdvb")   
      if not request.user.is_authenticated:
         return redirect("/")
      if request.method =="POST":
           join=pod_groups_members()
          
           uname= request.POST.get('pod_key')
-          if pod_groups.objects.filter(group_key=uname).exists()  :
+          print("jdbvjdbvjvbf",uname)
+          ma=pod_groups.objects.filter(group_key=uname).select_related("group_owner")
+          for i in ma:
+               Dist_obj=i.group_owner.district
+               
+         
+          if Dist_obj!=hello:     
+               messages.error(request,"Please Enter a Valid district ",extra_tags="user") 
+               
+               
+                    
+               
+               
+          elif pod_groups.objects.filter(group_key=uname).exists():
+               print("hddfdbdbjdbvdbvdbv")
                key1=pod_groups.objects.filter(group_key=uname)
                for i in key1:
                     z=i.id
                     print('z',z)
                     
                print(uname)
+               
                current_user=request.user.id
                join.member_id=current_user
                join.group_id=z    
                join.member_status=0
                a=len(pod_groups_members.objects.filter(group_id=z))
                print("a",a)
-               if a <= 11:
-                    messages.error(request,"Sorry, this Pod is full!",extra_tags="don")  
-                    join.save()
-                    return redirect('/show',{"a":a})
-     
+               join.save()
+               return redirect('/show')
           else:
                messages.error(request,"invalid key ",extra_tags="invalid")
                return redirect('/join') 
+               if a <= 11:
+                     
+                    return redirect('/show')
+               else:
+                    messages.error(request,"Sorry, this Pod is full!",extra_tags="don") 
+                    
+     
+          # else:
+          #      messages.error(request,"invalid key ",extra_tags="invalid")
+          #      return redirect('/join') 
      if pod_groups_members.objects.filter(member_id=request.user.id).exists():
 
         return redirect("/show")

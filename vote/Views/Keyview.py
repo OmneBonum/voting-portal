@@ -19,6 +19,8 @@ def index(request):
 	return render(request,"key/key.html",context )
          
 def key_generator(request):
+    d=pod_groups.objects.filter(group_owner_id=request.user.id).exists()
+    print("dddfff",d)
     if not request.user.is_authenticated:
       return redirect("/")
     a= pod_groups.objects.all()
@@ -34,6 +36,30 @@ def key_generator(request):
         key.group_key=''.join(random.choices(string.digits, k=6))
         current_user=request.user          
         key.group_owner=current_user
+        d=pod_groups.objects.filter(group_owner_id=request.user.id).select_related("group_owner")
+        print("dddfff",d)
+        for i in d:
+            print("sdfsd",i.district)
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
 
         # print(key.group_owner.id)

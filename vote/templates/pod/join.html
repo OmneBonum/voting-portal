@@ -81,32 +81,42 @@ tbody {
 <fieldset>
 
 
+  <h1>{{disti}}</h1>
 <div class="text-left section_lable_Input_Pod">
 <form action="" method="POST" novalidate>
     {% csrf_token %}
+    
     <label for="POD">Enter Pod_key</label>
     <input class="form-control" type="text" name="pod_key" id="pod_key" />
+   
 
     {% if messages%}
     <ul class="messages">
         {% for message in messages %}
         <div class="container-fluid p-0">
             <div class="row">
-                {% comment %} <div class="col-sm-2">
-           
-                <div class="image_check"><img src="/static/image/check.jpg"></div></div> {% endcomment %}
                
-            {%if "don" in message.tags%}
-            {% comment %} <div class="col-sm-12"><div class="alert {{ message.tags }} alert-dismissible" role="alert" >
-                <div class="image_check"><img src="/static/image/check.jpg"></div> {% endcomment %}
-
+            {%if "invalid" in message.tags%}
+            <div class="col-sm-12"><div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+               
                 <center>{{ message }}</center> 
                 {%endif%}
+
+                {%if "don" in message.tags%}
+                <div class="col-sm-12"><div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+                   
+                    <center>{{ message }}</center> 
+                    {%endif%}  
+                  {%if "user" in message.tags%}
+                  <div class="col-sm-12"><div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+                       
+                    <center>{{ message }}</center> 
+                    {%endif%}    
                 {% endfor %}
     </ul> 
          {%endif%}
     
-    
+   
     <input type="submit" name="commit" value="Join the pod" class="btn-xl btn-primary" data-disable-with="Enter the Floor" />
 </form> 
  </div>
