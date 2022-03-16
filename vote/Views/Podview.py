@@ -94,7 +94,7 @@ def validate(request):
                
          
           if Dist_obj!=hello:     
-               messages.error(request,"Please Enter a Valid district ",extra_tags="user") 
+               messages.error(request,"Please enter a valid district ",extra_tags="user") 
                
                
                     
@@ -119,7 +119,7 @@ def validate(request):
                return redirect('/show')
           else:
                messages.error(request,"invalid key ",extra_tags="invalid")
-               return redirect('/join') 
+               return redirect('/show') 
                if a <= 11:
                      
                     return redirect('/show')
