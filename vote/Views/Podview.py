@@ -117,9 +117,8 @@ def validate(request):
                print("a",a)
                join.save()
                return redirect('/show')
-          else:
-               messages.error(request,"invalid key ",extra_tags="invalid")
-               return redirect('/show') 
+          elif messages.error(request,"invalid key ",extra_tags="invalid"):
+                
                if a <= 11:
                      
                     return redirect('/show')
