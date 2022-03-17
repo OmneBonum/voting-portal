@@ -16,9 +16,12 @@ from django.db.models import Count
 
 def index(request):
 	context = {'pod':pod_groups.objects.all()}
-	return render(request,"key/key.html",context )
+	return render(request,"key/key.html",context )  
          
 def key_generator(request):
+    print("99999999")
+    count_obj = pod_groups_members.objects.filter(vote_count=request.user.id).count()
+    print("counterrrr",count_obj)
     d=pod_groups.objects.filter(group_owner_id=request.user.id).exists()
     print("dddfff",d)
     if not request.user.is_authenticated:
@@ -40,29 +43,7 @@ def key_generator(request):
         print("dddfff",d)
         for i in d:
             print("sdfsd",i.district)
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-
-        # print(key.group_owner.id)
+ 
 
         key.save()      
         member.member_status = 1
@@ -79,7 +60,11 @@ def key_generator(request):
 
 
 
-def show(request,id):   
+def show(request,id):
+    elect_obj=pod_groups_members.objects.filter(member_id=request.user.id).values_list("elect_count",flat=True)[0]
+    print("1010",elect_obj)
+    count_obj = pod_groups_members.objects.filter(member_id=request.user.id).values_list("vote_count",flat=True)[0]
+    print("counterrrr",count_obj)
     
     currnt = pod_groups_members.objects.filter(member_id = request.user.id)
     hello = currnt.values_list("vote_given",flat=True)
@@ -140,6 +125,8 @@ def show(request,id):
     status=array[:12]
     
     if request.method=="POST" and "submit" in request.POST:
+        
+        
         if pod_groups_members.objects.filter(member_status=0,group_id=key1):
              pod_groups_members.objects.update(vote_given=0)
         member=pod_groups_members() 
@@ -222,6 +209,6 @@ def show(request,id):
             print(i.member.id)
             mem.group_owner_id=pod_groups.objects.filter(group_owner=i.group.group_owner_id).update(group_owner=i.member.id)     
         return redirect(request.path_info)   
-    return render(request,"key/key.html",{'user':users,'key1':key1,'stat':status,'is_key_generate':0,'podlen':podlength,"owner_id":owner_id,'all':all,'votegive':hell,"evote":evote,'q':0,"devote":devotee}) 
+    return render(request,"key/key.html",{'user':users,'key1':key1,'stat':status,'is_key_generate':0,'podlen':podlength,"owner_id":owner_id,'all':all,'votegive':hell,"evote":evote,'q':0,"devote":devotee,'count_obj':count_obj,"elect_obj":elect_obj}) 
  
     

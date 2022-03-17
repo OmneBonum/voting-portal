@@ -54,7 +54,7 @@ def fvalidate(request):
          
           uname= request.POST.get('pod_key')
           # print("uname",uname)
-          if firstdel_groups.objects.filter(group_key=uname).exists()  :
+          if firstdel_groups.objects.filter(group_key=uname).exists():
                key1=firstdel_groups.objects.filter(group_key=uname)
                for i in key1:
                     z=i.id

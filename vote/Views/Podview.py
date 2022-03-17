@@ -68,8 +68,6 @@ def podshow(request):
 
 
 def validate(request):
-    
-     
      destic=user.objects.filter(id=request.user.id).values_list("district",flat=True)
      if user.objects.filter(id=request.user.id).exists():
           hello=destic[0]
@@ -91,7 +89,7 @@ def validate(request):
           ma=pod_groups.objects.filter(group_key=uname).select_related("group_owner")
           for i in ma:
                Dist_obj=i.group_owner.district
-               
+ 
          
           if Dist_obj!=hello:     
                messages.error(request,"Please enter a valid district ",extra_tags="user") 
@@ -117,7 +115,10 @@ def validate(request):
                print("a",a)
                join.save()
                return redirect('/show')
-          elif messages.error(request,"invalid key ",extra_tags="invalid"):
+          else:
+               messages.error(request,"invalid key ",extra_tags="invalid")
+          
+               
                 
                if a <= 11:
                      

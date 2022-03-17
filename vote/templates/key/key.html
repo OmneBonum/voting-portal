@@ -114,7 +114,20 @@ h2.text-center.Pod_number {
   border-radius: 5px;
   padding: 3px 7px;
 }
+
+
+.as {
+  color: #e7340b;
+}
+
+
+.asa {
+  color: #dd33a9;
+}
 /*7-feb-2022 css end */
+
+
+
 
 
  </style> 
@@ -128,6 +141,8 @@ h2.text-center.Pod_number {
   <form class="form-horizontal form-label-left" method="POST" novalidate>
       {% csrf_token %}
       <div class="Pod_section">
+        <h1 class="as"><center>Votes_count: {{count_obj}}</center></h1>
+        <h1 class="asa"><center>Elect_count: {{elect_obj}}</center></h1>
         {%if owner_id == request.user.id%}
         <p class="text-center">Pod Invitation Key is:{% for item in user %}
           {{item.group_key}}
@@ -174,7 +189,8 @@ h2.text-center.Pod_number {
       <th>Votes</th> 
       <th>Devote</th>
       <th>Election</th>   
-      <th>delete</th>                     
+      <th>delete</th>  
+                        
 		  </tr>
 		</thead>  
    
@@ -186,7 +202,10 @@ h2.text-center.Pod_number {
       <td>{{forloop.counter}}</td>
       <td>{{users_list.member.name }}</td>  
       <td>{{users_list.member.email }}</td>  
-      <td>{{users_list.member.district }}</td>  
+      <td>{{users_list.member.district }}</td> 
+   
+       
+      
 
          
         <td>
@@ -212,7 +231,7 @@ h2.text-center.Pod_number {
             <button type="submit" class="delete" name="Delete" value={{users_list.id}}>Delete</button>  
           {% endif  %}
         </td>    
-          
+
 
       {%endfor%}
 
