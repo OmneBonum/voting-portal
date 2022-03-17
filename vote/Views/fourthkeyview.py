@@ -48,7 +48,11 @@ def fourthkey_generator(request):
 
 
 
-def fourthshow(request,id):      
+def fourthshow(request,id): 
+    elect_obj=fourthdel_groups_members.objects.filter(member_id=request.user.id).values_list("elect_count",flat=True)[0]
+    print("1010",elect_obj)
+    count_obj = fourthdel_groups_members.objects.filter(member_id=request.user.id).values_list("vote_count",flat=True)[0]
+    print("counterrrr",count_obj)     
     currnt = fourthdel_groups_members.objects.filter(member_id = request.user.id)
     # print("dskdksdhkshbd",currnt)
     hello = currnt.values_list("vote_given",flat=True)
@@ -180,7 +184,7 @@ def fourthshow(request,id):
             print(i.member.id)
             mem.group_owner_id=fourthdel_groups.objects.filter(group_owner=i.group.group_owner_id).update(group_owner=i.member.id)     
         return redirect(request.path_info)   
-    return render(request,"key/fourthdelkey.html",{'user':users,'key1':key1,'stat':status,'is_key_generate':0,'podlen':podlength,"owner_id":owner_id,'all':all,'votegive':hell,"evote":evote,'t':0,"devote":devotee}) 
+    return render(request,"key/fourthdelkey.html",{'user':users,'key1':key1,'stat':status,'is_key_generate':0,'podlen':podlength,"owner_id":owner_id,'all':all,'votegive':hell,"evote":evote,'t':0,"devote":devotee,'count_obj':count_obj,'elect_obj':elect_obj}) 
  
     
 
