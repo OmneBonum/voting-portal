@@ -84,6 +84,7 @@ def show(request,id):
    
     # print("dskdksdhkshbd",currnt)
     devote = currnt.values_list("devote_given",flat=True)
+    # devote = currnt.values_list('vote_count',flat=True)
     if pod_groups_members.objects.filter(member_id = request.user.id).exists():
         devotee=devote[0]
     else:
