@@ -1,6 +1,10 @@
 {%include "app/header.html" %}
 
-
+<style>
+          textarea.form-control {
+          height: 87px;
+        }
+        </style>
   <body>
  <title>Signup</title>
 <style> .user {
@@ -62,9 +66,10 @@
             <strong>{{ error|escape }}</strong>
         </span>
         {%endfor%}<br>
-
+        
         <label for="{{ form.address.id_for_label }}">Address:</label>
-        {{form.address}}
+        <textarea type="textarea" rows="" cols="66" {{form.address}}</textarea>
+        
         {% for error in form.address.errors %}
         <span class="error text-danger">
             <strong>{{ error|escape }}</strong>

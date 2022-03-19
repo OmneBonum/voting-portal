@@ -69,7 +69,9 @@ class AddCreateForm(ModelForm):
     ))
 
     address=forms.CharField(required=True,widget=forms.TextInput(
+        
         attrs={
+            
         'class':'form-control',
         'placeholder':'Enter your address'
         
