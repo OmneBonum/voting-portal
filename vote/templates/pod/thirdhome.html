@@ -78,7 +78,7 @@ input[type=checkbox] {
 <h1>{{i}}</h1>
 {%endfor%} {% endcomment %}
 <h1><center>Voter Page for {{request.user.name}}</center></h1>
-<h1><center> {{obj}}</center></h1>    
+<h1><center> {{obj|upper}}</center></h1>    
 
 <div class="container mt-5">
 <div class="row mb-3">
@@ -97,7 +97,7 @@ input[type=checkbox] {
  
 
 {% if tpod == request.user.id and value > 1%}
-<div class="col-md-6">
+<div class="col-md-4">
     <div class="d-flex button_sec ">
     <div class="btn_section text-center m-2">
         <a class="btn btn-primary text-center Creat_pod" href="tpod/{{keys}}">Third del pod</a>
@@ -130,7 +130,7 @@ input[type=checkbox] {
 </div>
      
 </div>
-<div class="col-md-3">
+<div class="col-md-4">
 
     <ul class="a">
         <li>First  Link Meeting Schedule</li>
@@ -152,8 +152,10 @@ input[type=checkbox] {
     <div class="btn_section text-center m-2">
         <a class="btn btn-primary text-center Creat_pod" href="/thome/3">Third Del Chat</a>
     </div>
-    <div class="col-mdd-3">
-
+    <div class="col-mdd-6">
+    </div>
+    <div class="row mb-11">
+        <div class="col-md-12">
         <ul class="a">
             <li>First  Link Meeting Schedule</li>
             <li>Meeting Minutes Log</li>
@@ -184,7 +186,7 @@ input[type=checkbox] {
         <li>First  Link Meeting Schedule</li>
         <li>Meeting Minutes Log</li>
         <li>Bill Metrics</li>
-        <li>Voting Settings1</li>
+        <li>Voting Settings</li>
       </ul>
       
 </div> 
