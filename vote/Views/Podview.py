@@ -120,7 +120,7 @@ def validate(request):
           
                
                 
-               if a <= 1:
+               if a <= 11:
                      
                     return redirect('/show')
                else:

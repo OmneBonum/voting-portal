@@ -68,7 +68,7 @@
         {%endfor%}<br>
         
         <label for="{{ form.address.id_for_label }}">Address:</label>
-        <textarea type="textarea" rows="" cols="66" {{form.address}}</textarea>
+        {{form.address}}
         
         {% for error in form.address.errors %}
         <span class="error text-danger">
