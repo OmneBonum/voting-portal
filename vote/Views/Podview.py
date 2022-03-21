@@ -125,13 +125,20 @@ def validate(request):
                     elif Dist_obj!=hello:     
                          print("district")
                          messages.error(request,"Please enter a valid district ",extra_tags="user") 
+                         
+                    elif a <= 11:
+                         messages.error(request,"Sorry, this Pod is full!",extra_tags="don") 
+                         
           else:
                if not request.POST.get('pod_key') and pod_groups.objects.filter(group_key=uname).exists() :
                     print("invalid key")
                     messages.error(request,"invalid key ",extra_tags="invalid")
-               # else:
-               #      print("sdsf")
-               #      messages.error(request,"invalid key ",extra_tags="invalid")
+               else:
+                    a=pod_groups.objects.filter(group_key=uname).exists()
+                    print(a) 
+                    if a == False:
+                         print("sdsf")
+                         messages.error(request,"invalid key ",extra_tags="invalid")
                 
                # if a <= 11:
                      
