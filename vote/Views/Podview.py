@@ -94,8 +94,6 @@ def validate(request):
           for i in ma:
           
                Dist_obj=i.group_owner.district
- 
-               print("dsdsfds",Dist_obj)
   
                if pod_groups.objects.filter(group_key =uname).exists():
                     
@@ -131,9 +129,9 @@ def validate(request):
                if not request.POST.get('pod_key') and pod_groups.objects.filter(group_key=uname).exists() :
                     print("invalid key")
                     messages.error(request,"invalid key ",extra_tags="invalid")
-               else:
-                    print("sdsf")
-                    messages.error(request,"invalid key ",extra_tags="invalid")
+               # else:
+               #      print("sdsf")
+               #      messages.error(request,"invalid key ",extra_tags="invalid")
                 
                # if a <= 11:
                      
