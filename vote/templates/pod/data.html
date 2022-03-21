@@ -88,9 +88,10 @@ button.btn.vote {
 <tbody>  
 {% for users_list in context%}
 <tr>
+  
   {%if forloop.counter < 10%}
 <td>{{0}}{{forloop.counter}}
- {% endif %}
+ {%endif%}
  
 <td>{{users_list.district }}</td>
 <td> {{users_list.name}}</td>

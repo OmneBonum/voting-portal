@@ -79,7 +79,7 @@ input[type=checkbox] {
 <h1>{{i}}</h1>
 {%endfor%} {% endcomment %}
 <h1><center>Voter Page for {{request.user.name}}</center></h1>
-<h1><center> {{obj}}</center></h1>
+<h1><center> {{obj|upper}}</center></h1>
 
 
 
@@ -93,21 +93,22 @@ input[type=checkbox] {
 	
 
 <div class="row mb-3">
-<div class="col-md-3"> 
+<div class="col-md-4"> 
     <ul class="a">
         <li>List of Delegates</li>
         <li>Back-and-Forth </li>
         <li>Member Contact Page </li>
-        <li>Pod Housekeeping Page1</li>
+        <li>Pod Housekeeping Page</li>
       </ul>
       
 </div>
+
 
 {% if fpod == request.user.id and value > 0 %}
 {% comment %} <h1>{{value}}</h1> {% endcomment %}
 
 
-<div class="col-md-6">
+<div class="col-md-4">
     <div class="d-flex button_sec ">
     <div class="btn_section text-center m-2">
         <a class="btn btn-primary text-center Creat_pod" href="pod/{{key1}}">My pod</a>
@@ -131,21 +132,28 @@ input[type=checkbox] {
 
 </div>
 </div>
-<div class="col-md-3">
-
+<div class="col-md-4">
+    
     <ul class="a">
         <li>First Link Meeting Schedule</li>
         <li>Meeting Minutes Log</li>
         <li>Bill Metrics</li>
         <li>Voting Settings</li>
       </ul>
+</div>
+
+<div>  
+ 
+    
+
       
+    
 </div>
 </div>  
     
 
     {%elif fkey == 0 %}
-
+    
     <div class="btn_section text-center m-2">
         <a class="btn btn-primary text-center Creat_pod" href="pod/{{key1}}">My pod</a>
         </div>
@@ -154,8 +162,12 @@ input[type=checkbox] {
             <a class="btn btn-primary text-center Creat_pod" href="/home">chat</a>
             </div> 
             
-            <div class="col-mdd-3">
+            <div class="col-mdd-6">
 
+            </div>
+        
+            <div class="row mb-11">
+                <div class="col-md-12">    
                 <ul class="a">
                     <li>First  Link Meeting Schedule</li>
                     <li>Meeting Minutes Log</li>
@@ -165,7 +177,7 @@ input[type=checkbox] {
                   
             </div>               
         
-</div>
+        </div>
 
 
 {% else %}
@@ -182,27 +194,32 @@ input[type=checkbox] {
 </div>
 
 
-<div class="col-md-6">
+<div class="col-md-7">
 
     <ul class="a">
         <li>First  Link Meeting Schedule</li>
         <li>Meeting Minutes Log</li>
         <li>Bill Metrics</li>
-        <li>Voting Settings1</li>
+        <li>Voting Settings</li>
       </ul>
       
 </div>   
-
+<div>
+    
 
 {% endif %} 
+
 </div>
-<h3 class="text-center mt-4">Get Registered</h3>
+{% comment %} <h3 class="text-center">List of Bills</h3>
+<h3 class="text-center mt-4">Get Registered</h3> {% endcomment %}
+</div>
 </div>
 
 
 
 
-<h3 class="text-center">List of Bills</h3>
+
+
 <table class="table table-bordered text-center">
 <thead>
 <tr>

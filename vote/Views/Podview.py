@@ -87,44 +87,54 @@ def validate(request):
           uname= request.POST.get('pod_key')
           print("jdbvjdbvjvbf",uname)
           ma=pod_groups.objects.filter(group_key=uname).select_related("group_owner")
+        
           for i in ma:
+               
                Dist_obj=i.group_owner.district
- 
-         
-          if Dist_obj!=hello:     
-               messages.error(request,"Please enter a valid district ",extra_tags="user") 
                
+               if messages.error(request,"invalid key ",extra_tags="invalid"):
+          
+          
+
+                    for i in ma:
+                   
+                     Dist_obj=i.group_owner.district
+                    Dist_obj!=hello    
+                    messages.error(request,"Please enter a valid district ",extra_tags="user") 
+                         
+                         
+                         
                
                     
                
                
-          elif pod_groups.objects.filter(group_key=uname).exists():
-               print("hddfdbdbjdbvdbvdbv")
-               key1=pod_groups.objects.filter(group_key=uname)
-               for i in key1:
-                    z=i.id
-                    print('z',z)
+                    pod_groups.objects.filter(group_key=uname).exists()
+                    print("hddfdbdbjdbvdbvdbv")
+                    key1=pod_groups.objects.filter(group_key=uname)
+                    for i in key1:
+                         z=i.id
+                         print('z',z)
+                         
+                    print(uname)
                     
-               print(uname)
-               
-               current_user=request.user.id
-               join.member_id=current_user
-               join.group_id=z    
-               join.member_status=0
-               a=len(pod_groups_members.objects.filter(group_id=z))
-               print("a",a)
-               join.save()
-               return redirect('/show')
-          else:
-               messages.error(request,"invalid key ",extra_tags="invalid")
+                    current_user=request.user.id
+                    join.member_id=current_user
+                    join.group_id=z    
+                    join.member_status=0
+                    a=len(pod_groups_members.objects.filter(group_id=z))
+                    print("a",a)
+                    join.save()
+                    return redirect('/show')
+          # else:
+          #      messages.error(request,"invalid key ",extra_tags="invalid")
           
                
                 
-               if a <= 11:
+               # if a <= 11:
                      
-                    return redirect('/show')
-               else:
-                    messages.error(request,"Sorry, this Pod is full!",extra_tags="don") 
+               #      return redirect('/show')
+               # else:
+               #      messages.error(request,"Sorry, this Pod is full!",extra_tags="don") 
                     
      
           # else:
