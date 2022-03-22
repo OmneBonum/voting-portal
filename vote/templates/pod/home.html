@@ -95,10 +95,11 @@ input[type=checkbox] {
 <div class="row mb-3">
 <div class="col-md-4"> 
     <ul class="a">
-        <li>List of Delegates</li>
-        <li>Back-and-Forth </li>
-        <li>Member Contact Page </li>
-        <li>Pod Housekeeping Page</li>
+        <h1>{{item.group_owner.id}}</h1>
+        <li><a href="{{item.group_owner.name}}">List of Delegates</a></li>
+        <li><a href="/home">Back-and-Forth</a></li>
+        <li><a href="/member">Member Contact Page</a></li>
+        <li><a href="pod/{{key1}}">Pod Housekeeping Page</a></li>
       </ul>
       
 </div>
@@ -126,7 +127,7 @@ input[type=checkbox] {
     
     
     <div class="btn_section text-center m-2">
-        <a class="btn btn-primary text-center Creat_pod" href="/home">Chat</a>
+        <a class="btn btn-primary text-center Creat_pod" href="/home">Back-and-Forth</a>
     </div>
 
 
@@ -135,6 +136,7 @@ input[type=checkbox] {
 <div class="col-md-4">
     
     <ul class="a">
+        
         <li>First Link Meeting Schedule</li>
         <li>Meeting Minutes Log</li>
         <li>Bill Metrics</li>
@@ -159,7 +161,7 @@ input[type=checkbox] {
         </div>
     
         <div class="btn_section text-center m-2">
-            <a class="btn btn-primary text-center Creat_pod" href="/home">chat</a>
+            <a class="btn btn-primary text-center Creat_pod" href="/home">Back-and-Forth</a>
             </div> 
             
             <div class="col-mdd-6">
