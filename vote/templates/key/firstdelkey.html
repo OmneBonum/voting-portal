@@ -186,8 +186,11 @@
 			{% for users_list in stat%}    
       
     <tr>  
+      {%if forloop.counter < 10%}
+      <td>{{0}}{{forloop.counter}}
+       {%endif%}
         
-      <td>{{forloop.counter}}</td>
+      
       <td>{{users_list.member.name }}</td>  
       <td>{{users_list.member.email }}</td>  
       <td>{{users_list.member.district }}</td>  
