@@ -114,20 +114,28 @@ def validate(request):
                          current_user=request.user.id
                          join.member_id=current_user
                          join.group_id=z    
+                         print("nkbb",join.group_id)
                          join.member_status=0
                          a=len(pod_groups_members.objects.filter(group_id=z))
-                         print("a",a)
-                         join.save()
-                         return redirect('/show')
-
+                         print("aaaaaaaaaaaa",a)
+                         if a >= 2:
+                             
+                             messages.error(request,"Sorry, this Pod is full!",extra_tags="don") 
+                             
+                         else:
+                              join.save()
+                              return redirect('/show')
+                      
                     
+                         
                     
                     elif Dist_obj!=hello:     
                          print("district")
                          messages.error(request,"Please enter a valid district ",extra_tags="user") 
                          
-                    elif a <= 11:
-                         messages.error(request,"Sorry, this Pod is full!",extra_tags="don") 
+                    # elif a >= 6:
+                         
+                    #      messages.error(request,"Sorry, this Pod is full!",extra_tags="don") 
                          
           else:
                if not request.POST.get('pod_key') and pod_groups.objects.filter(group_key=uname).exists() :
@@ -151,8 +159,10 @@ def validate(request):
           #      messages.error(request,"invalid key ",extra_tags="invalid")
           #      return redirect('/join') 
      if pod_groups_members.objects.filter(member_id=request.user.id).exists():
+        print("564464646464646464")
 
         return redirect("/show")
+   
      return render(request,"pod/join.html")
 
 # def trying (request):
