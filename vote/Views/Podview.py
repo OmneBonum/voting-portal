@@ -130,7 +130,7 @@ def validate(request):
                     
                     elif Dist_obj!=hello:     
                          print("district")
-                         messages.error(request,"Please enter a valid district ",extra_tags="user") 
+                         messages.error(request,"Your Invitation Key is invalid or expired. Please contact--in real life--the Delegate for the group you are trying to join to get a valid key.",extra_tags="user") 
                          
                     # elif a >= 6:
                          
