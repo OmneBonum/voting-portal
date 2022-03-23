@@ -1,5 +1,4 @@
 from genericpath import exists
-from math import dist
 from tokenize import group
 from urllib import request
 from django.shortcuts import render
@@ -126,7 +125,7 @@ def validate(request):
                          print("district")
                          messages.error(request,"Please enter a valid district ",extra_tags="user") 
                          
-                    elif a <= 11:
+                    elif a <= 1:
                          messages.error(request,"Sorry, this Pod is full!",extra_tags="don") 
                          
           else:
