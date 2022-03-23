@@ -77,12 +77,14 @@ def sshow(request,id):
 
     key1=seconddel_groups.objects.get(id=id)
     print("key1",key1)
+    obj=user.objects.filter(id=request.user.id).values_list("district",flat=True)
+    dist=obj[0]
     all=seconddel_groups.objects.filter(id=key1.id)
     users = seconddel_groups.objects.filter(id=key1.id) 
     if not request.user.is_authenticated:
       return redirect("/")
-    user = seconddel_groups.objects.filter(group_owner_id=request.user)
-    k=user.values_list('group_owner_id',flat=True)
+    usert = seconddel_groups.objects.filter(group_owner_id=request.user)
+    k=usert.values_list('group_owner_id',flat=True)
     if seconddel_groups.objects.filter(group_owner_id=request.user).exists():
         owner_id=k[0]
     else:
@@ -187,7 +189,7 @@ def sshow(request,id):
             print(i.member.id)
             mem.group_owner_id=seconddel_groups.objects.filter(group_owner=i.group.group_owner_id).update(group_owner=i.member.id)     
         return redirect(request.path_info)   
-    return render(request,"key/seconddelkey.html",{'user':users,'key1':key1,'stat':status,'is_key_generate':0,'podlen':podlength,"owner_id":owner_id,'all':all,'votegive':hell,"evote":evote,'e':0,"devote":devotee,'count_obj':count_obj,'elect_obj':elect_obj}) 
+    return render(request,"key/seconddelkey.html",{'user':users,'key1':key1,'stat':status,'is_key_generate':0,'podlen':podlength,"owner_id":owner_id,'all':all,'votegive':hell,"evote":evote,'e':0,"devote":devotee,'count_obj':count_obj,'elect_obj':elect_obj,"obj":dist}) 
  
     
 
